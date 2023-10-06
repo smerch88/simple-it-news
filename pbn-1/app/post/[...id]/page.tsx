@@ -1,4 +1,6 @@
-/* eslint-disable no-console */
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { ArticleType } from '@/types';
 
 async function getNews() {
@@ -14,12 +16,72 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const [news] = await Promise.all([newsData]);
 
-  console.log(news.articles);
-  console.log(decodeURI(id));
-
   const post = news.articles.find(
     (item: ArticleType) => item.title === decodeURI(id),
   );
 
-  return <div>{post?.content}</div>;
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+
+  const publishedDate = new Date(post?.publishedAt);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+  };
+
+  const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+
+  return (
+    <div className="container">
+      <ul className="flex flex-row mb-2 md:mb-4">
+        <li>
+          <Link href="/">Головна</Link>
+        </li>
+        <li className="before:content-['/']">
+          <Link href={'/post/' + id}>Пост {post?.sourse?.id}</Link>
+        </li>
+      </ul>
+      <article>
+        <h1 className="text-xl font-bold mb-2">{post?.title}</h1>
+        <h2 className="[text-wrap:balance] mb-2 md:mb-8">
+          {post?.description}
+        </h2>
+        {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
+          <div className="relative w-full h-80 mb-2 md:mb-8">
+            <Image
+              src={post.urlToImage}
+              fill
+              className="object-contain"
+              alt={post.title + 'Image'}
+            />
+          </div>
+        ) : null}
+        <p className="mb-2 md:mb-8">{post?.content}</p>
+        <div className="flex justify-between text-gray-400/80 mb-2">
+          <Link
+            href={post?.url}
+            rel="noopener norefferer nofollow"
+            target="blank"
+          >
+            джерело
+          </Link>
+          <div className="flex flex-row">
+            {post?.author ? (
+              <address>
+                <span className="mr-2" rel="author">
+                  {post.author}
+                </span>
+              </address>
+            ) : null}
+            <time>{formattedDate}</time>
+          </div>
+        </div>
+      </article>
+    </div>
+  );
 }
