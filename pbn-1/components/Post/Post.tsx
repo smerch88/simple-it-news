@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -23,14 +24,30 @@ export const Post: FC<PostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
-        <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+        <Link href={`/post/${encodeURIComponent(article.title)}`}>
+          <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+        </Link>
         <p className="[text-wrap:balance] mb-2">{article.description}</p>
-        <div className="flex justify-between text-gray-400/80">
-          <Link href={article.url} rel="noopener norefferer nofollow">
+        <div className="flex justify-between text-gray-400/80 mb-2">
+          <Link
+            href={article.url}
+            rel="noopener norefferer nofollow"
+            target="blank"
+          >
             джерело
           </Link>
           <time>{formattedDate}</time>
         </div>
+        {article?.urlToImage && article.urlToImage.startsWith('https://') && (
+          <div className="relative w-full h-40 mb-2">
+            <Image
+              src={article.urlToImage}
+              fill
+              className="object-contain"
+              alt={article.title + 'Image'}
+            />
+          </div>
+        )}
       </article>
     </li>
   );
