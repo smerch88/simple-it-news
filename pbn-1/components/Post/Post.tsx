@@ -9,6 +9,11 @@ export const Post: FC<PostProps> = ({ article }) => {
     return null;
   }
 
+  const cleanTitle = article.title
+    .replace(/[^a-zA-Z0-9\s]/g, '')
+    .replace(/\s+/g, '-')
+    .toLowerCase();
+
   const publishedDate = new Date(article.publishedAt);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -24,14 +29,14 @@ export const Post: FC<PostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
-        <Link href={`/post/${encodeURIComponent(article.title)}`}>
+        <Link href={`/post/${encodeURIComponent(cleanTitle)}`}>
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
-        <p className="[text-wrap:balance] mb-2">{article.description}</p>
+        <p className="mb-2">{article.description}</p>
         <div className="flex justify-between text-gray-400/80 mb-2">
           <Link
             href={article.url}
-            rel="noopener norefferer nofollow"
+            rel="noopener noreferrer nofollow"
             target="blank"
           >
             джерело

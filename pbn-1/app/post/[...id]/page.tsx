@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,7 +18,11 @@ export default async function Page({ params }: { params: { id: string } }) {
   const [news] = await Promise.all([newsData]);
 
   const post = news.articles.find(
-    (item: ArticleType) => item.title === decodeURI(id),
+    (item: ArticleType) =>
+      item.title
+        .replace(/[^a-zA-Z0-9\s]/g, '')
+        .replace(/\s+/g, '-')
+        .toLowerCase() == id,
   );
 
   if (!post) {
@@ -42,8 +47,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         <li>
           <Link href="/">Головна</Link>
         </li>
-        <li className="before:content-['/']">
-          <Link href={'/post/' + id}>Пост {post?.sourse?.id}</Link>
+        <li className="before:content-['/'] hover:opacity-75">
+          {' '}
+          <Link href={'/post/' + id} className="underline underline-offset-2">
+            Пост {post?.source?.id}
+          </Link>
         </li>
       </ul>
       <article>
