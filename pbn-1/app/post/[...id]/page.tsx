@@ -1,8 +1,21 @@
-/* eslint-disable no-console */
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { ArticleType } from '@/types';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
+  const { id } = params;
+  const title = id[0].split('-').join(' ');
+  return {
+    title: title,
+    description: title,
+  };
+}
 
 async function getNews() {
   const res = await fetch(
@@ -45,7 +58,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     <div className="container">
       <ul className="flex flex-row mb-2 md:mb-4">
         <li>
-          <Link href="/">Головна</Link>
+          <Link href="/" rel="canonical">
+            Головна
+          </Link>
         </li>
         <li className="before:content-['/'] hover:opacity-75">
           {' '}
@@ -71,11 +86,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         ) : null}
         <p className="mb-2 md:mb-8">{post?.content}</p>
         <div className="flex justify-between text-gray-400/80 mb-2">
-          <Link
-            href={post?.url}
-            rel="noopener norefferer nofollow"
-            target="blank"
-          >
+          <Link href={post?.url} rel="canonical" target="blank">
             джерело
           </Link>
           <div className="flex flex-row">

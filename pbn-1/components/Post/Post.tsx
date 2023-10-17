@@ -29,7 +29,7 @@ export const Post: FC<PostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
-        <Link href={`/post/${encodeURIComponent(cleanTitle)}`}>
+        <Link href={`/post/${encodeURIComponent(cleanTitle)}`} rel="canonical">
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
         <p className="mb-2">{article.description}</p>
