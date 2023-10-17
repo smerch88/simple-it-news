@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { Analytics } from '@vercel/analytics/react';
 import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -48,7 +49,9 @@ export default function RootLayout({
             </Link>
           </div>
         </header>
-        <main className="flex-grow py-4">{children}</main>
+        <main className="flex-grow py-4">
+          {children} <Analytics />
+        </main>
         <footer className="bg-black py-4">
           <div className="container">
             <p className="text-lg font-bold text-white">Simple IT News</p>
