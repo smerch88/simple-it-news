@@ -52,6 +52,10 @@ export default function RootLayout({
         <footer className="bg-black py-4">
           <div className="container">
             <p className="text-lg font-bold text-white">Simple IT News</p>
+            <p className="text-xs font-bold text-white">
+              Copyright © {new Date().getFullYear()}
+              Simple IT News
+            </p>
           </div>
         </footer>
       </body>
