@@ -1,5 +1,4 @@
 import { Post } from '@/components/Post';
-import { ScrollBtn } from '@/components/ScrollBtn';
 import { ArticleType } from '@/types';
 
 async function getNews() {
@@ -26,7 +25,6 @@ export default async function Home() {
           <Post key={'arcticle' + index} article={article} />
         ))}
       </ul>
-      <ScrollBtn>Нагору</ScrollBtn>
     </div>
   );
 }

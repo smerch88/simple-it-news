@@ -19,17 +19,11 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self' 'https://www.simpleitnews.tech'; image-src 'https://unsplash.com'; script-src 'self' https://www.google-analytics.com; font-src 'self' 'https://fonts.googleapis.com'",
+            value: "default-src 'self' 'https://www.simpleitnews.tech'",
           },
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',
-          },
-          {
-            key: 'Permissions-Policy',
-            value:
-              "camera=(); battery=(self); geolocation=(); microphone=('https://a-domain.com')",
           },
           {
             key: 'Referrer-Policy',
