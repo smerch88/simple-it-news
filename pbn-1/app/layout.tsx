@@ -9,8 +9,10 @@ import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Головна',
+  title: 'Головна Simple IT News',
   description: 'Стрічка IT новин',
+  viewport:
+    'width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no',
   icons: [
     {
       rel: 'icon',
@@ -30,6 +32,27 @@ export const metadata: Metadata = {
       url: '/favicon/apple-touch-icon.png',
     },
   ],
+  openGraph: {
+    title: 'Simple IT News',
+    description: 'Просто ІТ новини. Читайте новини зі світу АйТі.',
+    url: 'https://www.simpleitnews.tech',
+    siteName: 'Simple IT News',
+    images: [
+      {
+        url: 'https://nextjs.org/android-chrome-512x512.png',
+        width: 512,
+        height: 512,
+      },
+      {
+        url: 'https://nextjs.org/android-chrome-192x192.png',
+        width: 192,
+        height: 192,
+        alt: 'Прості ІТ Новини',
+      },
+    ],
+    locale: 'uk',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <body className={cn('flex flex-col h-screen', inter.className)}>
         <header className="bg-black py-4">
           <div className="container">
