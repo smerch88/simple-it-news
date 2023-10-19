@@ -1,4 +1,5 @@
 import { Post } from '@/components/Post';
+import { ScrollBtn } from '@/components/ScrollBtn';
 import { ArticleType } from '@/types';
 
 async function getNews() {
@@ -13,7 +14,7 @@ export default async function Home() {
   const [news] = await Promise.all([newsData]);
 
   return (
-    <div className="container">
+    <div className="container relative">
       <h1 className="text-2xl uppercase text-center font-semibold">
         Актуальні IT Новини
       </h1>
@@ -25,6 +26,7 @@ export default async function Home() {
           <Post key={'arcticle' + index} article={article} />
         ))}
       </ul>
+      <ScrollBtn>Нагору</ScrollBtn>
     </div>
   );
 }

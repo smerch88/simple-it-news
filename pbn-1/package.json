@@ -14,7 +14,8 @@
     "@vercel/analytics": "^1.1.1",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-scroll": "^1.9.0"
   },
   "devDependencies": {
     "@headlessui/react": "^1.7.17",
@@ -23,6 +24,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/react-scroll": "^1.8.9",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "@typescript-eslint/parser": "^6.7.4",
     "autoprefixer": "latest",
