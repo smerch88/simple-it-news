@@ -20,7 +20,7 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value:
-              "default-src *; script-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *",
+              "default-src *; script-src * 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *",
           },
           {
             key: 'X-Content-Type-Options',
@@ -32,7 +32,7 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'camera=(); battery=(self); geolocation=(); microphone=()',
+            value: 'camera=(), geolocation=(), microphone=()',
           },
         ],
       },
