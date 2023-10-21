@@ -34,32 +34,6 @@ export const metadata: Metadata = {
   ],
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    openGraph: {
-      title: 'Simple IT News',
-      description: 'Просто ІТ новини. Читайте новини зі світу АйТі.',
-      url: 'https://www.simpleitnews.tech',
-      siteName: 'Simple IT News',
-      images: [
-        {
-          url: 'https://nextjs.org/android-chrome-512x512.png',
-          width: 512,
-          height: 512,
-        },
-        {
-          url: 'https://nextjs.org/android-chrome-192x192.png',
-          width: 192,
-          height: 192,
-          alt: 'Прості ІТ Новини',
-        },
-      ],
-      locale: 'uk',
-      type: 'website',
-    },
-  };
-}
-
 export default function RootLayout({
   children,
 }: {
