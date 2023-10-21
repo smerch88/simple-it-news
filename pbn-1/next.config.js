@@ -19,7 +19,8 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self' 'https://www.simpleitnews.tech'",
+            value:
+              "default-src *; script-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src *",
           },
           {
             key: 'X-Content-Type-Options',
