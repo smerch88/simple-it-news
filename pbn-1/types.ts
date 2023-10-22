@@ -15,6 +15,25 @@ export type ArticleType = {
   content: string;
 };
 
+export interface CmsArticleType {
+  id: string;
+  title: string;
+  _status: string;
+  _firstPublishedAt: string;
+  shortdescription: string;
+  articlepicture: {
+    width: number;
+    url: string;
+    height: number;
+    alt: string;
+  };
+  _createdAt: string;
+  _publishedAt: string;
+  author: {
+    authorname: string;
+  };
+}
+
 export interface Source {
   id: unknown;
   name: string;

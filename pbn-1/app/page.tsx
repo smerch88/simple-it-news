@@ -1,7 +1,33 @@
+import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
+import { CmsPost } from '@/components/CmsPost';
 import { Post } from '@/components/Post';
-import { ArticleType } from '@/types';
+import { ArticleType, CmsArticleType } from '@/types';
+import { getClient } from '@/utils/apollo-client';
+
+const query = gql`
+  {
+    allNewsposts {
+      id
+      title
+      _status
+      _firstPublishedAt
+      shortdescription
+      articlepicture {
+        width
+        url
+        height
+        alt
+      }
+      _createdAt
+      _publishedAt
+      author {
+        authorname
+      }
+    }
+  }
+`;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -40,6 +66,8 @@ export default async function Home() {
   const newsData = getNews();
   const [news] = await Promise.all([newsData]);
 
+  const { data } = await getClient().query({ query });
+
   return (
     <div className="container relative">
       <h1 className="text-2xl uppercase text-center font-semibold">
@@ -48,9 +76,14 @@ export default async function Home() {
       <h2 className="text-sm mb-2 uppercase text-center font-semibold">
         Читай про айті просто
       </h2>
+      <ul className="mb-2">
+        {data.allNewsposts.map((article: CmsArticleType) => (
+          <CmsPost key={article.id} article={article} />
+        ))}
+      </ul>
       <ul className="flex flex-col gap-8">
         {news.articles.map((article: ArticleType, index: number) => (
-          <Post key={'arcticle' + index} article={article} />
+          <Post key={'article' + index} article={article} />
         ))}
       </ul>
     </div>
