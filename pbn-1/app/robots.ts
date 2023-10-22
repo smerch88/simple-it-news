@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
     },
     host: 'https://www.simpleitnews.tech',
     sitemap: 'https://www.simpleitnews.tech/sitemap.xml',
