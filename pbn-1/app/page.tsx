@@ -66,7 +66,14 @@ export default async function Home() {
   const newsData = getNews();
   const [news] = await Promise.all([newsData]);
 
-  const { data } = await getClient().query({ query });
+  const { data } = await getClient().query({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60 },
+      },
+    },
+  });
 
   return (
     <div className="container relative">
