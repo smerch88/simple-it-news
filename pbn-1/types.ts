@@ -31,6 +31,23 @@ export interface CmsArticleType {
   _publishedAt: string;
   author: {
     authorname: string;
+    route: string;
+  };
+  route: string;
+  tags: unknown;
+}
+
+export interface Author {
+  authordescription: string;
+  authorname: string;
+  route: string;
+  socials: { [platform: string]: string };
+  articles: { route: string; title: string }[];
+  authorimage: {
+    width: number;
+    url: string;
+    height: number;
+    alt: string | null;
   };
 }
 

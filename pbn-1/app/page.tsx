@@ -24,7 +24,10 @@ const query = gql`
       _publishedAt
       author {
         authorname
+        route
       }
+      route
+      tags
     }
   }
 `;

@@ -20,18 +20,18 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
-        <Link href={`/news/${article.id}`} rel="canonical">
+        <Link href={`/posts/${article.route}`} rel="canonical">
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
         <p className="mb-2">{article.shortdescription}</p>
         <div className="flex justify-between text-gray-400/80 mb-2">
-          {/* <Link
-            href={article.url}
+          <Link
+            href={'/authors/' + article.author.route}
             rel="noopener noreferrer nofollow"
             target="blank"
-          > */}
-          автор: {article.author.authorname}
-          {/* </Link> */}
+          >
+            автор: {article.author.authorname}
+          </Link>
           <time>{formattedDate}</time>
         </div>
         <div className="relative w-full h-40 mb-2">
