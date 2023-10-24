@@ -24,7 +24,7 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
         <p className="mb-2">{article.shortdescription}</p>
-        <div className="flex justify-between text-gray-400/80 mb-2">
+        <div className="flex justify-between text-gray-400/80 mb-2 flex-col md:flex-row">
           <Link
             href={'/authors/' + article.author.route}
             rel="noopener noreferrer nofollow"

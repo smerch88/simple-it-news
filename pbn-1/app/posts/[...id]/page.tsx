@@ -1,4 +1,3 @@
-// import { Metadata } from 'next';
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import Image from 'next/image';
@@ -95,6 +94,20 @@ export default async function Page({ params }: { params: { id: string } }) {
       </nav>
       <article>
         <h1 className="text-xl font-bold mb-2">{article.title}</h1>
+        <div className="flex justify-between text-gray-400/80 mb-2">
+          <div className="flex flex-col md:flex-row">
+            <address>
+              <Link
+                href={'/authors/' + article.author.route}
+                className="mr-2"
+                rel="author"
+              >
+                {article.author.authorname}
+              </Link>
+            </address>
+            <time>{formattedDate}</time>
+          </div>
+        </div>
         <h2 className="[text-wrap:balance] mb-2 md:mb-8">
           {article.shortdescription}
         </h2>
@@ -108,20 +121,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         </div>
         <div className="mb-2">
           <StructuredText data={article.articletext} />
-        </div>
-        <div className="flex justify-between text-gray-400/80 mb-2">
-          <div className="flex flex-row">
-            <address>
-              <Link
-                href={'/authors/' + article.author.route}
-                className="mr-2"
-                rel="author"
-              >
-                {article.author.authorname}
-              </Link>
-            </address>
-            <time>{formattedDate}</time>
-          </div>
         </div>
       </article>
     </div>

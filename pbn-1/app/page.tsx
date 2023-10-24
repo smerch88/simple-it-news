@@ -86,7 +86,7 @@ export default async function Home() {
       <h2 className="text-sm mb-2 uppercase text-center font-semibold">
         Читай про айті просто
       </h2>
-      <ul className="mb-2">
+      <ul className="mb-2 gap-8 flex flex-col">
         {data.allNewsposts.map((article: CmsArticleType) => (
           <CmsPost key={article.id} article={article} />
         ))}
