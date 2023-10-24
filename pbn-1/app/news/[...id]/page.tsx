@@ -20,6 +20,7 @@ export async function generateMetadata({
 async function getNews() {
   const res = await fetch(
     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
+    { next: { revalidate: 43200 } },
   );
   return res.json();
 }
