@@ -85,6 +85,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             {' '}
             <Link
               href={'/news/' + id[0]}
+              rel="canonical"
               className="underline underline-offset-2"
             >
               Пост
@@ -99,8 +100,8 @@ export default async function Page({ params }: { params: { id: string } }) {
             <address>
               <Link
                 href={'/authors/' + article.author.route}
+                rel="canonical"
                 className="mr-2"
-                rel="author"
               >
                 {article.author.authorname}
               </Link>

@@ -65,7 +65,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
         <li className="before:content-['/'] hover:opacity-75">
           {' '}
-          <Link href={'/post/' + id} className="underline underline-offset-2">
+          <Link
+            href={'/post/' + id}
+            rel="canonical"
+            className="underline underline-offset-2"
+          >
             Пост {post?.source?.id}
           </Link>
         </li>

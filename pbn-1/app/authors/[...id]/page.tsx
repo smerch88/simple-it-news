@@ -72,6 +72,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             <Link
               href={'/authors/' + id[0]}
               className="underline underline-offset-2"
+              rel="canonical"
             >
               Автор
             </Link>
