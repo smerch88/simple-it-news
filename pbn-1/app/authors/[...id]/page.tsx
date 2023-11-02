@@ -80,8 +80,40 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const author = data.allAuthors[0];
 
+  const breadCrumbsJsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: {
+      '@type': 'ListItem',
+      position: '1',
+      item: {
+        '@id': `https://www.simpleitnews.tech/authors/${id[0]}`,
+        name: `${author.authorname}`,
+      },
+    },
+  };
+
+  const authorJsonLD = {
+    '@context': 'https://schema.org/',
+    '@type': 'Person',
+    name: author.authorname,
+    url: `https://www.simpleitnews.tech/authors/${id[0]}`,
+    image: author.authorimage.url,
+    sameAs: [author.socials.facebook, author.socials.twitter],
+  };
+
   return (
     <div className="container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
+        key="breadcrumbs-jsonld"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(authorJsonLD) }}
+        key="author-jsonld"
+      />
       <nav>
         <ul className="flex flex-row mb-2 md:mb-4">
           <li>

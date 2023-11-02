@@ -67,7 +67,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <li className="before:content-['/'] hover:opacity-75">
           {' '}
           <Link
-            href={'/post/' + id}
+            href={'/news/' + id}
             rel="canonical"
             className="underline underline-offset-2"
           >

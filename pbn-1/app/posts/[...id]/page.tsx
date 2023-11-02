@@ -62,6 +62,7 @@ const GET_ARTICLE = gql`
       }
       _createdAt
       _publishedAt
+      _updatedAt
       author {
         authorname
         route
@@ -94,8 +95,59 @@ export default async function Page({ params }: { params: { id: string } }) {
   };
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+
+  const breadCrumbsJsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: {
+      '@type': 'ListItem',
+      position: '1',
+      item: {
+        '@id': `https://www.simpleitnews.tech/posts/${id[0]}`,
+        name: `${article.title}`,
+      },
+    },
+  };
+
+  const articleJsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://www.simpleitnews.tech/posts/${id[0]}`,
+    },
+    headline: `${article.title}`,
+    description: `${article?.shortdescription?.slice(0, 150)}`,
+    image: article.articlepicture.url,
+    author: {
+      '@type': 'Person',
+      name: article.author.authorname,
+      url: `https://www.simpleitnews.tech/authors/${article.author.route}`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'https://www.simpleitnews.tech',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.simpleitnews.tech/favicon/android-chrome-512x512.png',
+      },
+    },
+    datePublished: `${article._publishedAt}`,
+    dateModified: `${article._updatedAt}`,
+  };
+
   return (
     <div className="container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
+        key="breadcrumbs-jsonld"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLD) }}
+        key="article-jsonld"
+      />
       <nav>
         <ul className="flex flex-row mb-2 md:mb-4">
           <li>
@@ -106,7 +158,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <li className="before:content-['/'] hover:opacity-75">
             {' '}
             <Link
-              href={'/news/' + id[0]}
+              href={'/posts/' + id[0]}
               rel="canonical"
               className="underline underline-offset-2"
             >

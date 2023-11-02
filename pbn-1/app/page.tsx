@@ -79,23 +79,25 @@ export default async function Home() {
   });
 
   return (
-    <div className="container relative">
-      <h1 className="text-2xl uppercase text-center font-semibold">
-        Актуальні IT Новини
-      </h1>
-      <h2 className="text-sm mb-2 uppercase text-center font-semibold">
-        Читай про айті просто
-      </h2>
-      <ul className="mb-2 gap-8 flex flex-col">
-        {data.allNewsposts.map((article: CmsArticleType) => (
-          <CmsPost key={article.id} article={article} />
-        ))}
-      </ul>
-      {/* <ul className="flex flex-col gap-8">
-        {news.articles.map((article: ArticleType, index: number) => (
-          <Post key={'article' + index} article={article} />
-        ))}
-      </ul> */}
-    </div>
+    <>
+      <div className="container relative">
+        <h1 className="text-2xl uppercase text-center font-semibold">
+          Актуальні IT Новини
+        </h1>
+        <h2 className="text-sm mb-2 uppercase text-center font-semibold">
+          Читай про айті просто
+        </h2>
+        <ul className="mb-2 gap-8 flex flex-col">
+          {data.allNewsposts.map((article: CmsArticleType) => (
+            <CmsPost key={article.id} article={article} />
+          ))}
+        </ul>
+        {/* <ul className="flex flex-col gap-8">
+          {news.articles.map((article: ArticleType, index: number) => (
+            <Post key={'article' + index} article={article} />
+          ))}
+        </ul> */}
+      </div>
+    </>
   );
 }

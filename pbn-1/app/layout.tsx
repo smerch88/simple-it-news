@@ -39,6 +39,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const websiteJsonLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'WebSite',
+    name: 'Simple IT News',
+    url: 'https://www.simpleitnews.tech/',
+  };
+
   return (
     <html lang="uk">
       <body className={cn('flex flex-col h-screen relative', inter.className)}>
@@ -52,7 +59,13 @@ export default function RootLayout({
           </div>
         </header>
         <main className="flex-grow py-4">
-          {children} <Analytics />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+            key="website-jsonld"
+          />
+          {children}
+          <Analytics />
         </main>
         <footer className="bg-black py-4">
           <div className="container">
