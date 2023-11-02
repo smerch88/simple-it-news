@@ -21,6 +21,27 @@ export async function generateMetadata({
   return {
     title: article.title,
     description: article.shortdescription,
+    openGraph: {
+      title: article.title,
+      description: article.shortdescription,
+      url: `https://www.simpleitnews.tech/posts/${id}`,
+      siteName: 'Simple IT News',
+      images: [
+        {
+          url: article.articlepicture.url,
+          width: 512,
+          height: 512,
+        },
+        {
+          url: article.articlepicture.url,
+          width: 192,
+          height: 192,
+          alt: article.title,
+        },
+      ],
+      locale: 'uk',
+      type: 'website',
+    },
   };
 }
 
