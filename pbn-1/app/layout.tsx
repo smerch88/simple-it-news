@@ -62,8 +62,7 @@ export default function RootLayout({
               </span>
             </Link>
             <p className="text-xs font-bold text-white">
-              Copyright © {new Date().getFullYear()}
-              Simple IT News
+              Copyright © {new Date().getFullYear()} Simple IT News
             </p>
           </div>
         </footer>

@@ -40,12 +40,12 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'Simple IT News',
       images: [
         {
-          url: 'https://nextjs.org/android-chrome-512x512.png',
+          url: 'https://www.simpleitnews.tech/android-chrome-512x512.png',
           width: 512,
           height: 512,
         },
         {
-          url: 'https://nextjs.org/android-chrome-192x192.png',
+          url: 'https://www.simpleitnews.tech/android-chrome-192x192.png',
           width: 192,
           height: 192,
           alt: 'Прості ІТ Новини',
