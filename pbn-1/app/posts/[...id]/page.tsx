@@ -31,16 +31,17 @@ export async function generateMetadata({
           url: article.articlepicture.url,
           width: 512,
           height: 512,
+          alt: article.articlepicture.alt,
         },
         {
           url: article.articlepicture.url,
           width: 192,
           height: 192,
-          alt: article.title,
+          alt: article.articlepicture.alt,
         },
       ],
       locale: 'uk',
-      type: 'website',
+      type: 'profile',
     },
   };
 }

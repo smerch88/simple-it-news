@@ -25,6 +25,28 @@ export async function generateMetadata({
   return {
     title: author.authorname,
     description: author.authordescription,
+    openGraph: {
+      title: author.authorname,
+      description: author.authordescription,
+      url: `https://www.simpleitnews.tech/authors/${id}`,
+      siteName: 'Simple IT News',
+      images: [
+        {
+          url: author.authorimage.url,
+          width: 512,
+          height: 512,
+          alt: author.authorimage.alt || 'author',
+        },
+        {
+          url: author.authorimage.url,
+          width: 192,
+          height: 192,
+          alt: author.authorimage.alt || 'author',
+        },
+      ],
+      locale: 'uk',
+      type: 'website',
+    },
   };
 }
 
