@@ -35,13 +35,13 @@ const GET_ROUTES = gql`
   }
 `;
 
-async function getNews() {
-  const res = await fetch(
-    'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-    { next: { revalidate: 43200 } },
-  );
-  return res.json();
-}
+// async function getNews() {
+//   const res = await fetch(
+//     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
+//     { next: { revalidate: 43200 } },
+//   );
+//   return res.json();
+// }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data } = await getClient().query<SitemapRoutes>({
@@ -55,8 +55,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const authors = data.allAuthors;
   const posts = data.allNewsposts;
 
-  const newsData = getNews();
-  const [news] = await Promise.all([newsData]);
+  // const newsData = getNews();
+  // const [news] = await Promise.all([newsData]);
 
   const postsUrls = posts.map(post => ({
     url: `${defaultUrl}/posts/${post.route}`,
@@ -72,19 +72,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  const newsUrlsRaw = news.articles.map((item: ArticleType) =>
-    item.title
-      .replace(/[^a-zA-Z0-9\s]/g, '')
-      .replace(/\s+/g, '-')
-      .toLowerCase(),
-  );
+  // const newsUrlsRaw = news.articles.map((item: ArticleType) =>
+  //   item.title
+  //     .replace(/[^a-zA-Z0-9\s]/g, '')
+  //     .replace(/\s+/g, '-')
+  //     .toLowerCase(),
+  // );
 
-  const newsUrls = newsUrlsRaw.map((url: string) => ({
-    url: `${defaultUrl}/news/${url}`,
-    lastModified: new Date(),
-    changeFrequency: 'daily',
-    priority: 0.5,
-  }));
+  // const newsUrls = newsUrlsRaw.map((url: string) => ({
+  //   url: `${defaultUrl}/news/${url}`,
+  //   lastModified: new Date(),
+  //   changeFrequency: 'daily',
+  //   priority: 0.5,
+  // }));
 
   return [
     {
@@ -98,6 +98,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     //@ts-ignore
     ...authorsUrls,
     //@ts-ignore
-    ...newsUrls,
+    // ...newsUrls,
   ];
 }
