@@ -2,7 +2,7 @@
 import { gql } from '@apollo/client';
 import type { MetadataRoute } from 'next';
 
-import { ArticleType } from '@/types';
+// import { ArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
 const defaultUrl = 'https://www.simpleitnews.tech';
