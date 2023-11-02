@@ -2,8 +2,7 @@ import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { CmsPost } from '@/components/CmsPost';
-import { Post } from '@/components/Post';
-import { ArticleType, CmsArticleType } from '@/types';
+import { CmsArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
 const query = gql`
@@ -58,17 +57,17 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-async function getNews() {
-  const res = await fetch(
-    'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-    { next: { revalidate: 43200 } },
-  );
-  return res.json();
-}
+// async function getNews() {
+//   const res = await fetch(
+//     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
+//     { next: { revalidate: 43200 } },
+//   );
+//   return res.json();
+// }
 
 export default async function Home() {
-  const newsData = getNews();
-  const [news] = await Promise.all([newsData]);
+  // const newsData = getNews();
+  // const [news] = await Promise.all([newsData]);
 
   const { data } = await getClient().query({
     query,
@@ -92,11 +91,11 @@ export default async function Home() {
           <CmsPost key={article.id} article={article} />
         ))}
       </ul>
-      <ul className="flex flex-col gap-8">
+      {/* <ul className="flex flex-col gap-8">
         {news.articles.map((article: ArticleType, index: number) => (
           <Post key={'article' + index} article={article} />
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }
