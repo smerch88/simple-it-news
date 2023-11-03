@@ -48,6 +48,13 @@ export default function RootLayout({
 
   return (
     <html lang="uk">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          key="website-jsonld"
+        />
+      </head>
       <body className={cn('flex flex-col h-screen relative', inter.className)}>
         <header className="bg-black py-4" id="header">
           <div className="container">
@@ -59,11 +66,6 @@ export default function RootLayout({
           </div>
         </header>
         <main className="flex-grow py-4">
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-            key="website-jsonld"
-          />
           {children}
           <Analytics />
         </main>
