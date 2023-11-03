@@ -5,7 +5,6 @@ import cn from 'classnames';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
-import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -60,7 +59,7 @@ export default function RootLayout({
           </div>
         </header>
         <main className="flex-grow py-4">
-          <Script
+          <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
             key="website-jsonld"
