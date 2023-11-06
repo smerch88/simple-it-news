@@ -28,7 +28,7 @@ export async function generateMetadata({
     openGraph: {
       title: author.authorname,
       description: author.authordescription,
-      url: `https://www.simpleitnews.tech/authors/${id}`,
+      url: `${process.env.HOST}/authors/${id}`,
       siteName: 'Simple IT News',
       images: [
         {
@@ -87,7 +87,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       '@type': 'ListItem',
       position: '1',
       item: {
-        '@id': `https://www.simpleitnews.tech/authors/${id[0]}`,
+        '@id': `${process.env.HOST}/authors/${id[0]}`,
         name: `${author.authorname}`,
       },
     },
@@ -97,7 +97,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     '@context': 'https://schema.org/',
     '@type': 'Person',
     name: author.authorname,
-    url: `https://www.simpleitnews.tech/authors/${id[0]}`,
+    url: `${process.env.HOST}/authors/${id[0]}`,
     image: author.authorimage.url,
     sameAs: [author.socials.facebook, author.socials.twitter],
   };

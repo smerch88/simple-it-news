@@ -36,16 +36,16 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Simple IT News',
       description: 'Просто ІТ новини. Читайте новини зі світу АйТі.',
-      url: 'https://www.simpleitnews.tech',
+      url: process.env.DB_HOST,
       siteName: 'Simple IT News',
       images: [
         {
-          url: 'https://www.simpleitnews.tech/favicon/android-chrome-512x512.png',
+          url: `/favicon/android-chrome-512x512.png`,
           width: 512,
           height: 512,
         },
         {
-          url: 'https://www.simpleitnews.tech/favicon/android-chrome-192x192.png',
+          url: `/favicon/android-chrome-192x192.png`,
           width: 192,
           height: 192,
           alt: 'Прості ІТ Новини',
