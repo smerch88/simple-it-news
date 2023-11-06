@@ -24,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.shortdescription,
-      url: `https://www.simpleitnews.tech/posts/${id}`,
+      url: `${process.env.HOST}/posts/${id}`,
       siteName: 'Simple IT News',
       images: [
         {
@@ -103,7 +103,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       '@type': 'ListItem',
       position: '1',
       item: {
-        '@id': `https://www.simpleitnews.tech/posts/${id[0]}`,
+        '@id': `${process.env.HOST}/posts/${id[0]}`,
         name: `${article.title}`,
       },
     },
@@ -114,7 +114,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     '@type': 'Article',
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.simpleitnews.tech/posts/${id[0]}`,
+      '@id': `${process.env.HOST}/posts/${id[0]}`,
     },
     headline: `${article.title}`,
     description: `${article?.shortdescription?.slice(0, 150)}`,
@@ -122,14 +122,14 @@ export default async function Page({ params }: { params: { id: string } }) {
     author: {
       '@type': 'Person',
       name: article.author.authorname,
-      url: `https://www.simpleitnews.tech/authors/${article.author.route}`,
+      url: `${process.env.HOST}/authors/${article.author.route}`,
     },
     publisher: {
       '@type': 'Organization',
-      name: 'https://www.simpleitnews.tech',
+      name: process.env.HOST,
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.simpleitnews.tech/favicon/android-chrome-512x512.png',
+        url: `/favicon/android-chrome-512x512.png`,
       },
     },
     datePublished: `${article._publishedAt}`,
