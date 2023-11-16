@@ -1,8 +1,10 @@
 const express = require("express");
 const cors = require("cors");
 const logger = require("morgan");
+const schedule = require("node-schedule");
 
 const dotenv = require("dotenv");
+const uploadArticlesApi = require("./data");
 
 dotenv.config();
 
@@ -16,6 +18,15 @@ app.use(express.json());
 
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
+});
+
+uploadArticlesApi();
+
+const rule = new schedule.RecurrenceRule();
+rule.minute = 25;
+
+const job = schedule.scheduleJob(rule, function () {
+  console.log("\x1b[43m", "Отримуємо новини раз на годину", "\x1b[0m");
 });
 
 app.use((req, res) => {
