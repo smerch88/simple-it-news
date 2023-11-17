@@ -20,6 +20,16 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
+        {article.articlepicture.url && (
+          <div className="relative w-full mb-10 sm:h-40 md:h-80">
+            <Image
+              src={article.articlepicture.url}
+              fill
+              className="object-cover rounded"
+              alt={article.articlepicture.alt}
+            />
+          </div>
+        )}
         <Link href={`/posts/${article.route}`} rel="canonical">
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
@@ -33,14 +43,6 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
             автор: {article.author.authorname}
           </Link>
           <time>{formattedDate}</time>
-        </div>
-        <div className="relative w-full h-40 mb-2">
-          <Image
-            src={article.articlepicture.url}
-            fill
-            className="object-contain"
-            alt={article.articlepicture.alt}
-          />
         </div>
       </article>
     </li>

@@ -4,6 +4,8 @@ import { Metadata } from 'next';
 import { CmsPost } from '@/components/CmsPost';
 import { CmsArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
+import { PopularPost } from '@/components/Popular/PopularPost';
+import { Popular } from '@/components/Popular/Popular';
 
 const query = gql`
   {
@@ -97,6 +99,7 @@ export default async function Home() {
             <Post key={'article' + index} article={article} />
           ))}
         </ul> */}
+        <Popular popularPosts={data.allNewsposts} />
       </div>
     </>
   );
