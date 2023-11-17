@@ -58,30 +58,35 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="flex flex-row mb-2 md:mb-4">
+      <ul className="flex flex-row mb-6 md:mb-4 text-[10px]">
         <li>
           <Link href="/" rel="canonical">
             Головна
           </Link>
         </li>
-        <li className="before:content-['/'] hover:opacity-75">
-          {' '}
+        <li className="before:content-['_/_'] before:whitespace-pre hover:opacity-75">
+          <Link href="/" rel="canonical">
+            Категорії
+          </Link>
+        </li>
+        <li className="before:content-['_/_'] before:whitespace-pre hover:opacity-75">
           <Link
             href={'/news/' + id}
             rel="canonical"
             className="underline underline-offset-2"
           >
-            Пост {post?.source?.id}
+            Новини {post?.source?.id}
           </Link>
         </li>
       </ul>
       <article>
-        <h1 className="text-xl font-bold mb-2">{post?.title}</h1>
-        <h2 className="[text-wrap:balance] mb-2 md:mb-8">
-          {post?.description}
-        </h2>
+        <h1 className="text-2xl font-semibold mb-1">{post?.title}</h1>
+        <p className="mb-6 text-[13px] italic">
+          <time>{formattedDate}</time>
+        </p>
+
         {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
-          <div className="relative w-full h-80 mb-2 md:mb-8">
+          <div className="relative w-full min-h-[150px] h-full mb-2">
             <Image
               src={post.urlToImage}
               fill
@@ -90,23 +95,23 @@ export default async function Page({ params }: { params: { id: string } }) {
             />
           </div>
         ) : null}
-        <p className="mb-2 md:mb-8">{post?.content}</p>
-        <div className="flex justify-between text-gray-400/80 mb-2">
-          <Link href={post?.url} rel="canonical" target="blank">
-            джерело
-          </Link>
-          <div className="flex flex-row">
-            {post?.author ? (
-              <address>
-                <span className="mr-2" rel="author">
-                  {post.author}
-                </span>
-              </address>
-            ) : null}
-            <time>{formattedDate}</time>
-          </div>
+        <div className="flex justify-between text-gray-400/80 text-sm mb-6">
+          {post?.author ? (
+            <Link href={post?.url} rel="canonical" target="blank">
+              {post.author}
+            </Link>
+          ) : null}
         </div>
+        <div>Управління</div>
+        <p className="text-sm mb-2 md:mb-8">{post?.description}</p>
+
+        <p className="text-sm  pb-4 border-b border-black mb-12">
+          {post?.content}
+        </p>
       </article>
+      <div className="mb-12">Stars</div>
+      <div>comments</div>
+      <div>More news</div>
     </div>
   );
 }
