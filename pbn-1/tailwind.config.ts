@@ -25,8 +25,17 @@ const config: Config = {
           xl: '2.5rem',
         },
       },
+      colors: {
+        dark: '#070707',
+        grey: '#666666',
+        lightgrey: 'rgba(7, 7, 7, 0.5)',
+        white: '#FEFEFE',
+        blue: '#0C4588',
+        red: '#A42A03',
+      },
     },
   },
+
   plugins: [],
 };
 export default config;
