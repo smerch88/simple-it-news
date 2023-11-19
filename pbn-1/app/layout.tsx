@@ -6,6 +6,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 
+import { Header } from '@/components/Header';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -56,15 +58,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('flex flex-col h-screen relative', inter.className)}>
-        <header className="bg-black py-4" id="header">
-          <div className="container">
-            <Link href="/">
-              <span className="text-lg font-bold text-white">
-                Simple IT News
-              </span>
-            </Link>
-          </div>
-        </header>
+        <Header />
         <main className="flex-grow py-4">
           {children}
           <Analytics />
