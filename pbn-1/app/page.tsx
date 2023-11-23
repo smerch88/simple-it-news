@@ -4,8 +4,6 @@ import { Metadata } from 'next';
 import { CmsPost } from '@/components/CmsPost';
 import { CmsArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
-import { PopularPost } from '@/components/Popular/PopularPost';
-import { Popular } from '@/components/Popular/Popular';
 
 const query = gql`
   {
@@ -83,26 +81,17 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <div className="flex flex-col gap-2 mb-10">
-          <h1 className="text-[40px]/[60px] font-semibold">
-            Всі новини у сфері IT
-          </h1>
-          <p className="text-base font-normal italic">
-            Останне оновлення 11.11.2023 19:28
-          </p>
-        </div>
-        <div className="relative flex h-full w-full flex-col gap-4 bg-white xl:mb-20 xl:flex-row xl:gap-5">
-          <div className="flex w-full basis-full flex-col xl:basis-4/6 xl:gap-4">
-            <ul className="mb-2 gap-8 flex flex-col">
-              {data.allNewsposts.map((article: CmsArticleType) => (
-                <CmsPost key={article.id} article={article} />
-              ))}
-            </ul>
-          </div>
-
-          <div className="h-full basis-full  xl:basis-2/6"></div>
-        </div>
-
+        <h1 className="text-2xl uppercase text-center font-semibold">
+          Актуальні IT Новини
+        </h1>
+        <h2 className="text-sm mb-2 uppercase text-center font-semibold">
+          Читай про айті просто
+        </h2>
+        <ul className="mb-2 gap-8 flex flex-col">
+          {data.allNewsposts.map((article: CmsArticleType) => (
+            <CmsPost key={article.id} article={article} />
+          ))}
+        </ul>
         {/* <ul className="flex flex-col gap-8">
           {news.articles.map((article: ArticleType, index: number) => (
             <Post key={'article' + index} article={article} />

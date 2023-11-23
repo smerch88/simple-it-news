@@ -29,16 +29,6 @@ export const Post: FC<PostProps> = ({ article }) => {
   return (
     <li>
       <article className="overflow-hidden">
-        {article?.urlToImage && article.urlToImage.startsWith('https://') && (
-          <div className="relative w-full h-40 mb-2">
-            <Image
-              src={article.urlToImage}
-              fill
-              className="object-contain"
-              alt={article.title + 'Image'}
-            />
-          </div>
-        )}
         <Link href={`/news/${encodeURIComponent(cleanTitle)}`} rel="canonical">
           <h3 className="text-xl font-bold mb-2">{article.title}</h3>
         </Link>
@@ -53,6 +43,16 @@ export const Post: FC<PostProps> = ({ article }) => {
           </Link>
           <time>{formattedDate}</time>
         </div>
+        {article?.urlToImage && article.urlToImage.startsWith('https://') && (
+          <div className="relative w-full h-40 mb-2">
+            <Image
+              src={article.urlToImage}
+              fill
+              className="object-contain"
+              alt={article.title + 'Image'}
+            />
+          </div>
+        )}
       </article>
     </li>
   );
