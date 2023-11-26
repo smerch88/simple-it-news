@@ -33,9 +33,34 @@ const config: Config = {
         blue: '#0C4588',
         red: '#A42A03',
       },
+      fontSize: {
+        quot: [
+          '12px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.014px',
+            fontWeight: '400',
+          },
+        ],
+        menuTitleMob: [
+          '18px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.022px',
+            fontWeight: '600',
+          },
+        ],
+        menuItemsMob: [
+          '16px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.019px',
+            fontWeight: '400',
+          },
+        ],
+      },
     },
   },
-
   plugins: [],
 };
 export default config;

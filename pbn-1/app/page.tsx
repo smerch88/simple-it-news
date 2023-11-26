@@ -81,13 +81,13 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <h1 className="text-2xl uppercase text-center font-semibold">
+        <h1 className="text-center text-2xl font-semibold uppercase">
           Актуальні IT Новини
         </h1>
-        <h2 className="text-sm mb-2 uppercase text-center font-semibold">
+        <h2 className="mb-2 text-center text-sm font-semibold uppercase">
           Читай про айті просто
         </h2>
-        <ul className="mb-2 gap-8 flex flex-col">
+        <ul className="mb-2 flex flex-col gap-8">
           {data.allNewsposts.map((article: CmsArticleType) => (
             <CmsPost key={article.id} article={article} />
           ))}

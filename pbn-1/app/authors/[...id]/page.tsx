@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         key="author-jsonld"
       />
       <nav>
-        <ul className="flex flex-row mb-2 md:mb-4">
+        <ul className="mb-2 flex flex-row md:mb-4">
           <li>
             <Link href="/" rel="canonical">
               Головна
@@ -134,11 +134,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         </ul>
       </nav>
       <section>
-        <h1 className="text-xl font-bold mb-2">{author.authorname}</h1>
-        <h2 className="[text-wrap:balance] mb-2 md:mb-8">
+        <h1 className="mb-2 text-xl font-bold">{author.authorname}</h1>
+        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
           {author.authordescription}
         </h2>
-        <div className="relative w-full h-80 mb-2 md:mb-8">
+        <div className="relative mb-2 h-80 w-full md:mb-8">
           <Image
             src={author.authorimage.url}
             fill

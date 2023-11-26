@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="flex flex-row mb-2 md:mb-4">
+      <ul className="mb-2 flex flex-row md:mb-4">
         <li>
           <Link href="/" rel="canonical">
             Головна
@@ -76,12 +76,12 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
       </ul>
       <article>
-        <h1 className="text-xl font-bold mb-2">{post?.title}</h1>
-        <h2 className="[text-wrap:balance] mb-2 md:mb-8">
+        <h1 className="mb-2 text-xl font-bold">{post?.title}</h1>
+        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
           {post?.description}
         </h2>
         {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
-          <div className="relative w-full h-80 mb-2 md:mb-8">
+          <div className="relative mb-2 h-80 w-full md:mb-8">
             <Image
               src={post.urlToImage}
               fill
@@ -91,7 +91,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           </div>
         ) : null}
         <p className="mb-2 md:mb-8">{post?.content}</p>
-        <div className="flex justify-between text-gray-400/80 mb-2">
+        <div className="mb-2 flex justify-between text-gray-400/80">
           <Link href={post?.url} rel="canonical" target="blank">
             джерело
           </Link>
