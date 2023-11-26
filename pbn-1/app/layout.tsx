@@ -36,6 +36,13 @@ export const metadata: Metadata = {
   ],
 };
 
+import { Lato } from 'next/font/google';
+
+const lato = Lato({
+  weight: ['400'],
+  subsets: ['latin-ext'],
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -49,7 +56,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="uk">
+    <html lang="uk" className={lato.className}>
       <head>
         <script
           type="application/ld+json"
@@ -57,9 +64,9 @@ export default function RootLayout({
           key="website-jsonld"
         />
       </head>
-      <body className={cn('flex flex-col h-screen relative', inter.className)}>
+      <body className={cn('relative flex h-screen flex-col', inter.className)}>
         <Header />
-        <main className="flex-grow py-4">
+        <main className="flex-grow py-4 text-dark">
           {children}
           <Analytics />
         </main>
