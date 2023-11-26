@@ -149,7 +149,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         key="article-jsonld"
       />
       <nav>
-        <ul className="flex flex-row mb-2 md:mb-4">
+        <ul className="mb-2 flex flex-row md:mb-4">
           <li>
             <Link href="/" rel="canonical">
               Головна
@@ -168,8 +168,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         </ul>
       </nav>
       <article>
-        <h1 className="text-xl font-bold mb-2">{article.title}</h1>
-        <div className="flex justify-between text-gray-400/80 mb-2">
+        <h1 className="mb-2 text-xl font-bold">{article.title}</h1>
+        <div className="mb-2 flex justify-between text-gray-400/80">
           <div className="flex flex-col md:flex-row">
             <address>
               <Link
@@ -183,10 +183,10 @@ export default async function Page({ params }: { params: { id: string } }) {
             <time>{formattedDate}</time>
           </div>
         </div>
-        <h2 className="[text-wrap:balance] mb-2 md:mb-8">
+        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
           {article.shortdescription}
         </h2>
-        <div className="relative w-full h-80 mb-2 md:mb-8">
+        <div className="relative mb-2 h-80 w-full md:mb-8">
           <Image
             src={article.articlepicture.url}
             fill
