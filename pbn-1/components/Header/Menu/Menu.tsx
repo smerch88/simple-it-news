@@ -120,7 +120,7 @@ export const Menu = () => {
                   </Link>
                 </li>
               </ul>
-              <div className="text-center text-quot text-white flex flex-col">
+              <div className="flex flex-col text-center text-quot text-white">
                 <Link href="/">Simple IT News</Link>
                 <span>
                   Copyright © {new Date().getFullYear()} Simple IT News
