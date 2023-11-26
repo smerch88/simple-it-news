@@ -42,7 +42,7 @@ export const Menu = () => {
   return (
     <>
       {/* TODO: make animation for buttons */}
-      <button onClick={() => setMenuOpened()}>
+      <button className="xl:hidden" onClick={() => setMenuOpened()}>
         <Burger className="h-10 w-10" />
       </button>
       {isOpen ? (
