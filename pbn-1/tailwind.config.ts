@@ -31,6 +31,7 @@ const config: Config = {
         lightgrey: 'rgba(7, 7, 7, 0.5)',
         white: '#FEFEFE',
         blue: '#0C4588',
+        blue_hover: '#105FBC',
         red: '#A42A03',
       },
       fontSize: {
@@ -58,6 +59,16 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
+      },
+      animation: {
+        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          '0%': { transform: 'translateX(0)' },
+
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
     },
   },

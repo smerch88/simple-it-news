@@ -1,8 +1,12 @@
 // deprecated
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Carousel from '@/components/news/Carousel/Carousel';
+import { Comments } from '@/components/news/Comments';
+import { SliderCard } from '@/components/news/SliderCard';
 import { ArticleType } from '@/types';
 
 export async function generateMetadata({
@@ -81,7 +85,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       </ul>
       <article>
         <h1 className="mb-1 text-2xl font-semibold">{post?.title}</h1>
-        <p className="mb-6 text-[13px] italic">
+        <p className="mb-6 text-[13px] italic text-grey">
           <time>{formattedDate}</time>
         </p>
 
@@ -95,9 +99,14 @@ export default async function Page({ params }: { params: { id: string } }) {
             />
           </div>
         ) : null}
-        <div className="mb-6 flex justify-between text-sm text-gray-400/80">
+        <div className="hover:text-blue_hover mb-6 flex justify-between text-sm 	text-blue">
           {post?.author ? (
-            <Link href={post?.url} rel="canonical" target="blank">
+            <Link
+              href={post?.url}
+              rel="canonical"
+              target="blank"
+              className="underline underline-offset-2"
+            >
               {post.author}
             </Link>
           ) : null}
@@ -110,8 +119,20 @@ export default async function Page({ params }: { params: { id: string } }) {
         </p>
       </article>
       <div className="mb-12">Stars</div>
-      <div>comments</div>
-      <div>More news</div>
+      <Comments />
+      <div className="py-4">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white">
+          Інші публікації цього автора
+        </h2>
+        {/* Slider */}
+        <Carousel />
+      </div>
+      <div className="py-4">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white">
+          Більше з категорії новини
+        </h2>
+        <Carousel />
+      </div>
     </div>
   );
 }
