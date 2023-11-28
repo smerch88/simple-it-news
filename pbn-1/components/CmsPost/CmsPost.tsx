@@ -21,10 +21,10 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
     <li>
       <article className="overflow-hidden">
         <Link href={`/posts/${article.route}`} rel="canonical">
-          <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+          <h3 className="mb-2 text-xl font-bold">{article.title}</h3>
         </Link>
         <p className="mb-2">{article.shortdescription}</p>
-        <div className="flex justify-between text-gray-400/80 mb-2 flex-col md:flex-row">
+        <div className="mb-2 flex flex-col justify-between text-gray-400/80 md:flex-row">
           <Link
             href={'/authors/' + article.author.route}
             rel="noopener noreferrer nofollow"
@@ -34,7 +34,7 @@ export const CmsPost: FC<CmsPostProps> = ({ article }) => {
           </Link>
           <time>{formattedDate}</time>
         </div>
-        <div className="relative w-full h-40 mb-2">
+        <div className="relative mb-2 h-40 w-full">
           <Image
             src={article.articlepicture.url}
             fill

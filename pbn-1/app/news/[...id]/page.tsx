@@ -58,18 +58,18 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="flex flex-row mb-6 md:mb-4 text-[10px]">
+      <ul className="mb-6 flex flex-row text-[10px] md:mb-4">
         <li>
           <Link href="/" rel="canonical">
             Головна
           </Link>
         </li>
-        <li className="before:content-['_/_'] before:whitespace-pre hover:opacity-75">
+        <li className="before:whitespace-pre before:content-['_/_'] hover:opacity-75">
           <Link href="/" rel="canonical">
             Категорії
           </Link>
         </li>
-        <li className="before:content-['_/_'] before:whitespace-pre hover:opacity-75">
+        <li className="before:whitespace-pre before:content-['_/_'] hover:opacity-75">
           <Link
             href={'/news/' + id}
             rel="canonical"
@@ -80,13 +80,13 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
       </ul>
       <article>
-        <h1 className="text-2xl font-semibold mb-1">{post?.title}</h1>
+        <h1 className="mb-1 text-2xl font-semibold">{post?.title}</h1>
         <p className="mb-6 text-[13px] italic">
           <time>{formattedDate}</time>
         </p>
 
         {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
-          <div className="relative w-full min-h-[150px] h-full mb-2">
+          <div className="relative mb-2 h-full min-h-[150px] w-full">
             <Image
               src={post.urlToImage}
               fill
@@ -95,7 +95,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             />
           </div>
         ) : null}
-        <div className="flex justify-between text-gray-400/80 text-sm mb-6">
+        <div className="mb-6 flex justify-between text-sm text-gray-400/80">
           {post?.author ? (
             <Link href={post?.url} rel="canonical" target="blank">
               {post.author}
@@ -103,9 +103,9 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) : null}
         </div>
         <div>Управління</div>
-        <p className="text-sm mb-2 md:mb-8">{post?.description}</p>
+        <p className="mb-2 text-sm md:mb-8">{post?.description}</p>
 
-        <p className="text-sm  pb-4 border-b border-black mb-12">
+        <p className="mb-12  border-b border-black pb-4 text-sm">
           {post?.content}
         </p>
       </article>

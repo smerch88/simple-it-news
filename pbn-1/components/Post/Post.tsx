@@ -30,10 +30,10 @@ export const Post: FC<PostProps> = ({ article }) => {
     <li>
       <article className="overflow-hidden">
         <Link href={`/news/${encodeURIComponent(cleanTitle)}`} rel="canonical">
-          <h3 className="text-xl font-bold mb-2">{article.title}</h3>
+          <h3 className="mb-2 text-xl font-bold">{article.title}</h3>
         </Link>
         <p className="mb-2">{article.description}</p>
-        <div className="flex justify-between text-gray-400/80 mb-2">
+        <div className="mb-2 flex justify-between text-gray-400/80">
           <Link
             href={article.url}
             rel="noopener noreferrer nofollow"
@@ -44,7 +44,7 @@ export const Post: FC<PostProps> = ({ article }) => {
           <time>{formattedDate}</time>
         </div>
         {article?.urlToImage && article.urlToImage.startsWith('https://') && (
-          <div className="relative w-full h-40 mb-2">
+          <div className="relative mb-2 h-40 w-full">
             <Image
               src={article.urlToImage}
               fill
