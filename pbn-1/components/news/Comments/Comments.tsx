@@ -45,25 +45,27 @@ export const Comments = () => {
   };
 
   const handleRemoveClick = () => {
-    console.log('видалити');
+    // console.log('видалити');
   };
 
   return (
     <div>
-      <h2 className="mb-6 text-lg font-semibold">Коментарі</h2>
+      <h2 className="mb-6 text-lg font-semibold md:text-2xl">Коментарі</h2>
       <form onSubmit={handleSubmit} className="mb-6">
-        <p className="mb-2 text-sm">Залишити коментар</p>
+        <p className="mb-2 text-sm md:text-base xl:text-lg">
+          Залишити коментар
+        </p>
         <textarea
           value={textareaValue}
           name="comment"
           rows={5}
           placeholder="Введіть текст"
           onChange={e => setTextareaValue(e.target.value)}
-          className=" mb-2 flex w-full resize-none items-start rounded border-[0.5px] border-lightgrey p-1 placeholder:text-center"
+          className="mb-2 flex w-full resize-none items-start rounded border-[0.5px] border-lightgrey p-1 placeholder:text-center md:text-base md:placeholder:text-left xl:text-lg"
         />
         <button
           type="submit"
-          className="ml-auto block rounded border-[0.5px] border-dark bg-white px-6 py-3 font-semibold text-dark duration-200 hover:border-white hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.25)]"
+          className="ml-auto block rounded border-[0.5px] border-dark bg-white px-6 py-3 font-semibold text-dark duration-200 hover:border-white hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.25)] md:text-lg xl:text-[20px]"
         >
           Відправити
         </button>
@@ -90,10 +92,12 @@ export const Comments = () => {
                 </div>
               </div>
 
-              <p className="pl-[60px]">{comment.text}</p>
+              <p className="pl-[60px] md:text-base xl:text-lg">
+                {comment.text}
+              </p>
               {/* check comment owner */}
               <button
-                className="ml-auto py-2 text-[13px] italic text-red"
+                className="ml-auto py-2 text-[13px] italic text-red md:text-sm xl:text-base"
                 onClick={handleRemoveClick}
               >
                 Видалити

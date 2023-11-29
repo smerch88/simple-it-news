@@ -8,6 +8,7 @@ import Carousel from '@/components/news/Carousel/Carousel';
 import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
 import { Stars } from '@/components/news/Stars';
+import defaultImg from '@/public/card/card_mobile.png';
 import { ArticleType } from '@/types';
 
 export async function generateMetadata({
@@ -63,7 +64,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="mb-6 flex flex-row text-[10px] md:mb-4">
+      <ul className="mb-6 flex flex-row text-[10px] md:mb-10 md:text-xs xl:text-sm">
         <li>
           <Link href="/" rel="canonical">
             Головна
@@ -85,22 +86,24 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
       </ul>
       <article>
-        <h1 className="mb-1 text-2xl font-semibold">{post?.title}</h1>
-        <p className="mb-6 text-[13px] italic text-grey">
+        <h1 className="mb-1 text-2xl font-semibold md:text-[32px] xl:text-[40px]">
+          {post?.title}
+        </h1>
+        <p className="mb-6 text-[13px] italic text-grey md:text-sm xl:text-base">
           <time>{formattedDate}</time>
         </p>
 
         {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
           <div className="relative mb-2 h-full min-h-[150px] w-full">
             <Image
-              src={post.urlToImage}
+              src={post.urlToImage ? post.urlToImage : defaultImg}
               fill
               className="object-contain"
               alt={post.title + 'Image'}
             />
           </div>
         ) : null}
-        <div className="mb-6 flex justify-between text-sm text-blue 	hover:text-blue_hover">
+        <div className="mb-6 flex justify-between text-sm text-blue hover:text-blue_hover md:text-base xl:text-lg">
           {post?.author ? (
             <Link
               href={post?.url}
@@ -113,28 +116,30 @@ export default async function Page({ params }: { params: { id: string } }) {
           ) : null}
         </div>
         <Management />
-        <p className="mb-2 text-sm md:mb-8">{post?.description}</p>
+        <p className="mb-2 text-sm md:mb-8 md:text-base xl:text-lg">
+          {post?.description}
+        </p>
 
-        <p className="mb-12  border-b border-black pb-4 text-sm">
+        <p className="mb-12  border-b border-black pb-4 text-sm md:text-base xl:text-lg">
           {post?.content}
         </p>
       </article>
       <div className="mb-12">
-        <p className="mb-2 text-[13px] italic text-dark">
+        <p className="mb-2 text-[13px] italic text-dark md:text-sm xl:text-base">
           Будь ласка оцініть автора
         </p>
         <Stars />
       </div>
       <Comments />
       <div className="py-4">
-        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white md:text-2xl">
           Інші публікації цього автора
         </h2>
         {/* Slider */}
         <Carousel />
       </div>
       <div className="py-4">
-        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white md:text-2xl">
           Більше з категорії новини
         </h2>
         <Carousel />

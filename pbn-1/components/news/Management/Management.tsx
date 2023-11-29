@@ -13,12 +13,12 @@ export const Management = () => {
 
   const handleBookmarkClick = () => {
     setBookmark(!bookmark);
-    console.log('bookmark click', bookmark);
+    // console.log('bookmark click', bookmark);
   };
 
-  const handleMessengeClick = (massengerName: strine) => {
-    console.log('send messege to', massengerName);
-  };
+  // const handleMessengeClick = (massengerName: strine) => {
+  //   console.log('send messege to', massengerName);
+  // };
   return (
     <div className="flex items-center justify-between">
       <div className="flex">
@@ -39,7 +39,7 @@ export const Management = () => {
               fill="#666666"
             />
           </svg>
-          <p className="text-[10px] text-grey">15 хв.</p>
+          <p className="text-[10px] text-grey md:text-xs xl:text-sm">15 хв.</p>
         </div>
         <div className="ml-2 flex items-center gap-x-1">
           <svg
@@ -54,11 +54,14 @@ export const Management = () => {
               fill="#666666"
             />
           </svg>
-          <p className="text-[10px] text-grey">5/5</p>
+          <p className="text-[10px] text-grey md:text-xs xl:text-sm">5/5</p>
         </div>
       </div>
       <div className="relative flex items-center gap-x-1">
-        <button onClick={handleMenuClick}>
+        <button
+          onClick={handleMenuClick}
+          className="flex h-10 w-10 items-center justify-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -71,7 +74,10 @@ export const Management = () => {
             />
           </svg>
         </button>
-        <button onClick={handleBookmarkClick}>
+        <button
+          onClick={handleBookmarkClick}
+          className="flex h-10 w-10 items-center justify-center"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"
@@ -94,7 +100,9 @@ export const Management = () => {
         {isOpen && (
           <ul className="absolute bottom-[-50px] right-[26px] flex gap-x-1 rounded bg-white px-3 py-2">
             <li className="flex h-10 w-10 items-center justify-center rounded border-[0.5px] border-dark bg-white p-1">
-              <button onClick={() => handleMessengeClick('link')}>
+              <button
+              // onClick={() => handleMessengeClick('link')}
+              >
                 <Image
                   src="/card/link.svg"
                   alt="скопіювати посилання"
@@ -104,7 +112,9 @@ export const Management = () => {
               </button>
             </li>
             <li className="flex h-10 w-10 items-center justify-center rounded border-[0.5px] border-dark bg-white p-1">
-              <button onClick={() => handleMessengeClick('telegram')}>
+              <button
+              // onClick={() => handleMessengeClick('telegram')}
+              >
                 <Image
                   src="/card/telegram.svg"
                   alt="поділитися в телеграм"
@@ -115,7 +125,9 @@ export const Management = () => {
             </li>
 
             <li className="flex h-10 w-10 items-center justify-center rounded border-[0.5px] border-dark bg-white p-1">
-              <button onClick={() => handleMessengeClick('facebook')}>
+              <button
+              // onClick={() => handleMessengeClick('facebook')}
+              >
                 <Image
                   src="/card/facebook.svg"
                   alt="поділитися в фейсбук"
@@ -125,7 +137,9 @@ export const Management = () => {
               </button>
             </li>
             <li className="flex h-10 w-10 items-center justify-center rounded border-[0.5px] border-dark bg-white ">
-              <button onClick={() => handleMessengeClick('threads')}>
+              <button
+              // onClick={() => handleMessengeClick('threads')}
+              >
                 <Image
                   src="/card/threads.svg"
                   alt="поділитися в threads"
@@ -135,7 +149,9 @@ export const Management = () => {
               </button>
             </li>
             <li className="flex h-10 w-10 items-center justify-center rounded border-[0.5px] border-dark bg-white p-1">
-              <button onClick={() => handleMessengeClick('viber')}>
+              <button
+              // onClick={() => handleMessengeClick('viber')}
+              >
                 <Image
                   src="/card/viber.svg"
                   alt="поділитися в вайбер"
