@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import defaultImg from '@/public/card_mobile.png';
+import defaultImg from '@/public/card/card_mobile.png';
 
 import { SliderProps } from './SliderCard.props';
 

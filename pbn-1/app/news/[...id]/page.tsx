@@ -6,7 +6,8 @@ import Link from 'next/link';
 
 import Carousel from '@/components/news/Carousel/Carousel';
 import { Comments } from '@/components/news/Comments';
-import { SliderCard } from '@/components/news/SliderCard';
+import { Management } from '@/components/news/Management';
+import { Stars } from '@/components/news/Stars';
 import { ArticleType } from '@/types';
 
 export async function generateMetadata({
@@ -99,7 +100,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             />
           </div>
         ) : null}
-        <div className="hover:text-blue_hover mb-6 flex justify-between text-sm 	text-blue">
+        <div className="mb-6 flex justify-between text-sm text-blue 	hover:text-blue_hover">
           {post?.author ? (
             <Link
               href={post?.url}
@@ -111,14 +112,19 @@ export default async function Page({ params }: { params: { id: string } }) {
             </Link>
           ) : null}
         </div>
-        <div>Управління</div>
+        <Management />
         <p className="mb-2 text-sm md:mb-8">{post?.description}</p>
 
         <p className="mb-12  border-b border-black pb-4 text-sm">
           {post?.content}
         </p>
       </article>
-      <div className="mb-12">Stars</div>
+      <div className="mb-12">
+        <p className="mb-2 text-[13px] italic text-dark">
+          Будь ласка оцініть автора
+        </p>
+        <Stars />
+      </div>
       <Comments />
       <div className="py-4">
         <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white">

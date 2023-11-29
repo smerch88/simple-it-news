@@ -11,28 +11,28 @@ const data = [
   {
     id: 1,
     category: 'Новини',
-    imgSrc: '/card_mobile.png',
+    imgSrc: '/card/card_mobile.png',
     title: 'Курси IT з Працевлаштуванням: чому не всі стають айтішниками?',
     link: '/',
   },
   {
     id: 2,
     category: 'Новини',
-    imgSrc: '/card_mobile2.png',
+    imgSrc: '/card/card_mobile2.png',
     title: 'Курси IT з Працевлаштуванням: чому не всі стають айтішниками?',
     link: '/',
   },
   {
     id: 3,
     category: 'Новини',
-    imgSrc: '/card_mobile3.png',
+    imgSrc: '/card/card_mobile3.png',
     title: 'Курси IT з Працевлаштуванням: чому не всі стають айтішниками?',
     link: '/',
   },
   {
     id: 4,
     category: 'Новини',
-    imgSrc: '/card_mobile.png',
+    imgSrc: '/card/card_mobile.png',
     title: 'Курси IT з Працевлаштуванням: чому не всі стають айтішниками?',
     link: '/',
   },
@@ -47,13 +47,13 @@ const data = [
 export default function Carousel() {
   return (
     <div className="inline-flex w-full flex-nowrap overflow-hidden">
-      <ul className="animate-infinite-scroll flex items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
+      <ul className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
         {data.map(slider => {
           return <SliderCard slider={slider} key={slider.id} />;
         })}
       </ul>
       <ul
-        className="animate-infinite-scroll flex items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8"
+        className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8"
         aria-hidden="true"
       >
         {data.map(slider => {
