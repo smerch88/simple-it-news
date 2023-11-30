@@ -4,6 +4,9 @@ import { Metadata } from 'next';
 import { CmsPost } from '@/components/CmsPost';
 import { CmsArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
+import Image from 'next/image';
+import { CardPost } from '@/components/CardPost/CardPost';
+import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
 
 const query = gql`
   {
@@ -81,22 +84,48 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <h1 className="text-center text-2xl font-semibold uppercase">
-          Актуальні IT Новини
-        </h1>
-        <h2 className="mb-2 text-center text-sm font-semibold uppercase">
-          Читай про айті просто
-        </h2>
-        <ul className="mb-2 flex flex-col gap-8">
-          {data.allNewsposts.map((article: CmsArticleType) => (
-            <CmsPost key={article.id} article={article} />
-          ))}
-        </ul>
-        {/* <ul className="flex flex-col gap-8">
-          {news.articles.map((article: ArticleType, index: number) => (
-            <Post key={'article' + index} article={article} />
-          ))}
-        </ul> */}
+        <div className="mb-10 flex flex-col gap-2">
+          <h1 className="text-[40px]/[60px] font-semibold">
+            Всі новини у сфері IT
+          </h1>
+          <p className="text-base font-normal italic">
+            Останне оновлення 11.11.2023 19:28
+          </p>
+        </div>
+        <div className="xl:grid-row-8 flex flex-col gap-6 xl:grid xl:grid-flow-row-dense xl:grid-cols-[796px_minmax(365px,_auto)] xl:gap-5">
+          <div className="order-1 flex w-full flex-col xl:col-start-1 xl:col-end-1 xl:row-start-1 xl:row-end-4">
+            <h2 className="mb-8 flex w-full rounded bg-red px-3 py-2 text-2xl text-white">
+              Новини
+            </h2>
+            <ul className="mb-2 flex flex-wrap gap-8">
+              {data.allNewsposts?.map((article: CmsArticleType) => (
+                <CardPost key={article.id} article={article} />
+              ))}
+            </ul>
+          </div>
+
+          <div className="order-3 flex w-full flex-col xl:col-start-1 xl:col-end-1">
+            <h2 className="bg-blueDark mb-8 flex w-full rounded px-3 py-2 text-2xl text-white">
+              Пости
+            </h2>
+            <ul className="mb-2 flex flex-wrap gap-8">
+              {data.allNewsposts?.map((article: CmsArticleType) => (
+                <CardPost key={article.id} article={article} />
+              ))}
+            </ul>
+          </div>
+
+          <div className="order-4 flex flex-col xl:col-start-2 xl:col-end-2">
+            <Image src={'/img/Grade.jpg'} width={388} height={581} alt="" />
+          </div>
+
+          <div className="order-2 flex flex-col xl:col-start-2 xl:col-end-2">
+            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl ">
+              Популярні новини
+            </h2>
+            <PopularCardPosts articles={data.allNewsposts} />
+          </div>
+        </div>
       </div>
     </>
   );
