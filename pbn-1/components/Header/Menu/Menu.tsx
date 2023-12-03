@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import Facebook from '@/public/footer/socials/facebook.svg';
-import LinkedIn from '@/public/footer/socials/linkedin.svg';
-import Telegram from '@/public/footer/socials/telegram.svg';
-import X from '@/public/footer/socials/x.svg';
 import Burger from '@/public/header/burger.svg';
 import BurgerCross from '@/public/header/burgerCross.svg';
 import Logo from '@/public/header/logo.svg';
+import Facebook from '@/public/socials/facebook.svg';
+import LinkedIn from '@/public/socials/linkedin.svg';
+import Telegram from '@/public/socials/telegram.svg';
+import Twitter from '@/public/socials/twitter.svg';
 
 const menuItems = [
   { title: 'Новини', route: '/news' },
@@ -104,7 +104,7 @@ export const Menu = () => {
           >
             <div className="container flex flex-col gap-2">
               {/* TODO: add real links */}
-              <ul className="flex flex-row justify-center gap-4">
+              <ul className="flex flex-row justify-center gap-4 text-white">
                 <li>
                   <Link href="#" target="blank" rel="noreferrer nofollow">
                     <Telegram className="h-10 w-10" />
@@ -121,7 +121,7 @@ export const Menu = () => {
                     target="blank"
                     rel="noreferrer nofollow"
                   >
-                    <X className="h-10 w-10" />
+                    <Twitter className="h-10 w-10" />
                   </Link>
                 </li>
                 <li>
