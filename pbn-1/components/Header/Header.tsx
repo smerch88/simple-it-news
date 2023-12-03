@@ -27,7 +27,7 @@ export const Header = () => {
             </Link>
             <Menu />
 
-            <nav className="invisible w-0 overflow-hidden xl:visible xl:ml-auto xl:w-auto">
+            <nav className="invisible h-0 w-0 overflow-hidden xl:visible xl:ml-auto xl:h-auto xl:w-auto">
               <ul className="flex flex-row gap-1 text-white">
                 <li>
                   <Link href="/about-us" className="menuTitleMob px-3 py-1">
@@ -49,7 +49,7 @@ export const Header = () => {
           {menuItems &&
             menuItems.map(item => (
               <li key={item.title}>
-                <Link href={item.route} className="px-4 py-2 text-t20">
+                <Link href={item.route} className="text-t20 px-4 py-2">
                   {item.title}
                 </Link>
               </li>
