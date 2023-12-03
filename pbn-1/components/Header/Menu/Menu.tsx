@@ -17,7 +17,7 @@ const menuItems = [
   { title: 'Подкасти', route: '/podcasts' },
   { title: 'Пости', route: '/posts' },
   { title: 'Автори', route: '/authors' },
-  { title: "Інтерв'ю", route: '/interviews' },
+  { title: 'Інтерв’ю', route: '/interviews' },
 ];
 
 const menuItemsCat = [
@@ -42,7 +42,7 @@ export const Menu = () => {
   return (
     <>
       {/* TODO: make animation for buttons */}
-      <button className="xl:hidden" onClick={() => setMenuOpened()}>
+      <button className="ml-auto xl:hidden" onClick={() => setMenuOpened()}>
         <Burger className="h-10 w-10" />
       </button>
       {isOpen ? (
@@ -91,11 +91,17 @@ export const Menu = () => {
                         </li>
                       ))}
                   </ul>
+                  <Link href="/contancts" className="text-menuTitleMob">
+                    Контакти
+                  </Link>
                 </nav>
               </div>
             </div>
           </div>
-          <div id="footermob" className="mt-auto bg-dark py-3 fixed bottom-0 inset-x-0">
+          <div
+            id="footermob"
+            className="fixed inset-x-0 bottom-0 mt-auto bg-dark py-3"
+          >
             <div className="container flex flex-col gap-2">
               {/* TODO: add real links */}
               <ul className="flex flex-row justify-center gap-4">

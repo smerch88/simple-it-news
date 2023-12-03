@@ -58,6 +58,14 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
+        t20: [
+          '20px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.024px',
+            fontWeight: '600',
+          },
+        ],
       },
     },
   },

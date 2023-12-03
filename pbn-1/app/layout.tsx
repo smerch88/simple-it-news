@@ -3,8 +3,8 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
-import Link from 'next/link';
 
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
 const lato = Lato({
@@ -64,18 +64,7 @@ export default function RootLayout({
           {children}
           <Analytics />
         </main>
-        <footer className="bg-black py-4">
-          <div className="container">
-            <Link href="/">
-              <span className="text-lg font-bold text-white">
-                Simple IT News
-              </span>
-            </Link>
-            <p className="text-xs font-bold text-white">
-              Copyright © {new Date().getFullYear()} Simple IT News
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
