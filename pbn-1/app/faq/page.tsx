@@ -32,7 +32,10 @@ export default function Page() {
       <p className=' last:mt-3 '>Не знайшов? напиши нам на <Link className='text-blue ' href={'whatsApp'}>WhatsApp</Link></p>
       </div>
       <ul className=' mt-8'>
-        <li className='last:mt-3  border-black rounded-tl-8 rounded-tr-8  border-b flex gap-2  text-lg font-semibold '><AskIcon className=" mt-1 h-5 w-5"/> Can I use FlowBite in open-source projects?<DownIcon className=" mt-1 h-5 w-5"/></li>
+        <li className='last:mt-3  border-black rounded-tl-8 rounded-tr-8  border-b flex gap-2  text-lg font-semibold '> <details> <summary><AskIcon className=" mt-1 h-5 w-5"/>Can I use FlowBite in open-source projects?<DownIcon className=" mt-1 h-5 w-5"/> </summary> 
+        <p>
+        Generally, it is accepted to use FlowBite in open-source projects, as long as it is not a UI library, a theme, a template, a page-builder that would be considered as an alternative to FlowBite itself.
+          </p> </details></li>
         <li className='last:mt-3  border-black rounded-tl-8 rounded-tr-8  border-b flex gap-2  text-lg font-semibold '><AskIcon className=" mt-1 h-5 w-5"/> Can I use FlowBite in open-source projects?<DownIcon className=" mt-1 h-5 w-5"/></li>
         <li className='last:mt-3  border-black rounded-tl-8 rounded-tr-8  border-b flex gap-2  text-lg font-semibold '><AskIcon className=" mt-1 h-5 w-5"/> Can I use FlowBite in open-source projects?<DownIcon className=" mt-1 h-5 w-5"/></li>
         <li className='last:mt-3  border-black rounded-tl-8 rounded-tr-8  border-b flex gap-2  text-lg font-semibold '><AskIcon className=" mt-1 h-5 w-5"/> Can I use FlowBite in open-source projects?<DownIcon className=" mt-1 h-5 w-5"/></li>
