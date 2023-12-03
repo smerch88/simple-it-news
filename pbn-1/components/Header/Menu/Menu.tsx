@@ -116,12 +116,20 @@ export const Menu = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" target="blank" rel="noreferrer nofollow">
+                  <Link
+                    href="https://twitter.com/simpleitnews"
+                    target="blank"
+                    rel="noreferrer nofollow"
+                  >
                     <X className="h-10 w-10" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" target="blank" rel="noreferrer nofollow">
+                  <Link
+                    href="https://www.facebook.com/groups/297247483170966"
+                    target="blank"
+                    rel="noreferrer nofollow"
+                  >
                     <Facebook className="h-10 w-10" />
                   </Link>
                 </li>
