@@ -2,7 +2,6 @@ import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
 import { CmsPost } from '@/components/CmsPost';
-import { StarTime } from '@/components/common/StartTime';
 import { CmsArticleType } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
@@ -82,7 +81,6 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <StarTime time={3} rating={3} />
         <h1 className="text-center text-2xl font-semibold uppercase">
           Актуальні IT Новини
         </h1>
