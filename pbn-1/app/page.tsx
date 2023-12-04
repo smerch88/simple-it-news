@@ -10,26 +10,8 @@ import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/Popular
 
 const query = gql`
   {
-    allNewsposts {
-      id
-      title
-      _status
-      _firstPublishedAt
-      shortdescription
-      articlepicture {
-        width
-        url
-        height
-        alt
-      }
-      _createdAt
-      _publishedAt
-      author {
-        authorname
-        route
-      }
-      route
-      tags
+    ApprovedNews {
+      
     }
   }
 `;
@@ -105,7 +87,7 @@ export default async function Home() {
           </div>
 
           <div className="order-3 flex w-full flex-col xl:col-start-1 xl:col-end-1">
-            <h2 className="bg-blueDark mb-8 flex w-full rounded px-3 py-2 text-2xl text-white">
+            <h2 className="mb-8 flex w-full rounded bg-blueDark px-3 py-2 text-2xl text-white">
               Пости
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
