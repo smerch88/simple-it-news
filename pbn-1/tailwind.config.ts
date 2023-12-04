@@ -33,6 +33,10 @@ const config: Config = {
         blue: '#0C4588',
         red: '#A42A03',
       },
+
+      fontFamily: {
+        playfair: ['Playfair_Display', ' var(--font-playfair)'],
+      },
       fontSize: {
         quot: [
           '12px',
