@@ -83,13 +83,6 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        t24:[
-          '24px',{
-            lineHeight: '1.5',
-            letterSpacing: '0.029px',
-            fontWeight: '600',
-          }
-        ]
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 30s linear infinite',
