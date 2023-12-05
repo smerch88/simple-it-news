@@ -34,6 +34,10 @@ const config: Config = {
         red: '#A42A03',
         blueDark: '#0357A4',
       },
+
+      fontFamily: {
+        playfair: ['Playfair_Display', ' var(--font-playfair)'],
+      },
       fontSize: {
         quot: [
           '12px',
@@ -57,6 +61,54 @@ const config: Config = {
             lineHeight: '1.3',
             letterSpacing: '0.019px',
             fontWeight: '400',
+          },
+        ],
+        t10: [
+          '10px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.012px',
+            fontWeight: '400',
+          },
+        ],
+        t14: [
+          '14px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.017px',
+            fontWeight: '400',
+          },
+        ],
+        t20: [
+          '20px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.024px',
+            fontWeight: '600',
+          },
+        ],
+        t24: [
+          '24px',
+          {
+            lineHeight: '36px',
+            letterSpacing: '0.029px',
+            fontWeight: '600',
+          },
+        ],
+        t32: [
+          '32px',
+          {
+            lineHeight: '48px',
+            letterSpacing: '0.038px',
+            fontWeight: '600',
+          },
+        ],
+        t40: [
+          '40px',
+          {
+            lineHeight: '60px',
+            letterSpacing: '0.048px',
+            fontWeight: '600',
           },
         ],
       },
