@@ -86,6 +86,30 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
+        t24: [
+          '24px',
+          {
+            lineHeight: '36px',
+            letterSpacing: '0.029px',
+            fontWeight: '600',
+          },
+        ],
+        t32: [
+          '32px',
+          {
+            lineHeight: '48px',
+            letterSpacing: '0.038px',
+            fontWeight: '600',
+          },
+        ],
+        t40: [
+          '40px',
+          {
+            lineHeight: '60px',
+            letterSpacing: '0.048px',
+            fontWeight: '600',
+          },
+        ],
       },
     },
   },
