@@ -427,7 +427,7 @@ const Policy = () => {
             </p>
           </li>
           <li className={styleItem}>
-            <h2 className={styleTitle}>Зв`&apos;`яжіться з нами</h2>
+            <h2 className={styleTitle}>Зв&apos;яжіться з нами</h2>
             <p className={styleText}>
               Якщо у вас є запитання чи пропозиції щодо нашої Політики
               конфіденційності, не соромтеся зв’язатися з нами.
