@@ -1,3 +1,4 @@
+import cn from 'classnames';
 import { Metadata } from 'next';
 import { Playfair_Display } from 'next/font/google';
 
@@ -13,12 +14,12 @@ export const metadata: Metadata = {
     siteName: 'Simple IT News',
     images: [
       {
-        url: '../../../public/favicon/android-chrome-512x512.png',
+        url: '/favicon/android-chrome-512x512.png',
         width: 512,
         height: 512,
       },
       {
-        url: '../../../public/favicon/android-chrome-192x192.png',
+        url: '/favicon/android-chrome-192x192.png',
         width: 192,
         height: 192,
       },
@@ -36,12 +37,12 @@ const breadCrumbsList = [
 
   {
     link: '/about',
-    text: ' Про нас /',
+    text: 'Про нас /',
   },
 
   {
     link: '/about/policy',
-    text: ' Політики конфідіційності',
+    text: 'Політики конфідіційності',
   },
 ];
 
@@ -84,10 +85,6 @@ const breadCrumbsJsonLD = {
 };
 
 const Policy = () => {
-  const styleText = ` text-t14  md:text-menuItemsMob xl:text-menuTitleMob `;
-  const styleTitle = `mb-4  md:mb-mb-6 ${playfair.variable} font-playfair  text-dark  text-menuTitleMob  md:text-t24`;
-  const styleItem = 'mb-12  md:mb-mb-14';
-
   return (
     <section className="container">
       <script
@@ -99,17 +96,19 @@ const Policy = () => {
       <BreadCrumbs list={breadCrumbsList} />
 
       <div>
-        <ul>
-          <li className={styleItem}>
+        <ul className="text-t14 md:text-menuItemsMob xl:text-menuTitleMob xl:font-normal">
+          <li className="md:mb-mb-14 mb-12">
             <h1
-              className={`mb-6 md:mb-8 ${playfair.variable}   font-playfair   text-t24  text-dark  md:text-t32 xl:text-t40 `}
+              className={cn(
+                playfair.variable,
+                'mb-6 font-playfair text-t24  text-dark md:mb-8 md:text-t32 xl:text-t40',
+              )}
             >
               Політика конфіденційності Simple IT News Team
             </h1>
 
-            <p className={styleText}>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 На сайті Simple IT News, доступному за адресою
                 https://www.simpleitnews.tech/, одним з наших головних
                 пріоритетів є конфіденційність наших відвідувачів. Цей документ
@@ -118,7 +117,6 @@ const Policy = () => {
                 використовуємо.
               </span>
               <span className="mb-6 block">
-                {' '}
                 Якщо у вас виникли додаткові запитання або вам потрібна
                 додаткова інформація про нашу Політику конфіденційності, не
                 соромтеся звертатися до нас.
@@ -134,44 +132,61 @@ const Policy = () => {
             </p>
           </li>
 
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Згода</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                'md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24',
+              )}
+            >
+              Згода
+            </h2>
+            <p>
               Користуючись нашим веб - сайтом, ви тим самим погоджуєтеся з нашою
               Політикою конфіденційності та погоджуєтеся з її умовами.
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Інформація, яку ми збираємо</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                'md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24',
+              )}
+            >
+              Інформація, яку ми збираємо
+            </h2>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Особиста інформація, яку вас просять надати, і причини, чому вас
                 просять надати, будуть з’ясовані вам у момент, коли ми просимо
                 вас надати вашу особисту інформацію.
               </span>
               <span className="mb-6 block">
-                {' '}
                 Якщо ви зв’яжетеся з нами безпосередньо, ми можемо отримати
                 додаткову інформацію про вас, таку як ваше ім’я, адресу
                 електронної пошти, номер телефону, вміст повідомлення та/ або
                 вкладення, які ви можете надіслати нам, а також будь - яку іншу
-                інформацію, яку ви можете надати.{' '}
+                інформацію, яку ви можете надати.
               </span>
               <span className="block">
-                {' '}
                 Коли ви реєструєте обліковий запис, ми можемо попросити вашу
                 контактну інформацію, включаючи такі елементи, як ім’я, назва
                 компанії, адреса, адреса електронної пошти та номер телефону.
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Як ми використовуємо вашу інформацію</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Як ми використовуємо вашу інформацію
+            </h2>
+            <p>
               <span className="mb-6 block">
-                {' '}
-                Як ми використовуємо вашу інформацію{' '}
+                Як ми використовуємо вашу інформацію
               </span>
               <span className="mb-2 block">
                 Ми використовуємо зібрану інформацію різними способами, зокрема
@@ -180,34 +195,38 @@ const Policy = () => {
             </p>
             <ul className="list-disc pl-5">
               <br />
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 Надавати, керувати та підтримувати наш веб-сайт
               </li>
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 Покращуйте, персоналізуйте та розширюйте наш веб-сайт
               </li>
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 Зрозуміти та проаналізувати, як ви використовуєте наш веб-сайт
               </li>
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 Розробляйте нові продукти, послуги, функції та функції
               </li>
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 Спілкуватися з вами безпосередньо або через одного з наших
                 партнерів, зокрема для обслуговування клієнтів, щоб надавати вам
                 оновлення та іншу інформацію, що стосується веб-сайту, а також
                 для маркетингових і рекламних цілей
               </li>
-              <li className={`${styleText} mb-1`}>
-                {' '}
-                Надсилати вам електронні листи
-              </li>
-              <li className={styleText}> Знайти та запобігти шахрайству</li>
+              <li className="mb-1">Надсилати вам електронні листи</li>
+              <li> Знайти та запобігти шахрайству</li>
             </ul>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Файли журналів</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Файли журналів
+            </h2>
+            <p>
               Simple IT News використовує стандартну процедуру використання
               файлів журналу. Ці файли реєструють відвідувачів, коли вони
               відвідують веб-сайти. Усі хостингові компанії займаються цим і
@@ -221,9 +240,16 @@ const Policy = () => {
               інформації.
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Файли cookie та веб-маяки</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Файли cookie та веб-маяки
+            </h2>
+            <p>
               Як і будь-який інший веб-сайт, Simple IT News використовує файли
               cookie. Ці файли cookie використовуються для зберігання
               інформації, включно з уподобаннями відвідувачів і сторінками
@@ -233,9 +259,16 @@ const Policy = () => {
               відвідувачів та/або іншої інформації.
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Google DoubleClick DART Cookie</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Google DoubleClick DART Cookie
+            </h2>
+            <p>
               Як і будь-який інший веб-сайт, Simple IT News використовує файли
               cookie. Ці файли cookie використовуються для зберігання
               інформації, включно з уподобаннями відвідувачів і сторінками
@@ -245,9 +278,16 @@ const Policy = () => {
               відвідувачів та/або іншої інформації.
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Наші рекламні партнери</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Наші рекламні партнери
+            </h2>
+            <p>
               Деякі рекламодавці на нашому сайті можуть використовувати файли
               cookie та веб-маяки. Наші рекламні партнери перераховані нижче.
               Кожен із наших рекламних партнерів має власну політику
@@ -255,10 +295,10 @@ const Policy = () => {
               ми зробили гіперпосилання на їх Політику конфіденційності нижче.
             </p>
             <ul className="mt-3 list-disc pl-5">
-              <li className={`${styleText} mb-1`}>
+              <li className="mb-1">
                 <p>Google</p>
               </li>
-              <li className={`${styleText} `}>
+              <li>
                 <a
                   className="block max-w-full overflow-hidden text-blue"
                   href="https://policies.google.com/technologies/ads"
@@ -268,16 +308,20 @@ const Policy = () => {
               </li>
             </ul>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
               Політика конфіденційності рекламних партнерів
             </h2>
-            <p className={styleText}>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Ви можете переглянути цей список, щоб знайти політику
                 конфіденційності для кожного з рекламних партнерів Simple IT
-                News.{' '}
+                News.
               </span>
               <span className="mb-6 block">
                 Сторонні рекламні сервери або рекламні мережі використовують
@@ -297,19 +341,23 @@ const Policy = () => {
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
               Політика конфіденційності третіх сторін
             </h2>
-            <p className={styleText}>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Політика конфіденційності Simple IT News не поширюється на інших
                 рекламодавців або веб-сайти. Таким чином, ми радимо вам
                 ознайомитися з відповідною Політикою конфіденційності цих
                 сторонніх рекламних серверів для отримання більш детальної
                 інформації. Він може включати їхні практики та інструкції щодо
-                того, як відмовитися від певних варіантів.{' '}
+                того, як відмовитися від певних варіантів.
               </span>
               <span className="block">
                 Ви можете вимкнути файли cookie за допомогою індивідуальних
@@ -319,16 +367,20 @@ const Policy = () => {
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
               Права на конфіденційність CCPA (не продавати мою особисту
               інформацію)
             </h2>
-            <p className={styleText}>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Відповідно до CCPA, серед інших прав, споживачі Каліфорнії мають
-                право:{' '}
+                право:
               </span>
               <span className="mb-6 block">
                 Вимагати від компанії, яка збирає персональні дані споживача,
@@ -350,13 +402,19 @@ const Policy = () => {
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Права на захист даних GDPR</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Права на захист даних GDPR
+            </h2>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Ми хочемо переконатися, що ви повністю знаєте всі свої права на
-                захист даних. Кожен користувач має право на:{' '}
+                захист даних. Кожен користувач має право на:
               </span>
               <span className="mb-6 block">
                 Право на доступ – ви маєте право вимагати копії своїх
@@ -394,15 +452,21 @@ const Policy = () => {
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Інформація для дітей</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Інформація для дітей
+            </h2>
+            <p>
               <span className="mb-6 block">
-                {' '}
                 Ще одним нашим пріоритетом є захист дітей під час користування
                 Інтернетом. Ми заохочуємо батьків і опікунів спостерігати, брати
                 участь і/або контролювати та керувати їхньою діяльністю в
-                Інтернеті.{' '}
+                Інтернеті.
               </span>
               <span className="block">
                 Simple IT News свідомо не збирає будь-яку особисту інформацію
@@ -413,11 +477,16 @@ const Policy = () => {
               </span>
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
               Зміни в цій Політиці конфіденційності
             </h2>
-            <p className={styleText}>
+            <p>
               Час від часу ми можемо оновлювати нашу Політику конфіденційності.
               Тому ми радимо вам періодично переглядати цю сторінку на предмет
               будь-яких змін. Ми повідомимо вас про будь-які зміни,
@@ -426,9 +495,16 @@ const Policy = () => {
               сторінці.
             </p>
           </li>
-          <li className={styleItem}>
-            <h2 className={styleTitle}>Зв&apos;яжіться з нами</h2>
-            <p className={styleText}>
+          <li className="md:mb-mb-14 mb-12">
+            <h2
+              className={cn(
+                playfair.variable,
+                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+              )}
+            >
+              Зв&apos;яжіться з нами
+            </h2>
+            <p>
               Якщо у вас є запитання чи пропозиції щодо нашої Політики
               конфіденційності, не соромтеся зв’язатися з нами.
             </p>
