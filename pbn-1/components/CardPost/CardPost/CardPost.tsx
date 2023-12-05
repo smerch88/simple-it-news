@@ -1,14 +1,12 @@
-'use client';
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import { CmsPostProps } from './CardPost.props';
-
+// import BookMark from '@/public/card/bookmark.svg';
 import Clock from '@/public/card/clock.svg';
 import Star from '@/public/card/star.svg';
-import BookMark from '@/public/card/bookmark.svg';
+
+import { CmsPostProps } from './CardPost.props';
 
 export const CardPost: FC<CmsPostProps> = ({ article }) => {
   const publishedDate = new Date(article._publishedAt);
@@ -23,9 +21,9 @@ export const CardPost: FC<CmsPostProps> = ({ article }) => {
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
 
-  const handleBookMark = (id: string) => {
-    console.log('id', id);
-  };
+  // const handleBookMark = (id: string) => {
+  //   console.log('id', id);
+  // };
 
   return (
     <li className="flex xl:[&:not(:nth-child(3n+1))]:w-[calc(50%-16px)]">
@@ -52,11 +50,11 @@ export const CardPost: FC<CmsPostProps> = ({ article }) => {
               <span className="text-xs font-normal text-grey">5/5</span>
             </div>
           </div>
-          <div className="flex">
+          {/* <div className="flex">
             <button type="button" onClick={() => handleBookMark(article.id)}>
               <BookMark className="h-10 w-10" />
             </button>
-          </div>
+          </div> */}
         </div>
         <Link href={`/posts/${article.route}`} rel="canonical">
           <h3 className="mb-3 text-2xl font-bold text-dark">{article.title}</h3>

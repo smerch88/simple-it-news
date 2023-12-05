@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-
-import { CmsPost } from '@/components/CmsPost';
-import { CmsArticleType } from '@/types';
-import { getClient } from '@/utils/apollo-client';
 import Image from 'next/image';
+
 import { CardPost } from '@/components/CardPost/CardPost';
+import { CardPostRest } from '@/components/CardPost/CardPostRest';
 import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
+import { CmsArticleType, RESTAPIPost } from '@/types';
+import { getClient } from '@/utils/apollo-client';
 
 const query = gql`
   {
@@ -60,17 +60,16 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// async function getNews() {
-//   const res = await fetch(
-//     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-//     { next: { revalidate: 43200 } },
-//   );
-//   return res.json();
-// }
+async function getNews() {
+  const res = await fetch('http://82.180.160.12:8000/api/ApprovedNews/', {
+    next: { revalidate: 60 },
+  });
+  return res.json();
+}
 
 export default async function Home() {
-  // const newsData = getNews();
-  // const [news] = await Promise.all([newsData]);
+  const newsData = getNews();
+  const [news] = await Promise.all([newsData]);
 
   const { data } = await getClient().query({
     query,
@@ -81,6 +80,9 @@ export default async function Home() {
     },
   });
 
+  // eslint-disable-next-line no-console
+  console.log('news', news);
+
   return (
     <>
       <div className="container relative">
@@ -89,6 +91,7 @@ export default async function Home() {
             Всі новини у сфері IT
           </h1>
           <p className="text-base font-normal italic">
+            {/* TODO: remove hardcode */}
             Останне оновлення 11.11.2023 19:28
           </p>
         </div>
@@ -98,8 +101,8 @@ export default async function Home() {
               Новини
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {data.allNewsposts?.map((article: CmsArticleType) => (
-                <CardPost key={article.id} article={article} />
+              {news.map((article: RESTAPIPost) => (
+                <CardPostRest key={article.id} article={article} />
               ))}
             </ul>
           </div>
