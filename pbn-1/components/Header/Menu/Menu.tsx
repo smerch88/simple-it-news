@@ -3,28 +3,28 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import Facebook from '@/public/footer/socials/facebook.svg';
-import LinkedIn from '@/public/footer/socials/linkedin.svg';
-import Telegram from '@/public/footer/socials/telegram.svg';
-import X from '@/public/footer/socials/x.svg';
 import Burger from '@/public/header/burger.svg';
 import BurgerCross from '@/public/header/burgerCross.svg';
 import Logo from '@/public/header/logo.svg';
+import Facebook from '@/public/socials/facebook.svg';
+import LinkedIn from '@/public/socials/linkedin.svg';
+import Telegram from '@/public/socials/telegram.svg';
+import Twitter from '@/public/socials/twitter.svg';
 
 const menuItems = [
-  'Новини',
-  'Статті',
-  'Подкасти',
-  'Пости',
-  'Автори',
-  "Інтерв'ю",
+  { title: 'Новини', route: '/news' },
+  { title: 'Статті', route: '/articles' },
+  { title: 'Подкасти', route: '/podcasts' },
+  { title: 'Пости', route: '/posts' },
+  { title: 'Автори', route: '/authors' },
+  { title: 'Інтерв’ю', route: '/interviews' },
 ];
 
 const menuItemsCat = [
-  'Ідея створення',
-  'Наша команда',
-  'Політика конфіденційності',
-  'FAQ',
+  { title: 'Ідея створення', route: '/idea' },
+  { title: 'Наша команда', route: '/team' },
+  { title: 'Політика конфіденційності', route: '/policy' },
+  { title: 'FAQ', route: '/faq' },
 ];
 
 export const Menu = () => {
@@ -42,12 +42,12 @@ export const Menu = () => {
   return (
     <>
       {/* TODO: make animation for buttons */}
-      <button className="xl:hidden" onClick={() => setMenuOpened()}>
+      <button className="ml-auto xl:hidden" onClick={() => setMenuOpened()}>
         <Burger className="h-10 w-10" />
       </button>
       {isOpen ? (
         <div className="fixed inset-0 z-10 overflow-scroll bg-white">
-          <header id="header">
+          <div id="headermob" className="mb-32">
             {/* TODO:stick to top */}
             <div className="bg-dark py-3">
               <div className="container">
@@ -71,10 +71,10 @@ export const Menu = () => {
                     {menuItems &&
                       menuItems.map(item => (
                         <li
-                          key={item}
+                          key={item.title}
                           className="border-b border-solid border-dark/50 pb-2 pt-5"
                         >
-                          <Link href={'#'}>{item}</Link>
+                          <Link href={item.route}>{item.title}</Link>
                         </li>
                       ))}
                   </ul>
@@ -82,40 +82,54 @@ export const Menu = () => {
                   {/* TODO: add custom data instead of mocked one + links*/}
                   <ul className="mb-12 flex flex-col gap-1 text-menuItemsMob">
                     {menuItemsCat &&
-                      menuItems.map(item => (
+                      menuItemsCat.map(item => (
                         <li
-                          key={item}
+                          key={item.title}
                           className="border-b border-solid border-dark/50 pb-2 pt-5"
                         >
-                          <Link href={'#'}>{item}</Link>
+                          <Link href={item.route}>{item.title}</Link>
                         </li>
                       ))}
                   </ul>
+                  <Link href="/contancts" className="text-menuTitleMob">
+                    Контакти
+                  </Link>
                 </nav>
               </div>
             </div>
-          </header>
-          <footer id="footer" className="bg-dark py-3">
+          </div>
+          <div
+            id="footermob"
+            className="fixed inset-x-0 bottom-0 mt-auto bg-dark py-3"
+          >
             <div className="container flex flex-col gap-2">
               {/* TODO: add real links */}
-              <ul className="flex flex-row justify-center gap-4">
+              <ul className="flex flex-row justify-center gap-4 text-white">
                 <li>
-                  <Link href="#">
+                  <Link href="#" target="blank" rel="noreferrer nofollow">
                     <Telegram className="h-10 w-10" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link href="#" target="blank" rel="noreferrer nofollow">
                     <LinkedIn className="h-10 w-10" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
-                    <X className="h-10 w-10" />
+                  <Link
+                    href="https://twitter.com/simpleitnews"
+                    target="blank"
+                    rel="noreferrer nofollow"
+                  >
+                    <Twitter className="h-10 w-10" />
                   </Link>
                 </li>
                 <li>
-                  <Link href="#">
+                  <Link
+                    href="https://www.facebook.com/groups/297247483170966"
+                    target="blank"
+                    rel="noreferrer nofollow"
+                  >
                     <Facebook className="h-10 w-10" />
                   </Link>
                 </li>
@@ -127,7 +141,7 @@ export const Menu = () => {
                 </span>
               </div>
             </div>
-          </footer>
+          </div>
         </div>
       ) : null}
     </>

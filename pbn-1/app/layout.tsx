@@ -1,14 +1,16 @@
 import './globals.css';
 
 import { Analytics } from '@vercel/analytics/react';
-import cn from 'classnames';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import Link from 'next/link';
+import { Lato } from 'next/font/google';
 
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
-const inter = Inter({ subsets: ['latin'] });
+const lato = Lato({
+  weight: ['400'],
+  subsets: ['latin-ext'],
+});
 
 export const metadata: Metadata = {
   title: 'Головна Simple IT News',
@@ -35,14 +37,6 @@ export const metadata: Metadata = {
     },
   ],
 };
-
-import { Lato } from 'next/font/google';
-
-const lato = Lato({
-  weight: ['400'],
-  subsets: ['latin-ext'],
-});
-
 export default function RootLayout({
   children,
 }: {
@@ -64,24 +58,13 @@ export default function RootLayout({
           key="website-jsonld"
         />
       </head>
-      <body className={cn('relative flex h-screen flex-col', inter.className)}>
+      <body className="relative flex h-screen flex-col">
         <Header />
         <main className="flex-grow py-4 text-dark">
           {children}
           <Analytics />
         </main>
-        <footer className="bg-black py-4">
-          <div className="container">
-            <Link href="/">
-              <span className="text-lg font-bold text-white">
-                Simple IT News
-              </span>
-            </Link>
-            <p className="text-xs font-bold text-white">
-              Copyright © {new Date().getFullYear()} Simple IT News
-            </p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

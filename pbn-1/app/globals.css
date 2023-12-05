@@ -6,6 +6,10 @@
   html {
     scroll-behavior: smooth;
   }
+
+  body {
+    @apply text-dark;
+  }
 }
 
 @layer components {

@@ -59,6 +59,37 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
+        t10: [
+          '10px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.012px',
+            fontWeight: '400',
+          },
+        ],
+        t14: [
+          '14px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.017px',
+            fontWeight: '400',
+          },
+        ],
+        t20: [
+          '20px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.024px',
+            fontWeight: '600',
+          },
+        ],
+        t24:[
+          '24px',{
+            lineHeight: '1.5',
+            letterSpacing: '0.029px',
+            fontWeight: '600',
+          }
+        ]
       },
       animation: {
         'infinite-scroll': 'infinite-scroll 30s linear infinite',
