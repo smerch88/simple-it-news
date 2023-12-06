@@ -36,8 +36,9 @@ const config: Config = {
       },
       fontFamily: {
         lato: ['var(--font-lato)'],
-        playfair: ['var(--font-playfairDisplay)'],
+        playfair: ['Playfair_Display', 'var(--font-playfairDisplay)'],
       },
+
       fontSize: {
         buttonMobile: [
           '16px',
