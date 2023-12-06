@@ -159,7 +159,7 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        titile32: [
+        title32: [
           '32px',
           {
             lineHeight: '1.5',
