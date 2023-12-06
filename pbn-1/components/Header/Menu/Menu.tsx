@@ -14,17 +14,18 @@ import Twitter from '@/public/socials/twitter.svg';
 const menuItems = [
   { title: 'Новини', route: '/news' },
   { title: 'Статті', route: '/articles' },
-  { title: 'Подкасти', route: '/podcasts' },
+  // { title: 'Подкасти', route: '/podcasts' },
   { title: 'Пости', route: '/posts' },
   { title: 'Автори', route: '/authors' },
-  { title: 'Інтерв’ю', route: '/interviews' },
+  // { title: 'Інтерв’ю', route: '/interviews' },
 ];
 
 const menuItemsCat = [
-  { title: 'Ідея створення', route: '/idea' },
-  { title: 'Наша команда', route: '/team' },
-  { title: 'Політика конфіденційності', route: '/policy' },
-  { title: 'FAQ', route: '/faq' },
+  // { title: 'Ідея створення', route: '/idea' },
+  // { title: 'Наша команда', route: '/team' },
+  { title: 'Про Нас', route: '/about-us' },
+  { title: 'Політика Конфіденційності', route: '/about-us/policy' },
+  { title: 'FAQ', route: '/about-us/faq' },
 ];
 
 export const Menu = () => {
