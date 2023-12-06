@@ -21,8 +21,8 @@ const menuItems = [
 ];
 
 const menuItemsCat = [
-  // { title: 'Ідея створення', route: '/idea' },
-  // { title: 'Наша команда', route: '/team' },
+  { title: 'Ідея створення', route: '/about-us' },
+  { title: 'Наша команда', route: '/about-us' },
   { title: 'Про Нас', route: '/about-us' },
   { title: 'Політика Конфіденційності', route: '/about-us/policy' },
   { title: 'FAQ', route: '/about-us/faq' },
@@ -92,7 +92,7 @@ export const Menu = () => {
                         </li>
                       ))}
                   </ul>
-                  <Link href="/contancts" className="text-menuTitleMob">
+                  <Link href="/about-us/contancts" className="text-menuTitleMob">
                     Контакти
                   </Link>
                 </nav>
