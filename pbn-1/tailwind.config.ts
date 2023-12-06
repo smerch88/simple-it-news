@@ -144,7 +144,7 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
-        title20: [
+        t20: [
           '20px',
           {
             lineHeight: '1.3',
@@ -152,7 +152,7 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        title24: [
+        t24: [
           '24px',
           {
             lineHeight: '1.5',
@@ -160,7 +160,7 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        title32: [
+        t32: [
           '32px',
           {
             lineHeight: '1.5',
@@ -168,7 +168,7 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        title40: [
+        t40: [
           '40px',
           {
             lineHeight: '1.5',

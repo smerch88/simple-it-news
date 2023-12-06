@@ -57,7 +57,7 @@ export const Comments = () => {
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between">
-                  <p className="text-title20">{comment.name}</p>
+                  <p className="text-t20">{comment.name}</p>
                   <p className="md:t16 text-menuItemsMob10 text-lightgrey xl:text-t18">
                     {comment.date}
                   </p>

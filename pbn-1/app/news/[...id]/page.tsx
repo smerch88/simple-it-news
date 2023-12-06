@@ -78,7 +78,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
       </ul>
       <article>
-        <h1 className="mb-1 font-playfair text-title24 font-semibold md:text-title32 xl:text-title40">
+        <h1 className="mb-1 font-playfair text-t24 font-semibold md:text-t32 xl:text-t40">
           {post?.title}
         </h1>
 
