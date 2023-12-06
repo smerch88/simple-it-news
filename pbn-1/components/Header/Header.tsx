@@ -49,7 +49,7 @@ export const Header = () => {
           {menuItems &&
             menuItems.map(item => (
               <li key={item.title}>
-                <Link href={item.route} className="px-4 py-2 text-t20">
+                <Link href={item.route} className="px-4 py-2 text-title20">
                   {item.title}
                 </Link>
               </li>

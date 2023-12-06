@@ -15,3 +15,14 @@
 
 @layer components {
 }
+
+.item:nth-child(3n + 1) .avatar {
+  background-color: #cbd5e1;
+}
+.item:nth-child(3n - 1) .avatar {
+  background-color: #a2c3eb;
+}
+
+.item:nth-child(3n) .avatar {
+  background-color: #5c7da4;
+}

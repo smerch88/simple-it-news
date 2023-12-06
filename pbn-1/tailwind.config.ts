@@ -31,13 +31,31 @@ const config: Config = {
         lightgrey: 'rgba(7, 7, 7, 0.5)',
         white: '#FEFEFE',
         blue: '#0C4588',
+        blue_hover: '#105FBC',
         red: '#A42A03',
       },
-
       fontFamily: {
-        playfair: ['Playfair_Display', ' var(--font-playfair)'],
+        lato: ['var(--font-lato)'],
+        playfair: ['Playfair_Display', 'var(--font-playfairDisplay)'],
       },
+
       fontSize: {
+        buttonMobile: [
+          '16px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.019px',
+            fontWeight: '600',
+          },
+        ],
+        buttonDesk: [
+          '20px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.024px',
+            fontWeight: '600',
+          },
+        ],
         quot: [
           '12px',
           {
@@ -54,6 +72,14 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
+        menuTitleTab: [
+          '24px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.029px',
+            fontWeight: '600',
+          },
+        ],
         menuItemsMob: [
           '16px',
           {
@@ -62,11 +88,35 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
-        t10: [
+        menuItemsTab14: [
+          '14px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.017px',
+            fontWeight: '400',
+          },
+        ],
+        menuItemsMob13: [
+          '13px',
+          {
+            lineHeight: '1.3',
+            letterSpacing: '0.016px',
+            fontWeight: '400',
+          },
+        ],
+        menuItemsMob10: [
           '10px',
           {
             lineHeight: '1.3',
             letterSpacing: '0.012px',
+            fontWeight: '400',
+          },
+        ],
+        t10: [
+          '10px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.017px',
             fontWeight: '400',
           },
         ],
@@ -78,7 +128,23 @@ const config: Config = {
             fontWeight: '400',
           },
         ],
-        t20: [
+        t16: [
+          '16px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.019px',
+            fontWeight: '400',
+          },
+        ],
+        t18: [
+          '18px',
+          {
+            lineHeight: '1.5',
+            letterSpacing: '0.022px',
+            fontWeight: '400',
+          },
+        ],
+        title20: [
           '20px',
           {
             lineHeight: '1.3',
@@ -86,30 +152,40 @@ const config: Config = {
             fontWeight: '600',
           },
         ],
-        t24: [
+        title24: [
           '24px',
           {
-            lineHeight: '36px',
+            lineHeight: '1.5',
             letterSpacing: '0.029px',
             fontWeight: '600',
           },
         ],
-        t32: [
+        title32: [
           '32px',
           {
-            lineHeight: '48px',
+            lineHeight: '1.5',
             letterSpacing: '0.038px',
             fontWeight: '600',
           },
         ],
-        t40: [
+        title40: [
           '40px',
           {
-            lineHeight: '60px',
+            lineHeight: '1.5',
             letterSpacing: '0.048px',
             fontWeight: '600',
           },
         ],
+      },
+      animation: {
+        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+      },
+      keyframes: {
+        'infinite-scroll': {
+          '0%': { transform: 'translateX(0)' },
+
+          '100%': { transform: 'translateX(-100%)' },
+        },
       },
     },
   },
