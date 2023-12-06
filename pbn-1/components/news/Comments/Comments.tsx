@@ -36,7 +36,7 @@ export const Comments = () => {
 
   return (
     <div>
-      <h2 className="font-playfair md:text-menuTitleTab mb-6 text-menuTitleMob font-semibold">
+      <h2 className="mb-6 font-playfair text-menuTitleMob font-semibold md:text-menuTitleTab">
         Коментарі
       </h2>
       <CommentsForm />
@@ -58,13 +58,13 @@ export const Comments = () => {
                 </div>
                 <div className="flex w-full items-center justify-between">
                   <p className="text-title20">{comment.name}</p>
-                  <p className="md:t16 xl:text-t18 text-menuItemsMob10 text-lightgrey">
+                  <p className="md:t16 text-menuItemsMob10 text-lightgrey xl:text-t18">
                     {comment.date}
                   </p>
                 </div>
               </div>
 
-              <p className="md:t16 xl:text-t18 pl-[60px] text-t10">
+              <p className="md:t16 pl-[60px] text-t10 xl:text-t18">
                 {comment.text}
               </p>
               {/* check comment owner */}

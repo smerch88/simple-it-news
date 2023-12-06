@@ -1,13 +1,11 @@
-// deprecated
-
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Carousel from '@/components/news/Carousel/Carousel';
-import { Comments } from '@/components/news/Comments';
+// import Carousel from '@/components/news/Carousel/Carousel';
+// import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
-import { Stars } from '@/components/news/Stars';
+// import { Stars } from '@/components/news/Stars';
 import defaultImg from '@/public/card/card_mobile.png';
 
 export async function generateMetadata({
@@ -56,7 +54,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="text-menuItemsMob10 mb-6 flex flex-row text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
+      <ul className="mb-6 flex flex-row text-menuItemsMob10 text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
         <li className="duration-300 hover:text-blue_hover">
           <Link href="/" rel="canonical">
             Головна
@@ -80,11 +78,11 @@ export default async function Page({ params }: { params: { id: string } }) {
         </li>
       </ul>
       <article>
-        <h1 className="font-playfair md:text-title32 xl:text-title40 text-title24 mb-1 font-semibold">
+        <h1 className="mb-1 font-playfair text-title24 font-semibold md:text-title32 xl:text-title40">
           {post?.title}
         </h1>
 
-        <time className="md:text-menuItemsTab14 text-menuItemsMob13 mb-6 inline-block italic text-grey xl:text-menuItemsMob">
+        <time className="mb-6 inline-block text-menuItemsMob13 italic text-grey md:text-menuItemsTab14 xl:text-menuItemsMob">
           {formattedDate}
         </time>
 
@@ -104,41 +102,43 @@ export default async function Page({ params }: { params: { id: string } }) {
             href={post?.author}
             rel="canonical"
             target="blank"
-            className="md:text-t16 xl:text-t18 mb-6 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover"
+            className="mb-6 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover md:text-t16 xl:text-t18"
           >
             {post.author}
           </Link>
         ) : null}
 
         <Management time={post.time_to_read} rating={post.rating} />
-        <p className="md:text-t16 xl:text-t18 mb-2 text-t14 md:mb-8">
+        <p className="mb-2 text-t14 md:mb-8 md:text-t16 xl:text-t18">
           {post?.description}
         </p>
 
-        <p className="md:text-t16  xl:text-t18 mb-12 border-b border-dark pb-4 text-t14">
+        <p className="mb-12 border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
           {post?.content}
         </p>
       </article>
-      <div className="mb-12">
-        <p className="text-menuItemsMob13 md:text-menuItemsTab14 mb-2 italic text-dark xl:text-menuItemsMob">
+      {/* TODO:uncomment after login feature*/}
+      {/* <div className="mb-12">
+        <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
           Будь ласка оцініть новину
         </p>
         <Stars />
-      </div>
-      <Comments />
-      <div className="font-playfair md:text-menuTitleTab py-4 text-left text-menuTitleMob">
-        <h2 className=" mb-3 block rounded bg-dark px-3  py-2  font-semibold text-white">
+      </div> */}
+      {/* <Comments /> */}
+      {/* TODO:uncomment after feature ready */}
+      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
           Інші публікації цього автора
         </h2>
         <Carousel mode="author" author_id={post?.author?.id} />
-      </div>
-      <div className="font-playfair md:text-menuTitleTab py-4 text-left text-menuTitleMob">
-        <h2 className="mb-3 block rounded bg-dark px-3 py-2   font-semibold text-white ">
+      </div> */}
+      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
           Більше з категорії новини
-          {/* {post.categories[0].name} */}
+          {post.categories[0].name}
         </h2>
         <Carousel mode="categories" categories={post?.categories[0]} />
-      </div>
+      </div> */}
     </div>
   );
 }

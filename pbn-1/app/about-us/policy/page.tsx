@@ -101,7 +101,7 @@ const Policy = () => {
             <h1
               className={cn(
                 playfair.variable,
-                'mb-6 font-playfair text-t24  text-dark md:mb-8 md:text-t32 xl:text-t40',
+                'text-t24 md:text-t32 xl:text-t40  mb-6 font-playfair text-dark md:mb-8',
               )}
             >
               Політика конфіденційності Simple IT News Team
@@ -136,7 +136,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                'md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24',
+                'md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark',
               )}
             >
               Згода
@@ -150,7 +150,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                'md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24',
+                'md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark',
               )}
             >
               Інформація, яку ми збираємо
@@ -179,7 +179,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Як ми використовуємо вашу інформацію
@@ -221,7 +221,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Файли журналів
@@ -244,7 +244,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Файли cookie та веб-маяки
@@ -263,7 +263,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Google DoubleClick DART Cookie
@@ -282,7 +282,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Наші рекламні партнери
@@ -312,7 +312,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Політика конфіденційності рекламних партнерів
@@ -345,7 +345,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Політика конфіденційності третіх сторін
@@ -371,7 +371,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Права на конфіденційність CCPA (не продавати мою особисту
@@ -406,7 +406,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Права на захист даних GDPR
@@ -456,7 +456,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Інформація для дітей
@@ -481,7 +481,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Зміни в цій Політиці конфіденційності
@@ -499,7 +499,7 @@ const Policy = () => {
             <h2
               className={cn(
                 playfair.variable,
-                `md:mb-mb-6 mb-4 font-playfair text-menuTitleMob  text-dark  md:text-t24`,
+                `md:mb-mb-6 md:text-t24 mb-4 font-playfair  text-menuTitleMob  text-dark`,
               )}
             >
               Зв&apos;яжіться з нами

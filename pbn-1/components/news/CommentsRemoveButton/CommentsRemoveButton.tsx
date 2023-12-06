@@ -6,7 +6,7 @@ export const CommentsRemoveButton = () => {
   };
   return (
     <button
-      className="text-menuItemsMob13 md:text-menuItemsTab14 ml-auto py-2 italic text-red xl:text-menuItemsMob"
+      className="ml-auto py-2 text-menuItemsMob13 italic text-red md:text-menuItemsTab14 xl:text-menuItemsMob"
       onClick={handleRemoveClick}
     >
       Видалити
