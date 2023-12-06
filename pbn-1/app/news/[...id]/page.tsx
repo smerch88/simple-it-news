@@ -53,6 +53,8 @@ export default async function Page({ params }: { params: { id: string } }) {
       title={title}
       image_url={image_url}
       author={author}
+      // TODO:add real author url
+      author_url={'#'}
       time_to_read={time_to_read}
       rating={rating}
       description={description}

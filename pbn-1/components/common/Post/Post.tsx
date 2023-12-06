@@ -10,6 +10,7 @@ interface PostProps {
   title: string;
   image_url: string;
   author: string;
+  author_url: string;
   time_to_read: number;
   rating: number;
   description: string;
@@ -23,6 +24,7 @@ export const Post: FC<PostProps> = ({
   title,
   image_url,
   author,
+  author_url,
   time_to_read,
   rating,
   description,
@@ -69,7 +71,6 @@ export const Post: FC<PostProps> = ({
         <h1 className="mb-1 font-playfair text-t24 font-semibold md:text-t32 xl:text-t40">
           {title}
         </h1>
-
         <time className="mb-6 inline-block text-menuItemsMob13 italic text-grey md:text-menuItemsTab14 xl:text-menuItemsMob">
           {formattedDate}
         </time>
@@ -81,10 +82,9 @@ export const Post: FC<PostProps> = ({
             alt={title + 'Image'}
           />
         </div>
-
         {author ? (
           <Link
-            href={author}
+            href={'/authors/' + author_url}
             rel="canonical"
             target="blank"
             className="mb-6 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover md:text-t16 xl:text-t18"
@@ -92,12 +92,10 @@ export const Post: FC<PostProps> = ({
             {author}
           </Link>
         ) : null}
-
         <Management time={time_to_read} rating={rating} />
         <p className="mb-2 text-t14 md:mb-8 md:text-t16 xl:text-t18">
           {description}
         </p>
-
         {content ? (
           <p className="mb-12 border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
             {content}

@@ -151,6 +151,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         title={title}
         image_url={articlepicture.url}
         author={author.authorname}
+        author_url={author.route}
         time_to_read={15}
         rating={5}
         description={shortdescription}
