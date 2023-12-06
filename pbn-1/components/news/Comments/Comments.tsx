@@ -1,10 +1,7 @@
-'use client';
-
-import { useState } from 'react';
+import { CommentsForm } from '../CommentsForm';
+import { CommentsRemoveButton } from '../CommentsRemoveButton';
 
 export const Comments = () => {
-  const [textareaValue, setTextareaValue] = useState<string>('');
-
   /* get Comments Api */
 
   const comments = [
@@ -37,39 +34,12 @@ export const Comments = () => {
     { id: 6, name: 'Stanislav', text: 'Важливо', date: '15.11.2023' },
   ];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // console.log('send', textareaValue);
-    //   onSubmit(textareaValue);
-    setTextareaValue('');
-  };
-
-  const handleRemoveClick = () => {
-    // console.log('видалити');
-  };
-
   return (
     <div>
-      <h2 className="mb-6 text-lg font-semibold md:text-2xl">Коментарі</h2>
-      <form onSubmit={handleSubmit} className="mb-6">
-        <p className="mb-2 text-sm md:text-base xl:text-lg">
-          Залишити коментар
-        </p>
-        <textarea
-          value={textareaValue}
-          name="comment"
-          rows={5}
-          placeholder="Введіть текст"
-          onChange={e => setTextareaValue(e.target.value)}
-          className="mb-2 flex w-full resize-none items-start rounded border-[0.5px] border-lightgrey p-1 placeholder:text-center md:text-base md:placeholder:text-left xl:text-lg"
-        />
-        <button
-          type="submit"
-          className="ml-auto block rounded border-[0.5px] border-dark bg-white px-6 py-3 font-semibold text-dark duration-200 hover:border-white hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.25)] md:text-lg xl:text-[20px]"
-        >
-          Відправити
-        </button>
-      </form>
+      <h2 className="font-playfair md:text-menuTitleTab mb-6 text-menuTitleMob font-semibold">
+        Коментарі
+      </h2>
+      <CommentsForm />
 
       {/* Other comments */}
       <ul className="flex flex-col ">
@@ -87,21 +57,18 @@ export const Comments = () => {
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between">
-                  <p className="text-xl font-semibold">{comment.name}</p>
-                  <p className="text-[10px] text-lightgrey">{comment.date}</p>
+                  <p className="text-title20">{comment.name}</p>
+                  <p className="md:t16 xl:text-t18 text-menuItemsMob10 text-lightgrey">
+                    {comment.date}
+                  </p>
                 </div>
               </div>
 
-              <p className="pl-[60px] md:text-base xl:text-lg">
+              <p className="md:t16 xl:text-t18 pl-[60px] text-t10">
                 {comment.text}
               </p>
               {/* check comment owner */}
-              <button
-                className="ml-auto py-2 text-[13px] italic text-red md:text-sm xl:text-base"
-                onClick={handleRemoveClick}
-              >
-                Видалити
-              </button>
+              <CommentsRemoveButton />
             </li>
           );
         })}

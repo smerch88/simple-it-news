@@ -9,7 +9,6 @@ import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
 import { Stars } from '@/components/news/Stars';
 import defaultImg from '@/public/card/card_mobile.png';
-import { ArticleType } from '@/types';
 
 export async function generateMetadata({
   params,
@@ -24,33 +23,26 @@ export async function generateMetadata({
   };
 }
 
-async function getNews() {
+async function getNews(id: string) {
   const res = await fetch(
-    'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-    { next: { revalidate: 43200 } },
+    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/News/${id}`,
+    {
+      method: 'GET',
+      next: { revalidate: 43200 },
+    },
   );
   return res.json();
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const newsData = getNews();
   const { id } = params;
-
-  const [news] = await Promise.all([newsData]);
-
-  const post = news.articles.find(
-    (item: ArticleType) =>
-      item.title
-        .replace(/[^a-zA-Z0-9\s]/g, '')
-        .replace(/\s+/g, '-')
-        .toLowerCase() == id,
-  );
+  const post = await getNews(id);
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
-  const publishedDate = new Date(post?.publishedAt);
+  const publishedDate = new Date(post?.pub_date);
 
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -64,85 +56,88 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div className="container">
-      <ul className="mb-6 flex flex-row text-[10px] md:mb-10 md:text-xs xl:text-sm">
-        <li>
+      <ul className="text-menuItemsMob10 mb-6 flex flex-row text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
+        <li className="duration-300 hover:text-blue_hover">
           <Link href="/" rel="canonical">
             Головна
           </Link>
         </li>
-        <li className="before:whitespace-pre before:content-['_/_'] hover:opacity-75">
-          <Link href="/" rel="canonical">
-            Категорії
+        <li className="duration-300  before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
+          <Link href="/news" rel="canonical">
+            Новини
+            {/* {post.categories[0].name} */}
           </Link>
         </li>
-        <li className="before:whitespace-pre before:content-['_/_'] hover:opacity-75">
+        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
           <Link
             href={'/news/' + id}
-            rel="canonical"
+            target="blank"
+            rel="noreferrer nofollow"
             className="underline underline-offset-2"
           >
-            Новини {post?.source?.id}
+            {post?.title}
           </Link>
         </li>
       </ul>
       <article>
-        <h1 className="mb-1 text-2xl font-semibold md:text-[32px] xl:text-[40px]">
+        <h1 className="font-playfair md:text-title32 xl:text-title40 text-title24 mb-1 font-semibold">
           {post?.title}
         </h1>
-        <p className="mb-6 text-[13px] italic text-grey md:text-sm xl:text-base">
-          <time>{formattedDate}</time>
-        </p>
 
-        {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
-          <div className="relative mb-2 h-full min-h-[150px] w-full">
-            <Image
-              src={post.urlToImage ? post.urlToImage : defaultImg}
-              fill
-              className="object-contain"
-              alt={post.title + 'Image'}
-            />
-          </div>
-        ) : null}
-        <div className="mb-6 flex justify-between text-sm text-blue hover:text-blue_hover md:text-base xl:text-lg">
-          {post?.author ? (
-            <Link
-              href={post?.url}
-              rel="canonical"
-              target="blank"
-              className="underline underline-offset-2"
-            >
-              {post.author}
-            </Link>
-          ) : null}
+        <time className="md:text-menuItemsTab14 text-menuItemsMob13 mb-6 inline-block italic text-grey xl:text-menuItemsMob">
+          {formattedDate}
+        </time>
+
+        <div className="relative mb-2">
+          <Image
+            src={defaultImg}
+            // src={post.image_url ? post.image_url : defaultImg}
+            width={0}
+            height={0}
+            alt={post.title + 'Image'}
+            className="h-full max-h-[150px] w-auto  md:max-h-[480px] "
+          />
         </div>
-        <Management />
-        <p className="mb-2 text-sm md:mb-8 md:text-base xl:text-lg">
+
+        {post?.author ? (
+          <Link
+            href={post?.author}
+            rel="canonical"
+            target="blank"
+            className="md:text-t16 xl:text-t18 mb-6 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover"
+          >
+            {post.author}
+          </Link>
+        ) : null}
+
+        <Management time={post.time_to_read} rating={post.rating} />
+        <p className="md:text-t16 xl:text-t18 mb-2 text-t14 md:mb-8">
           {post?.description}
         </p>
 
-        <p className="mb-12  border-b border-black pb-4 text-sm md:text-base xl:text-lg">
+        <p className="md:text-t16  xl:text-t18 mb-12 border-b border-dark pb-4 text-t14">
           {post?.content}
         </p>
       </article>
       <div className="mb-12">
-        <p className="mb-2 text-[13px] italic text-dark md:text-sm xl:text-base">
-          Будь ласка оцініть автора
+        <p className="text-menuItemsMob13 md:text-menuItemsTab14 mb-2 italic text-dark xl:text-menuItemsMob">
+          Будь ласка оцініть новину
         </p>
         <Stars />
       </div>
       <Comments />
-      <div className="py-4">
-        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white md:text-2xl">
+      <div className="font-playfair md:text-menuTitleTab py-4 text-left text-menuTitleMob">
+        <h2 className=" mb-3 block rounded bg-dark px-3  py-2  font-semibold text-white">
           Інші публікації цього автора
         </h2>
-        {/* Slider */}
-        <Carousel />
+        <Carousel mode="author" author_id={post?.author?.id} />
       </div>
-      <div className="py-4">
-        <h2 className="mb-3 block rounded bg-dark px-3 py-2 text-center text-lg font-semibold text-white md:text-2xl">
+      <div className="font-playfair md:text-menuTitleTab py-4 text-left text-menuTitleMob">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2   font-semibold text-white ">
           Більше з категорії новини
+          {/* {post.categories[0].name} */}
         </h2>
-        <Carousel />
+        <Carousel mode="categories" categories={post?.categories[0]} />
       </div>
     </div>
   );

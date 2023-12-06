@@ -2,7 +2,7 @@ import './globals.css';
 
 import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
-import { Lato } from 'next/font/google';
+import { Lato, Playfair_Display } from 'next/font/google';
 
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
@@ -10,6 +10,13 @@ import { Header } from '@/components/Header';
 const lato = Lato({
   weight: ['400'],
   subsets: ['latin-ext'],
+  variable: '--font-lato',
+});
+
+const playfairDisplay = Playfair_Display({
+  weight: ['400', '600'],
+  subsets: ['latin-ext'],
+  variable: '--font-playfairDisplay',
 });
 
 export const metadata: Metadata = {
@@ -50,7 +57,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="uk" className={lato.className}>
+    <html lang="uk" className={`${playfairDisplay.variable} ${lato.variable}`}>
       <head>
         <script
           type="application/ld+json"

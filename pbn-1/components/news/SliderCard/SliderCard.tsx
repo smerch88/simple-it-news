@@ -14,9 +14,9 @@ export const SliderCard = ({ slider }: SliderProps) => {
           alt=""
           width={244}
           height={150}
-          className="mb-2 mdOnly:hidden"
+          className="mb-2 h-auto w-auto"
         />
-        <p className="mb-1 text-sm text-red md:text-base xl:text-lg">
+        <p className="md:text-t16 xl:text-t18 font-lato mb-1 text-t14 text-red">
           {slider.category}
         </p>
         <h3 className="text-lg md:text-2xl">{slider.title}</h3>
