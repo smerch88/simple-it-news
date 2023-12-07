@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { StarTime } from '@/components/common/StartTime';
-
+import { Playfair_Display } from 'next/font/google';
 import { ArticleTypeProps } from './CardPost.props';
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 export const CardPost: FC<ArticleTypeProps> = ({ article }) => {
   const publishedDate = new Date(article.update_date);
@@ -42,9 +44,11 @@ export const CardPost: FC<ArticleTypeProps> = ({ article }) => {
           <p className="text-base font-normal text-red">Новини</p>
           <StarTime time={article.time_to_read} rating={article.rating} />
           <Link href={`/posts/${article.route}`} rel="canonical">
-            <h3 className="mb-3 text-2xl font-bold text-dark">
+            <div
+              className={`${playfairDisplay.className} mb-3 text-2xl font-bold text-dark`}
+            >
               {article.title}
-            </h3>
+            </div>
           </Link>
           <p className="mb-4 text-grey">{article.description}</p>
         </div>

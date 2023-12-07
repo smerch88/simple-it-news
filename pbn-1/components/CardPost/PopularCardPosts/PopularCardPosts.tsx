@@ -14,7 +14,7 @@ export const PopularCardPosts: FC<ArticleTypeProps> = ({ articles }) => {
           {articles?.map(article => (
             <li
               key={article.id}
-              className="h-full min-w-[260px] rounded border border-lightgrey px-4 py-5 xl:w-full"
+              className="min-w-[260px] rounded border border-lightgrey px-4 py-5 xl:w-full notXl:h-full"
             >
               <div className="relative mb-2 hidden h-40 w-full smOnly:flex">
                 <Image

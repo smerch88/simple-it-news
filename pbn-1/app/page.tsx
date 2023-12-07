@@ -3,10 +3,14 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { Playfair_Display } from 'next/font/google';
+
 import { CardPost } from '@/components/CardPost/CardPost';
 import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
 import { ArticleType } from '@/types';
 // import { getClient } from '@/utils/apollo-client';
+
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 
 // const query = gql`
 //   {
@@ -94,7 +98,9 @@ export default async function Home() {
           </li>
         </ul>
         <div className="mb-10 flex flex-col gap-2">
-          <h1 className="text-t24 md:text-t32 xl:text-t40">
+          <h1
+            className={`${playfairDisplay.className} text-t24 md:text-t32 xl:text-t40`}
+          >
             Всі новини у сфері IT
           </h1>
           <p className="text-base font-normal italic">
@@ -129,7 +135,9 @@ export default async function Home() {
           </div>
 
           <div className="order-2 flex flex-col xl:col-start-2 xl:col-end-2">
-            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl ">
+            <h2
+              className={`${playfairDisplay.className} mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl`}
+            >
               Популярне :
             </h2>
             <PopularCardPosts articles={news} />
