@@ -1,9 +1,6 @@
-// deprecated
 import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 
-import { ArticleType } from '@/types';
+import { Post } from '@/components/common/Post/Post';
 
 export async function generateMetadata({
   params,
@@ -18,95 +15,50 @@ export async function generateMetadata({
   };
 }
 
-async function getNews() {
+async function getNews(id: string) {
   const res = await fetch(
-    'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-    { next: { revalidate: 43200 } },
+    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/News/${id}`,
+    {
+      method: 'GET',
+      next: { revalidate: 43200 },
+    },
   );
   return res.json();
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
-  const newsData = getNews();
   const { id } = params;
-
-  const [news] = await Promise.all([newsData]);
-
-  const post = news.articles.find(
-    (item: ArticleType) =>
-      item.title
-        .replace(/[^a-zA-Z0-9\s]/g, '')
-        .replace(/\s+/g, '-')
-        .toLowerCase() == id,
-  );
+  const post = await getNews(id);
 
   if (!post) {
     return <div>Post not found</div>;
   }
 
-  const publishedDate = new Date(post?.publishedAt);
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-  };
-
-  const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+  const {
+    pub_date,
+    postId,
+    title,
+    image_url,
+    author,
+    time_to_read,
+    rating,
+    description,
+    content,
+  } = post;
 
   return (
-    <div className="container">
-      <ul className="mb-2 flex flex-row md:mb-4">
-        <li>
-          <Link href="/" rel="canonical">
-            Головна
-          </Link>
-        </li>
-        <li className="before:content-['/'] hover:opacity-75">
-          {' '}
-          <Link
-            href={'/news/' + id}
-            rel="canonical"
-            className="underline underline-offset-2"
-          >
-            Пост {post?.source?.id}
-          </Link>
-        </li>
-      </ul>
-      <article>
-        <h1 className="mb-2 text-xl font-bold">{post?.title}</h1>
-        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
-          {post?.description}
-        </h2>
-        {post?.urlToImage && post.urlToImage.startsWith('https://') ? (
-          <div className="relative mb-2 h-80 w-full md:mb-8">
-            <Image
-              src={post.urlToImage}
-              fill
-              className="object-contain"
-              alt={post.title + 'Image'}
-            />
-          </div>
-        ) : null}
-        <p className="mb-2 md:mb-8">{post?.content}</p>
-        <div className="mb-2 flex justify-between text-gray-400/80">
-          <Link href={post?.url} rel="canonical" target="blank">
-            джерело
-          </Link>
-          <div className="flex flex-row">
-            {post?.author ? (
-              <address>
-                <span className="mr-2" rel="author">
-                  {post.author}
-                </span>
-              </address>
-            ) : null}
-            <time>{formattedDate}</time>
-          </div>
-        </div>
-      </article>
-    </div>
+    <Post
+      pub_date={pub_date}
+      id={postId}
+      title={title}
+      image_url={image_url}
+      author={author}
+      // TODO:add real author url
+      author_url={'#'}
+      time_to_read={time_to_read}
+      rating={rating}
+      description={description}
+      content={content}
+    />
   );
 }

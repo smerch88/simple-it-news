@@ -17,7 +17,7 @@ export const Footer = () => (
         <ul className="mb-2 flex flex-row justify-center gap-4 text-white">
           <li>
             <Link href="#" target="blank" rel="noreferrer nofollow">
-              <Telegram className="h-10 w-10" />
+              <Telegram className="h-8 w-8" />
             </Link>
           </li>
           <li>
@@ -26,12 +26,12 @@ export const Footer = () => (
               target="blank"
               rel="noreferrer nofollow"
             >
-              <LinkedIn className="h-10 w-10" />
+              <LinkedIn className="h-8 w-8" />
             </Link>
           </li>
           <li>
             <Link href="#" target="blank" rel="noreferrer nofollow">
-              <Twitter className="h-10 w-10" />
+              <Twitter className="h-8 w-8" />
             </Link>
           </li>
           <li>
@@ -40,7 +40,7 @@ export const Footer = () => (
               target="blank"
               rel="noreferrer nofollow"
             >
-              <Facebook className="h-10 w-10" />
+              <Facebook className="h-8 w-8" />
             </Link>
           </li>
         </ul>
