@@ -1,9 +1,8 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { StructuredText } from 'react-datocms';
 
+import { Post } from '@/components/common/Post/Post';
 import { getClient } from '@/utils/apollo-client';
 
 export async function generateMetadata({
@@ -84,17 +83,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   });
 
   const article = data.allNewsposts[0];
-  const publishedDate = new Date(article._publishedAt);
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-  };
-
-  const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
 
   const breadCrumbsJsonLD = {
     '@context': 'https://schema.org',
@@ -136,8 +124,17 @@ export default async function Page({ params }: { params: { id: string } }) {
     dateModified: `${article._updatedAt}`,
   };
 
+  const {
+    author,
+    id: postId,
+    _publishedAt,
+    title,
+    articlepicture,
+    shortdescription,
+  } = article;
+
   return (
-    <div className="container">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
@@ -148,56 +145,19 @@ export default async function Page({ params }: { params: { id: string } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLD) }}
         key="article-jsonld"
       />
-      <nav>
-        <ul className="mb-2 flex flex-row md:mb-4">
-          <li>
-            <Link href="/" rel="canonical">
-              Головна
-            </Link>
-          </li>
-          <li className="before:content-['/'] hover:opacity-75">
-            {' '}
-            <Link
-              href={'/posts/' + id[0]}
-              rel="canonical"
-              className="underline underline-offset-2"
-            >
-              Пост
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <article>
-        <h1 className="mb-2 text-xl font-bold">{article.title}</h1>
-        <div className="mb-2 flex justify-between text-gray-400/80">
-          <div className="flex flex-col md:flex-row">
-            <address>
-              <Link
-                href={'/authors/' + article.author.route}
-                rel="canonical"
-                className="mr-2"
-              >
-                {article.author.authorname}
-              </Link>
-            </address>
-            <time>{formattedDate}</time>
-          </div>
-        </div>
-        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
-          {article.shortdescription}
-        </h2>
-        <div className="relative mb-2 h-80 w-full md:mb-8">
-          <Image
-            src={article.articlepicture.url}
-            fill
-            className="object-contain"
-            alt={article.articlepicture.alt}
-          />
-        </div>
-        <div className="mb-2">
-          <StructuredText data={article.articletext} />
-        </div>
-      </article>
-    </div>
+      <Post
+        pub_date={_publishedAt}
+        id={postId}
+        title={title}
+        image_url={articlepicture.url}
+        author={author.authorname}
+        author_url={author.route}
+        time_to_read={15}
+        rating={5}
+        description={shortdescription}
+      >
+        <StructuredText data={article.articletext} />
+      </Post>
+    </>
   );
 }

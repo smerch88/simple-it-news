@@ -8,9 +8,9 @@ const menuItems = [
   { title: 'Новини', route: '/news' },
   { title: 'Пости', route: '/posts' },
   { title: 'Статті', route: '/articles' },
-  { title: 'Інтерв’ю', route: '/interviews' },
+  // { title: 'Інтерв’ю', route: '/interviews' },
   { title: 'Автори', route: '/authors' },
-  { title: 'Подкасти', route: '/podcasts' },
+  // { title: 'Подкасти', route: '/podcasts' },
 ];
 
 export const Header = () => {
@@ -35,7 +35,10 @@ export const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contacts" className="menuTitleMob px-3 py-1">
+                  <Link
+                    href="/about-us/contancts"
+                    className="menuTitleMob px-3 py-1"
+                  >
                     Контакти
                   </Link>
                 </li>
