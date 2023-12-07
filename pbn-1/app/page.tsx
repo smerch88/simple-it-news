@@ -1,8 +1,10 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 
-import { CmsPost } from '@/components/CmsPost';
-import { CmsArticleType } from '@/types';
+import { CardPost } from '@/components/CardPost/CardPost';
+import { CardPostRest } from '@/components/CardPost/CardPostRest';
+import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
+import { CmsArticleType, RESTAPIPost } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
 const query = gql`
@@ -57,17 +59,19 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// async function getNews() {
-//   const res = await fetch(
-//     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-//     { next: { revalidate: 43200 } },
-//   );
-//   return res.json();
-// }
+async function getNews() {
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_BASE_URL + '/api/ApprovedNews/',
+    {
+      next: { revalidate: 60 },
+    },
+  );
+  return res.json();
+}
 
 export default async function Home() {
-  // const newsData = getNews();
-  // const [news] = await Promise.all([newsData]);
+  const newsData = getNews();
+  const [news] = await Promise.all([newsData]);
 
   const { data } = await getClient().query({
     query,
@@ -81,22 +85,49 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <h1 className="text-center text-2xl font-semibold uppercase">
-          Актуальні IT Новини
-        </h1>
-        <h2 className="mb-2 text-center text-sm font-semibold uppercase">
-          Читай про айті просто
-        </h2>
-        <ul className="mb-2 flex flex-col gap-8">
-          {data.allNewsposts.map((article: CmsArticleType) => (
-            <CmsPost key={article.id} article={article} />
-          ))}
-        </ul>
-        {/* <ul className="flex flex-col gap-8">
-          {news.articles.map((article: ArticleType, index: number) => (
-            <Post key={'article' + index} article={article} />
-          ))}
-        </ul> */}
+        <div className="mb-10 flex flex-col gap-2">
+          <h1 className="text-[40px]/[60px] font-semibold">
+            Всі новини у сфері IT
+          </h1>
+          <p className="text-base font-normal italic">
+            {/* TODO: remove hardcode */}
+            Останне оновлення 11.11.2023 19:28
+          </p>
+        </div>
+        <div className="xl:grid-row-8 flex flex-col gap-6 xl:grid xl:grid-flow-row-dense xl:grid-cols-[796px_minmax(365px,_auto)] xl:gap-5">
+          <div className="order-1 flex w-full flex-col xl:col-start-1 xl:col-end-1 xl:row-start-1 xl:row-end-4">
+            <h2 className="mb-8 flex w-full rounded bg-red px-3 py-2 text-2xl text-white">
+              Новини
+            </h2>
+            <ul className="mb-2 flex flex-wrap gap-8">
+              {news.map((article: RESTAPIPost) => (
+                <CardPostRest key={article.id} article={article} />
+              ))}
+            </ul>
+          </div>
+
+          <div className="order-3 flex w-full flex-col xl:col-start-1 xl:col-end-1">
+            <h2 className="mb-8 flex w-full rounded bg-blueDark px-3 py-2 text-2xl text-white">
+              Пости
+            </h2>
+            <ul className="mb-2 flex flex-wrap gap-8">
+              {data.allNewsposts?.map((article: CmsArticleType) => (
+                <CardPost key={article.id} article={article} />
+              ))}
+            </ul>
+          </div>
+
+          {/* <div className="order-4 flex flex-col xl:col-start-2 xl:col-end-2">
+            <Image src={'/img/Grade.jpg'} width={388} height={581} alt="" />
+          </div> */}
+
+          <div className="order-2 hidden flex-col xl:col-start-2 xl:col-end-2 xl:flex">
+            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl">
+              Популярні новини
+            </h2>
+            <PopularCardPosts articles={data.allNewsposts} />
+          </div>
+        </div>
       </div>
     </>
   );

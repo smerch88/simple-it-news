@@ -22,7 +22,7 @@ const config: Config = {
           DEFAULT: '1rem',
           sm: '1rem',
           md: '2.5rem',
-          xl: '2.5rem',
+          xl: '0',
         },
       },
       colors: {
@@ -33,6 +33,7 @@ const config: Config = {
         blue: '#0C4588',
         blue_hover: '#105FBC',
         red: '#A42A03',
+        blueDark: '#0357A4',
       },
       fontFamily: {
         lato: ['var(--font-lato)'],
