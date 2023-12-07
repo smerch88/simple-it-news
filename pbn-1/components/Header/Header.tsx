@@ -8,9 +8,9 @@ const menuItems = [
   { title: 'Новини', route: '/news' },
   { title: 'Пости', route: '/posts' },
   { title: 'Статті', route: '/articles' },
-  { title: 'Інтерв’ю', route: '/interviews' },
+  // { title: 'Інтерв’ю', route: '/interviews' },
   { title: 'Автори', route: '/authors' },
-  { title: 'Подкасти', route: '/podcasts' },
+  // { title: 'Подкасти', route: '/podcasts' },
 ];
 
 export const Header = () => {
@@ -35,7 +35,10 @@ export const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contacts" className="menuTitleMob px-3 py-1">
+                  <Link
+                    href="/about-us/contancts"
+                    className="menuTitleMob px-3 py-1"
+                  >
                     Контакти
                   </Link>
                 </li>
@@ -49,7 +52,7 @@ export const Header = () => {
           {menuItems &&
             menuItems.map(item => (
               <li key={item.title}>
-                <Link href={item.route} className="text-t20 px-4 py-2">
+                <Link href={item.route} className="px-4 py-2 text-t20">
                   {item.title}
                 </Link>
               </li>

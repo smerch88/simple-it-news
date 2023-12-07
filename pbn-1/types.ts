@@ -55,3 +55,38 @@ export interface Source {
   id: unknown;
   name: string;
 }
+
+export interface RESTAPIPost {
+  id: number;
+  title: string;
+  author: Author;
+  link: string;
+  image_url: string;
+  description: string;
+  pub_date: Date;
+  update_date: Date;
+  country: string;
+  content: string;
+  tags: Category[];
+  rating: number;
+  categories: Category[];
+  time_to_read: number;
+  is_approved: boolean;
+}
+
+export interface Author {
+  id: number;
+  name: string;
+  description: string;
+  route: string;
+  facebook: string | null;
+  twitter: string | null;
+  telegram: string | null;
+  // TODO: fix this type
+  articles: { route: string; title: string }[];
+}
+
+export interface Category {
+  id: number;
+  title: string;
+}
