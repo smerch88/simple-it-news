@@ -50,7 +50,7 @@ export const Post: FC<PostProps> = ({
             Головна
           </Link>
         </li>
-        <li className="duration-300  before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
+        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
           <Link href="/news" rel="canonical">
             Новини
             {/* {categories[0].name} */}
@@ -86,7 +86,6 @@ export const Post: FC<PostProps> = ({
           <Link
             href={'/authors/' + author_url}
             rel="canonical"
-            target="blank"
             className="mb-6 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover md:text-t16 xl:text-t18"
           >
             {author}

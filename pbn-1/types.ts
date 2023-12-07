@@ -79,9 +79,9 @@ export interface Author {
   name: string;
   description: string;
   route: string;
-  facebook: null;
-  twitter: string;
-  telegram: null;
+  facebook: string | null;
+  twitter: string | null;
+  telegram: string | null;
   // TODO: fix this type
   articles: { route: string; title: string }[];
 }

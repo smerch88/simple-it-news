@@ -1,6 +1,5 @@
 import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-import Image from 'next/image';
 
 import { CardPost } from '@/components/CardPost/CardPost';
 import { CardPostRest } from '@/components/CardPost/CardPostRest';
@@ -61,9 +60,12 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function getNews() {
-  const res = await fetch('http://82.180.160.12:8000/api/ApprovedNews/', {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(
+    process.env.NEXT_PUBLIC_API_BASE_URL + '/api/ApprovedNews/',
+    {
+      next: { revalidate: 60 },
+    },
+  );
   return res.json();
 }
 
@@ -79,9 +81,6 @@ export default async function Home() {
       },
     },
   });
-
-  // eslint-disable-next-line no-console
-  console.log('news', news);
 
   return (
     <>
@@ -108,7 +107,7 @@ export default async function Home() {
           </div>
 
           <div className="order-3 flex w-full flex-col xl:col-start-1 xl:col-end-1">
-            <h2 className="bg-blueDark mb-8 flex w-full rounded px-3 py-2 text-2xl text-white">
+            <h2 className="mb-8 flex w-full rounded bg-blueDark px-3 py-2 text-2xl text-white">
               Пости
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
@@ -118,12 +117,12 @@ export default async function Home() {
             </ul>
           </div>
 
-          <div className="order-4 flex flex-col xl:col-start-2 xl:col-end-2">
+          {/* <div className="order-4 flex flex-col xl:col-start-2 xl:col-end-2">
             <Image src={'/img/Grade.jpg'} width={388} height={581} alt="" />
-          </div>
+          </div> */}
 
-          <div className="order-2 flex flex-col xl:col-start-2 xl:col-end-2">
-            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl ">
+          <div className="order-2 hidden flex-col xl:col-start-2 xl:col-end-2 xl:flex">
+            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl">
               Популярні новини
             </h2>
             <PopularCardPosts articles={data.allNewsposts} />

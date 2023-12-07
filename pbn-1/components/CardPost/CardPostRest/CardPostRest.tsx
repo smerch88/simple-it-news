@@ -40,7 +40,7 @@ export const CardPostRest: FC<CmsPostProps> = ({ article }) => {
         <p className="text-base font-normal text-red">Новини</p>
         <StarTime time={article.time_to_read} rating={article.rating} />
         {/* TODO: add real route */}
-        <Link href={`/posts/${1}`} rel="canonical">
+        <Link href={`/news/${article.id}`} rel="canonical">
           <h3 className="mb-3 text-2xl font-bold text-dark">{article.title}</h3>
         </Link>
         <p className="mb-4 text-grey">{article.description}</p>
