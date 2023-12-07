@@ -31,7 +31,7 @@ export default function Page() {
       <div className="  mt-6 text-base font-semibold">
         <p className=" last:mt-3 ">Маєш питання? Знайди його тут.</p>
         <p className=" last:mt-3 ">
-          Не знайшов? Напиши нам на{' '}
+          Не знайшов? Напиши нам на
           <Link className="text-blue " href={'whatsApp'}>
             WhatsApp
           </Link>
