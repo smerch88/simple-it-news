@@ -1,20 +1,38 @@
-import { gql } from '@apollo/client';
+//import { gql } from '@apollo/client';
 import { Metadata } from 'next';
-
-import { CmsPost } from '@/components/CmsPost';
-import { CmsArticleType } from '@/types';
-import { getClient } from '@/utils/apollo-client';
 import Image from 'next/image';
+import Link from 'next/link';
+
 import { CardPost } from '@/components/CardPost/CardPost';
 import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
+import { ArticleType } from '@/types';
+// import { getClient } from '@/utils/apollo-client';
 
-const query = gql`
-  {
-    ApprovedNews {
-      
-    }
-  }
-`;
+// const query = gql`
+//   {
+//     allNewsposts {
+//       id
+//       title
+//       _status
+//       _firstPublishedAt
+//       shortdescription
+//       articlepicture {
+//         width
+//         url
+//         height
+//         alt
+//       }
+//       _createdAt
+//       _publishedAt
+//       author {
+//         authorname
+//         route
+//       }
+//       route
+//       tags
+//     }
+//   }
+// `;
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -42,32 +60,41 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-// async function getNews() {
-//   const res = await fetch(
-//     'https://newsapi.org/v2/everything?q=programming&sortBy=publishedAt&apiKey=2d80d99cb4a646c8b306a0a9cfee8dba',
-//     { next: { revalidate: 43200 } },
-//   );
-//   return res.json();
-// }
+async function getNews() {
+  const res = await fetch('http://82.180.160.12:8000/api/ApprovedNews/', {
+    next: { revalidate: 60 },
+  });
+  return res.json();
+}
 
 export default async function Home() {
-  // const newsData = getNews();
-  // const [news] = await Promise.all([newsData]);
+  const newsData = getNews();
+  const [news] = await Promise.all([newsData]);
 
-  const { data } = await getClient().query({
-    query,
-    context: {
-      fetchOptions: {
-        next: { revalidate: 60 },
-      },
-    },
-  });
+  // const { data } = await getClient().query({
+  //   query,
+  //   context: {
+  //     fetchOptions: {
+  //       next: { revalidate: 60 },
+  //     },
+  //   },
+  // });
+
+  // eslint-disable-next-line no-console
+  // console.log('news', news);
 
   return (
     <>
       <div className="container relative">
+        <ul className="mb-6 flex flex-row text-[10px] md:mb-10 md:text-xs xl:text-sm">
+          <li>
+            <Link href="/" rel="canonical">
+              Головна
+            </Link>
+          </li>
+        </ul>
         <div className="mb-10 flex flex-col gap-2">
-          <h1 className="text-[40px]/[60px] font-semibold">
+          <h1 className="text-t24 md:text-t32 xl:text-t40">
             Всі новини у сфері IT
           </h1>
           <p className="text-base font-normal italic">
@@ -80,7 +107,7 @@ export default async function Home() {
               Новини
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {data.allNewsposts?.map((article: CmsArticleType) => (
+              {news?.map((article: ArticleType) => (
                 <CardPost key={article.id} article={article} />
               ))}
             </ul>
@@ -91,7 +118,7 @@ export default async function Home() {
               Пости
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {data.allNewsposts?.map((article: CmsArticleType) => (
+              {news?.map((article: ArticleType) => (
                 <CardPost key={article.id} article={article} />
               ))}
             </ul>
@@ -103,9 +130,9 @@ export default async function Home() {
 
           <div className="order-2 flex flex-col xl:col-start-2 xl:col-end-2">
             <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl ">
-              Популярні новини
+              Популярне :
             </h2>
-            <PopularCardPosts articles={data.allNewsposts} />
+            <PopularCardPosts articles={news} />
           </div>
         </div>
       </div>

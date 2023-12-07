@@ -5,14 +5,25 @@ export type NewsType = {
 };
 
 export type ArticleType = {
-  source: Source;
-  author: unknown;
+  id: number;
   title: string;
+  author: Author;
+  link: string;
+
+  source: Source;
+  image_url: string;
   description: string;
-  url: string;
-  urlToImage: string;
-  publishedAt: string;
+  update_date: string;
+  country: string;
   content: string;
+  tags: [];
+  rating: number;
+  categories: [];
+  time_to_read: number;
+  is_approved: boolean;
+  // url: string;
+  // urlToImage: string;
+  // publishedAt: string;
 };
 
 export interface CmsArticleType {
@@ -38,9 +49,14 @@ export interface CmsArticleType {
 }
 
 export interface Author {
+  id: number;
+  name: string;
+  description: string;
+  route: string;
+
   authordescription: string;
   authorname: string;
-  route: string;
+
   socials: { [platform: string]: string };
   articles: { route: string; title: string }[];
   authorimage: {

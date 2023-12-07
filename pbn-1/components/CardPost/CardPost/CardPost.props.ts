@@ -1,5 +1,5 @@
-import { CmsArticleType } from '@/types';
+import { ArticleType } from '@/types';
 
-export type CmsPostProps = {
-  article: CmsArticleType;
+export type ArticleTypeProps = {
+  article: ArticleType;
 };
