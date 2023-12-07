@@ -1,11 +1,11 @@
+import './faq.css';
 import Link from 'next/link';
 import AskIcon from '@/public/notsorted/question-mark.svg';
-import UpIcon from '@/public/notsorted/arrow-up.svg';
 import DownIcon from '@/public/notsorted/arrow-down.svg';
 import data from '@/data/faq.json';
 export default function Page() {
   return (
-    <div className="container">
+    <div className=" g container">
       <nav>
         <ul className="mb-2 flex flex-row md:mb-4">
           <li>
@@ -43,11 +43,11 @@ export default function Page() {
             key={id}
             className=" no-select rounded-tl-8 rounded-tr-8  mb-2 flex cursor-pointer   gap-2  last:mb-0 "
           >
-            <details className=" relative w-full">
+            <details className=" relative w-full  ">
               <summary className="  text-t24 mb-2 flex  list-none  border-b border-dark pb-2 pr-5  text-dark   smOnly:text-menuTitleMob">
                 <AskIcon className=" mr-2 mt-1 h-5 w-5 " />
                 {title}
-                <DownIcon className="absolute  right-0 top-2 h-5 w-5 bg-white  smOnly:top-1  smOnly:h-5 smOnly:w-5" />
+                <DownIcon className="arrwoIcon    absolute  right-0 top-2 h-5 w-5 bg-white  smOnly:top-1  smOnly:h-5 smOnly:w-5" />
               </summary>
               <p className="smOnly:text-t14  max-w-[653px]  text-menuTitleMob   text-grey smOnly:max-w-[262px]  mdOnly:text-menuItemsMob">
                 {text}{' '}
@@ -56,7 +56,6 @@ export default function Page() {
                   {link}
                 </Link>
               </p>
-              <UpIcon className="absolute  right-0 top-2 h-5 w-5 bg-white smOnly:top-1  smOnly:h-5 smOnly:w-5" />
             </details>
           </li>
         ))}
