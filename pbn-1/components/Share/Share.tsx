@@ -8,12 +8,17 @@ type ShareItem = {
 
 export const ShareButton = ({ description }: { description: string }) => {
   const [url, setUrl] = useState('https://www.youtube.com/');
+  const [showList, setShowList] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setUrl('https://www.youtube.com/');
     }
   }, []);
+
+  const toggleList = () => {
+    setShowList(!showList);
+  };
 
   const handleShareWebAPI = () => {
     if (navigator.share) {
@@ -299,16 +304,30 @@ export const ShareButton = ({ description }: { description: string }) => {
   ];
 
   return (
-    <div className="flex items-center">
-      <p className="mr-4">Поділитися:</p>
-
-      <ul className="flex">
-        {shareList.map(({ func, icon }, id) => (
-          <li className="mr-2" key={id}>
-            <button onClick={func}>{icon}</button>
-          </li>
-        ))}
-      </ul>
+    <div>
+      <button className="mb-4" onClick={toggleList}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="20"
+          viewBox="0 0 24 20"
+          fill="none"
+        >
+          <path
+            d="M12.8501 19.9891C13.3842 19.9891 13.8202 19.7711 14.3434 19.2807L22.9428 11.1608C23.357 10.7684 23.4986 10.3542 23.4986 9.99456C23.4986 9.62402 23.3679 9.22071 22.9428 8.81744L14.3434 0.773842C13.7657 0.228883 13.406 0 12.8719 0C12.109 0 11.564 0.599455 11.564 1.3297V5.4496H11.248C3.41145 5.4496 0 10.4741 0 18.5286C0 19.466 0.53406 19.9891 1.12261 19.9891C1.58038 19.9891 2.08174 19.8801 2.46322 19.1826C4.35967 15.6186 7.02997 14.5504 11.248 14.5504H11.564V18.7139C11.564 19.4441 12.109 19.9891 12.8501 19.9891ZM13.4714 17.6458C13.3842 17.6458 13.3188 17.5803 13.3188 17.4823V13.2643C13.3188 13.0136 13.2098 12.9046 12.9591 12.9046H11.4987C6.32153 12.9046 3.01907 14.703 1.73297 17.4387C1.70027 17.515 1.67848 17.5477 1.62398 17.5477C1.58038 17.5477 1.54768 17.515 1.54768 17.4278C1.76567 12.2834 4.0109 7.09537 11.4987 7.09537H12.9591C13.2098 7.09537 13.3188 6.98638 13.3188 6.7357V2.40872C13.3188 2.32152 13.3842 2.25613 13.4823 2.25613C13.5477 2.25613 13.6131 2.29973 13.6676 2.34332L21.4278 9.78743C21.5041 9.86379 21.5367 9.92918 21.5367 9.99456C21.5367 10.0599 21.515 10.1144 21.4278 10.2017L13.6567 17.5477C13.6022 17.6131 13.5368 17.6458 13.4714 17.6458Z"
+            fill="#070707"
+          />
+        </svg>
+      </button>
+      {showList && (
+        <ul className="absolute flex w-max rounded border-2 border-solid bg-white p-3">
+          {shareList.map(({ func, icon }, id) => (
+            <li className="mr-2 last:mr-0" key={id}>
+              <button onClick={func}>{icon}</button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
