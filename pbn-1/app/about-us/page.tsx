@@ -1,4 +1,6 @@
+
 import { ShareButton } from '@/components/Share';
+
 const About = () => {
   return (
     <div>
