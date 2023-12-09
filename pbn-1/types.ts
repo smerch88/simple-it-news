@@ -71,6 +71,7 @@ export interface RESTAPIPost {
   rating: number;
   categories: Category[];
   time_to_read: number;
+  custom_url: string;
   is_approved: boolean;
 }
 
