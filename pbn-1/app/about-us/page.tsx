@@ -1,12 +1,5 @@
-
-import { ShareButton } from '@/components/Share';
-
 const About = () => {
-  return (
-    <div>
-      <ShareButton description="About-us page" />
-    </div>
-  );
+  return <div>About</div>;
 };
 
 export default About;
