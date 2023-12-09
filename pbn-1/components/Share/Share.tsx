@@ -7,12 +7,12 @@ type ShareItem = {
 };
 
 export const ShareButton = ({ description }: { description: string }) => {
-  const [url, setUrl] = useState('https://www.youtube.com/');
+  const [url, setUrl] = useState("");
   const [showList, setShowList] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setUrl('https://www.youtube.com/');
+      setUrl(window.location.href);
     }
   }, []);
 
