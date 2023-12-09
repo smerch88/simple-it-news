@@ -18,7 +18,7 @@ export const ArrowBookmark = () => {
 
   return (
     <div className="relative flex items-center gap-x-1">
-      <ShareButton description="Share a post" />
+      <ShareButton description="Дивіться що я знайшов!" />
       <button
         onClick={handleBookmarkClick}
         className="flex h-10 w-10 items-center justify-center"
