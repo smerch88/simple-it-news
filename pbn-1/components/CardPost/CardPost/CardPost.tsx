@@ -48,7 +48,7 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
             />
           </div>
         )}
-        <p className="text-base font-normal text-blueDark">Пости</p>
+        <p className="font-playfair text-base text-blueDark">Пости</p>
         <div className="flex w-full flex-row items-center justify-between">
           <div className="flex gap-3">
             <div className="flex gap-1 py-3">
