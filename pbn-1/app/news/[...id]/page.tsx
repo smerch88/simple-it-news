@@ -17,7 +17,7 @@ export async function generateMetadata({
 
 async function getNews(id: string) {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/ApprovedNews/${id}`,
+    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/ApprovedNews/?url=${id}`,
     {
       method: 'GET',
       next: { revalidate: 43200 },
@@ -44,7 +44,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     rating,
     description,
     content,
-  } = post;
+  } = post[0];
 
   return (
     <>
@@ -53,9 +53,9 @@ export default async function Page({ params }: { params: { id: string } }) {
         id={postId}
         title={title}
         image_url={image_url}
-        author={author.name}
+        author={author?.name}
         // TODO:add real author url
-        author_url={author.route}
+        author_url={author?.route}
         time_to_read={time_to_read}
         rating={rating}
         description={description}

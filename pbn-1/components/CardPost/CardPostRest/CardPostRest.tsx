@@ -46,7 +46,7 @@ export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
         <span className="text-menuItemsTab14 text-red">Новини</span>
         <StarTime time={article.time_to_read} rating={article.rating} />
         {/* TODO: add real route */}
-        <Link href={`/news/${article.id}`} rel="canonical">
+        <Link href={`/news/${article.custom_url}`} rel="canonical">
           <Tag className="md:menuTitleTab mb-2 font-playfair text-menuTitleMob text-dark md:mb-3 xl:text-t24 xl:font-normal">
             {article.title}
           </Tag>
