@@ -51,7 +51,7 @@ export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
             {article.title}
           </Tag>
         </Link>
-        <p className="md:t-16 xl:t-18 mb-2 text-t14 text-grey md:mb-3">
+        <p className="md:t-16 xl:t-18 mb-2 line-clamp-3 text-t14 text-grey md:mb-3">
           {article.description}
         </p>
 

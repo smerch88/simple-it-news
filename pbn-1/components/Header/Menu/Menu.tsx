@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { menuItems } from '@/data/routes';
+import { menuItemsCat } from '@/data/routes';
 import Burger from '@/public/header/burger.svg';
 import BurgerCross from '@/public/header/burgerCross.svg';
 import Logo from '@/public/header/logo.svg';
@@ -10,23 +12,6 @@ import Facebook from '@/public/socials/facebook.svg';
 import LinkedIn from '@/public/socials/linkedin.svg';
 import Telegram from '@/public/socials/telegram.svg';
 import Twitter from '@/public/socials/twitter.svg';
-
-const menuItems = [
-  { title: 'Новини', route: '/news' },
-  { title: 'Статті', route: '/articles' },
-  // { title: 'Подкасти', route: '/podcasts' },
-  { title: 'Пости', route: '/posts' },
-  { title: 'Автори', route: '/authors' },
-  // { title: 'Інтерв’ю', route: '/interviews' },
-];
-
-const menuItemsCat = [
-  { title: 'Ідея створення', route: '/about-us' },
-  { title: 'Наша команда', route: '/about-us' },
-  { title: 'Про Нас', route: '/about-us' },
-  { title: 'Політика Конфіденційності', route: '/about-us/policy' },
-  { title: 'FAQ', route: '/about-us/faq' },
-];
 
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
