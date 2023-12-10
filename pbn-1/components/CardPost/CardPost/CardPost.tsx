@@ -55,7 +55,9 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
               <Clock className="h-4 w-4" />
               <span className="text-xs font-normal text-grey">
                 {/* TODO: make normal time */}
-                <time>{Math.ceil(article.shortdescription.length / 45)}</time>{' '}
+                <time>
+                  {Math.ceil(article.shortdescription.length / 45)}
+                </time>{' '}
                 хв.
               </span>
             </div>
