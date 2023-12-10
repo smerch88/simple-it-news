@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Simple IT News',
       description: 'Просто ІТ новини. Читайте новини зі світу АйТі.',
-      url: process.env.DB_HOST,
+      url: process.env.HOST,
       siteName: 'Simple IT News',
       images: [
         {
