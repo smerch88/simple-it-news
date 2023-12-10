@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import { BreadCrumbs } from '@/components/BreadCrumbs';
 
-import foto from '@/public/about/first.webp'
+import foto from '@/public/about/first.webp';
 
 export const metadata: Metadata = {
   title: 'Про нас',
@@ -64,8 +64,6 @@ const breadCrumbsJsonLD = {
   ],
 };
 
-
-
 const About = () => {
   return (
     <section className="container">
@@ -79,7 +77,7 @@ const About = () => {
 
       <h1
         className={
-          "mb-12 font-playfair text-menuTitleMob text-dark md:mb-8 md:text-menuTitleTab"
+          'mb-12 font-playfair text-menuTitleMob text-dark md:mb-8 md:text-menuTitleTab'
         }
       >
         Ласкаво просимо на портал Simple IT News - ваше надійне джерело для
@@ -97,7 +95,7 @@ const About = () => {
           <div className="mb-12 md:mb-8 xl:w-[48%]">
             <h2
               className={
-                "mb-4 font-playfair text-menuTitleMob text-dark md:mb-4 md:text-t18 xl:text-t20"
+                'mb-4 font-playfair text-menuTitleMob text-dark md:mb-4 md:text-t18 xl:text-t20'
               }
             >
               Наша Місія
@@ -119,7 +117,7 @@ const About = () => {
         <div className="mb-12 md:mb-8">
           <h2
             className={
-              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20'
             }
           >
             Що ми пропонуємо
@@ -153,7 +151,7 @@ const About = () => {
         <div className="mb-12 md:mb-8">
           <h2
             className={
-              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20'
             }
           >
             Наша Команда
@@ -178,7 +176,7 @@ const About = () => {
           <div className="mb-12 md:mb-0 xl:w-[48%]">
             <h2
               className={
-                "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+                'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20'
               }
             >
               Гнучкість та Швидкість
@@ -206,7 +204,7 @@ const About = () => {
         <div className="mb-12 md:mb-8">
           <h2
             className={
-              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20'
             }
           >
             Ми обіцяємо продовжувати забезпечувати вас:
