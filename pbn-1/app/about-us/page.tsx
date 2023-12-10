@@ -1,10 +1,9 @@
-import cn from 'classnames';
 import { Metadata } from 'next';
-import { Playfair_Display } from 'next/font/google';
+
 import Image from 'next/image';
 import { BreadCrumbs } from '@/components/BreadCrumbs';
 
-import foto from '../../public/about/first.webp';
+import foto from '@/public/about/first.webp'
 
 export const metadata: Metadata = {
   title: 'Про нас',
@@ -65,12 +64,7 @@ const breadCrumbsJsonLD = {
   ],
 };
 
-const playfair = Playfair_Display({
-  weight: ['600', '400'],
-  subsets: ['latin'],
-  style: 'normal',
-  variable: '--font-playfair',
-});
+
 
 const About = () => {
   return (
@@ -84,10 +78,9 @@ const About = () => {
       <BreadCrumbs list={breadCrumbsList} />
 
       <h1
-        className={cn(
-          playfair.variable,
-          'mb-12 font-playfair text-menuTitleMob text-dark md:mb-8 md:text-menuTitleTab',
-        )}
+        className={
+          "mb-12 font-playfair text-menuTitleMob text-dark md:mb-8 md:text-menuTitleTab"
+        }
       >
         Ласкаво просимо на портал Simple IT News - ваше надійне джерело для
         останніх та найактуальніших ІТ новин!
@@ -103,10 +96,9 @@ const About = () => {
           />
           <div className="mb-12 md:mb-8 xl:w-[48%]">
             <h2
-              className={cn(
-                playfair.variable,
-                'mb-4 font-playfair text-menuTitleMob text-dark md:mb-4 md:text-t18 xl:text-t20',
-              )}
+              className={
+                "mb-4 font-playfair text-menuTitleMob text-dark md:mb-4 md:text-t18 xl:text-t20"
+              }
             >
               Наша Місія
             </h2>
@@ -126,10 +118,9 @@ const About = () => {
         </div>
         <div className="mb-12 md:mb-8">
           <h2
-            className={cn(
-              playfair.variable,
-              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20',
-            )}
+            className={
+              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+            }
           >
             Що ми пропонуємо
           </h2>
@@ -161,10 +152,9 @@ const About = () => {
         </div>
         <div className="mb-12 md:mb-8">
           <h2
-            className={cn(
-              playfair.variable,
-              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20',
-            )}
+            className={
+              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+            }
           >
             Наша Команда
           </h2>
@@ -187,10 +177,9 @@ const About = () => {
           />
           <div className="mb-12 md:mb-0 xl:w-[48%]">
             <h2
-              className={cn(
-                playfair.variable,
-                'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20',
-              )}
+              className={
+                "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+              }
             >
               Гнучкість та Швидкість
             </h2>
@@ -216,10 +205,9 @@ const About = () => {
         </div>
         <div className="mb-12 md:mb-8">
           <h2
-            className={cn(
-              playfair.variable,
-              'mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20',
-            )}
+            className={
+              "mb-4 font-playfair text-menuTitleMob text-dark md:mb-6 md:text-t18 xl:text-t20"
+            }
           >
             Ми обіцяємо продовжувати забезпечувати вас:
           </h2>
