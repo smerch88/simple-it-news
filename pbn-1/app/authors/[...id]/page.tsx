@@ -3,10 +3,9 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Author } from '@/types';
 import { getClient } from '@/utils/apollo-client';
-
-import { BreadCrumbs } from '@/components/BreadCrumbs';
 
 interface PageData {
   allAuthors: Author[];
