@@ -36,7 +36,7 @@ const breadCrumbsList = [
   },
 
   {
-    link: '/about',
+    link: '/about-us',
     text: 'Про нас /',
   },
 
@@ -132,7 +132,7 @@ const Policy = () => {
             </p>
           </li>
 
-          <li className="md:mb-mb-14 mb-12">
+          <li className="mb-12 md:mb-14">
             <h2
               className={cn(
                 playfair.variable,
@@ -194,7 +194,6 @@ const Policy = () => {
               </span>
             </p>
             <ul className="list-disc pl-5">
-              <br />
               <li className="mb-1">
                 Надавати, керувати та підтримувати наш веб-сайт
               </li>
