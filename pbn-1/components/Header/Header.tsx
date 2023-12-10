@@ -1,17 +1,10 @@
 import Link from 'next/link';
 
+import { menuItems } from '@/data/routes';
+import { menuItemsCat } from '@/data/routes';
 import Logo from '@/public/header/logo.svg';
 
 import { Menu } from './Menu';
-
-const menuItems = [
-  { title: 'Новини', route: '/news' },
-  { title: 'Пости', route: '/posts' },
-  { title: 'Статті', route: '/articles' },
-  // { title: 'Інтерв’ю', route: '/interviews' },
-  { title: 'Автори', route: '/authors' },
-  // { title: 'Подкасти', route: '/podcasts' },
-];
 
 export const Header = () => {
   return (
@@ -26,13 +19,28 @@ export const Header = () => {
               <Logo className="h-6 w-[106px]" />
             </Link>
             <Menu />
-
-            <nav className="invisible h-0 w-0 overflow-hidden xl:visible xl:ml-auto xl:h-auto xl:w-auto">
-              <ul className="flex flex-row gap-1 text-white">
-                <li>
-                  <Link href="/about-us" className="menuTitleMob px-3 py-1">
+            <nav className="invisible h-0 w-0 overflow-hidden xl:visible xl:ml-auto xl:h-auto xl:w-auto xl:overflow-visible">
+              <ul className="align-center flex flex-row items-center gap-1 text-white">
+                <li className="group relative bg-dark">
+                  <Link
+                    href="/about-us"
+                    className="menuTitleMob relative z-40 inline-block px-3 py-1 ring-white group-hover:ring-2"
+                  >
                     Про нас
                   </Link>
+                  <ul className="invisible absolute top-full z-30 flex flex-col gap-3 rounded-b bg-dark pb-6 pr-3 pt-2 duration-300 group-hover:visible">
+                    {menuItemsCat &&
+                      menuItemsCat.map(item => (
+                        <li key={item.title}>
+                          <Link
+                            href={item.route}
+                            className="menuTitleMob inline-block w-full whitespace-nowrap border-b border-solid border-white px-2 py-1"
+                          >
+                            {item.title}
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
                 </li>
                 <li>
                   <Link
