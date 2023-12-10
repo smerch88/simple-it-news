@@ -48,12 +48,16 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
             />
           </div>
         )}
-        <p className="text-base font-normal text-red">Новини</p>
+        <p className="text-base font-normal text-blueDark">Пости</p>
         <div className="flex w-full flex-row items-center justify-between">
           <div className="flex gap-3">
             <div className="flex gap-1 py-3">
               <Clock className="h-4 w-4" />
-              <span className="text-xs font-normal text-grey">15 хв.</span>
+              <span className="text-xs font-normal text-grey">
+                {/* TODO: make normal time */}
+                <time>{Math.ceil(article.shortdescription.length / 45)}</time>{' '}
+                хв.
+              </span>
             </div>
             <div className="flex gap-1 py-3">
               <Star className="h-4 w-4" />
