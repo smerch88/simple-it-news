@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: 'Simple IT News',
       description: 'Просто ІТ новини. Читайте новини зі світу АйТі.',
-      url: process.env.DB_HOST,
+      url: process.env.HOST,
       siteName: 'Simple IT News',
       images: [
         {
@@ -89,30 +89,38 @@ export default async function Home() {
           <h1 className="text-[40px]/[60px] font-semibold">
             Всі новини у сфері IT
           </h1>
-          <p className="text-base font-normal italic">
-            {/* TODO: remove hardcode */}
+          {/* TODO: add real data */}
+          {/* <p className="text-base font-normal italic">
             Останне оновлення 11.11.2023 19:28
-          </p>
+          </p> */}
         </div>
-        <div className="xl:grid-row-8 flex flex-col gap-6 xl:grid xl:grid-flow-row-dense xl:grid-cols-[796px_minmax(365px,_auto)] xl:gap-5">
+        <div className="xl:grid-row-12 flex flex-col gap-6 xl:grid xl:grid-flow-row-dense xl:grid-cols-[796px_minmax(365px,_auto)] xl:gap-5">
           <div className="order-1 flex w-full flex-col xl:col-start-1 xl:col-end-1 xl:row-start-1 xl:row-end-4">
             <h2 className="mb-8 flex w-full rounded bg-red px-3 py-2 text-2xl text-white">
               Новини
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {news.map((article: RESTAPIPost) => (
+              {news.slice(0, 3).map((article: RESTAPIPost) => (
                 <CardPostRest key={article.id} article={article} />
               ))}
             </ul>
           </div>
-
           <div className="order-3 flex w-full flex-col xl:col-start-1 xl:col-end-1">
             <h2 className="mb-8 flex w-full rounded bg-blueDark px-3 py-2 text-2xl text-white">
               Пости
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {data.allNewsposts?.map((article: CmsArticleType) => (
-                <CardPost key={article.id} article={article} />
+              {data.allNewsposts
+                ?.slice(0, 3)
+                .map((article: CmsArticleType) => (
+                  <CardPost key={article.id} article={article} />
+                ))}
+            </ul>
+          </div>
+          <div className="order-4 flex w-full flex-col xl:col-start-1 xl:col-end-1">
+            <ul className="mb-2 flex flex-wrap gap-8">
+              {news.slice(3).map((article: RESTAPIPost) => (
+                <CardPostRest key={article.id} article={article} />
               ))}
             </ul>
           </div>

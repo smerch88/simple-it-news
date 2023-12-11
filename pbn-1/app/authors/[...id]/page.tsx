@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Author } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
@@ -102,6 +103,18 @@ export default async function Page({ params }: { params: { id: string } }) {
     sameAs: [author.socials.facebook, author.socials.twitter],
   };
 
+  const breadCrumbsList = [
+    {
+      link: '/',
+      text: 'Головна /',
+    },
+
+    {
+      link: '/authors/' + id[0],
+      text: ' Автор',
+    },
+  ];
+
   return (
     <div className="container">
       <script
@@ -114,25 +127,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(authorJsonLD) }}
         key="author-jsonld"
       />
-      <nav>
-        <ul className="mb-2 flex flex-row md:mb-4">
-          <li>
-            <Link href="/" rel="canonical">
-              Головна
-            </Link>
-          </li>
-          <li className="before:content-['/'] hover:opacity-75">
-            {' '}
-            <Link
-              href={'/authors/' + id[0]}
-              className="underline underline-offset-2"
-              rel="canonical"
-            >
-              Автор
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <BreadCrumbs list={breadCrumbsList} />
       <section>
         <h1 className="mb-2 text-xl font-bold">{author.authorname}</h1>
         <h2 className="mb-2 [text-wrap:balance] md:mb-8">

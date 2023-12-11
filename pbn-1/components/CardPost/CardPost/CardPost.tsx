@@ -1,3 +1,5 @@
+// TODO: make 1 component instead of 2, it was made before as it is due to some circumstances
+import cn from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -8,7 +10,9 @@ import Star from '@/public/card/star.svg';
 
 import { CmsPostProps } from './CardPost.props';
 
-export const CardPost: FC<CmsPostProps> = ({ article }) => {
+export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
+  const Tag = type === 'main' ? 'h3' : 'h2';
+
   const publishedDate = new Date(article._publishedAt);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -26,7 +30,13 @@ export const CardPost: FC<CmsPostProps> = ({ article }) => {
   // };
 
   return (
-    <li className="flex xl:[&:not(:nth-child(3n+1))]:w-[calc(50%-16px)]">
+    <li
+      className={cn(
+        type === 'main'
+          ? 'flex xl:[&:not(:nth-child(3n+1))]:w-[calc(50%-16px)]'
+          : '',
+      )}
+    >
       <article className="overflow-hidden border-b border-dark ">
         {article.articlepicture.url && (
           <div className="relative mb-4 h-[176px] w-full md:h-[296px] xl:h-[242px]">
@@ -38,12 +48,18 @@ export const CardPost: FC<CmsPostProps> = ({ article }) => {
             />
           </div>
         )}
-        <p className="text-base font-normal text-red">Новини</p>
+        <p className="font-playfair text-base text-blueDark">Пости</p>
         <div className="flex w-full flex-row items-center justify-between">
           <div className="flex gap-3">
             <div className="flex gap-1 py-3">
               <Clock className="h-4 w-4" />
-              <span className="text-xs font-normal text-grey">15 хв.</span>
+              <span className="text-xs font-normal text-grey">
+                {/* TODO: make normal time */}
+                <time>
+                  {Math.ceil(article.shortdescription.length / 45)}
+                </time>{' '}
+                хв.
+              </span>
             </div>
             <div className="flex gap-1 py-3">
               <Star className="h-4 w-4" />
@@ -57,9 +73,13 @@ export const CardPost: FC<CmsPostProps> = ({ article }) => {
           </div> */}
         </div>
         <Link href={`/posts/${article.route}`} rel="canonical">
-          <h3 className="mb-3 text-2xl font-bold text-dark">{article.title}</h3>
+          <Tag className="mb-3 text-2xl font-bold text-dark">
+            {article.title}
+          </Tag>
         </Link>
-        <p className="mb-4 text-grey">{article.shortdescription}</p>
+        <p className="mb-4 line-clamp-3 text-grey">
+          {article.shortdescription}
+        </p>
 
         <div className="mb-2 flex flex-col text-gray-400/80">
           <Link

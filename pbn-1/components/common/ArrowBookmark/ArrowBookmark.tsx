@@ -1,13 +1,10 @@
 'use client';
 import { useState } from 'react';
 
+import { ShareButton } from '@/components/Share';
 import Bookmark from '@/public/notsorted/bookmark.svg';
-import Share from '@/public/notsorted/share.svg';
-
-import { ShareMenu } from '../ShareMenu';
 
 export const ArrowBookmark = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isAddBookmark, setIsAddBookmark] = useState(false);
 
   const handleBookmarkClick = () => {
@@ -18,18 +15,10 @@ export const ArrowBookmark = () => {
   // const handleMessengeClick = (massengerName: strine) => {
   //   console.log('send messege to', massengerName);
   // };
-  const handleMenuClick = () => {
-    setIsOpen(!isOpen);
-  };
 
   return (
     <div className="relative flex items-center gap-x-1">
-      <button
-        onClick={handleMenuClick}
-        className="flex h-10 w-10 items-center justify-center"
-      >
-        <Share />
-      </button>
+      <ShareButton description="Дивіться що я знайшов!" />
       <button
         onClick={handleBookmarkClick}
         className="flex h-10 w-10 items-center justify-center"
@@ -38,8 +27,6 @@ export const ArrowBookmark = () => {
           className={` ${isAddBookmark ? 'fill-black' : 'fill-white'}`}
         />
       </button>
-
-      {isOpen && <ShareMenu />}
     </div>
   );
 };

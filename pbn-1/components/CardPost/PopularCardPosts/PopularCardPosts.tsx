@@ -66,7 +66,7 @@ export const PopularCardPosts: FC<CmsPostProps> = ({ articles }) => {
         </Swiper>
       )} */}
 
-      <ul className="mb-2 flex-wrap gap-6 flex">
+      <ul className="mb-2 flex flex-wrap gap-6">
         {articles?.slice(0, 4).map((article: CmsArticleType) => (
           <li
             key={article.id}

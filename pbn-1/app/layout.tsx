@@ -1,6 +1,7 @@
 import './globals.css';
 
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Lato, Playfair_Display } from 'next/font/google';
 
@@ -70,6 +71,7 @@ export default function RootLayout({
         <main className="flex-grow py-4 text-dark">
           {children}
           <Analytics />
+          <SpeedInsights />
         </main>
         <Footer />
       </body>
