@@ -5,6 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Lato, Playfair_Display } from 'next/font/google';
 
+import CookieConsent from '@/components/Cookie/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 
@@ -74,6 +75,7 @@ export default function RootLayout({
           <SpeedInsights />
         </main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

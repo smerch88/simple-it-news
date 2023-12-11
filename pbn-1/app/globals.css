@@ -26,3 +26,11 @@
 .item:nth-child(3n) .avatar {
   background-color: #5c7da4;
 }
+
+.btn_black {
+  @apply rounded border border-dark bg-dark p-3 text-buttonMobile text-white hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.3)] md:text-menuTitleMob md:leading-[1.3] xl:text-buttonDesk;
+}
+
+.btn_white {
+  @apply rounded border border-dark bg-white p-3 text-buttonMobile text-dark hover:border-white hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.3)] md:text-menuTitleMob md:leading-[1.3] xl:text-buttonDesk;
+}
