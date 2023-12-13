@@ -77,10 +77,7 @@ export const Menu = () => {
                         </li>
                       ))}
                   </ul>
-                  <Link
-                    href="/about-us/contancts"
-                    className="text-menuTitleMob"
-                  >
+                  <Link href="/about-us/contacts" className="text-menuTitleMob">
                     Контакти
                   </Link>
                 </nav>
