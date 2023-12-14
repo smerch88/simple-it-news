@@ -12,5 +12,5 @@ export const menuItemsCat = [
   // { title: 'Наша команда', route: '/about-us' },
   // { title: 'Про Нас', route: '/about-us' },
   { title: 'Політика Конфіденційності', route: '/about-us/policy' },
-  // { title: 'FAQ', route: '/about-us/faq' },
+  { title: 'FAQ', route: '/about-us/faq' },
 ];
