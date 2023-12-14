@@ -1,4 +1,3 @@
-import './Faq.css';
 import Link from 'next/link';
 import AskIcon from '@/public/notsorted/question-mark.svg';
 import DownIcon from '@/public/notsorted/arrow-down.svg';
