@@ -2,6 +2,7 @@ import Link from 'next/link';
 import AskIcon from '@/public/notsorted/question-mark.svg';
 import DownIcon from '@/public/notsorted/arrow-down.svg';
 import data from '@/data/faq.json';
+import { FAQItem } from '@/types';
 export default function Page() {
   return (
     <div className="container">
@@ -37,8 +38,8 @@ export default function Page() {
         </p>
       </div>
       <ul className="mt-8">
-        {data?.map(({ title, text, link, id }) => (
-          <li className="no-select rounded-tl-8 rounded-tr-8 mb-2 flex cursor-pointer gap-2 last:mb-0">
+        {data?.map(({ title, text, link, id }:FAQItem) => (
+          <li key={id} className="no-select rounded-tl-8 rounded-tr-8 mb-2 flex cursor-pointer gap-2 last:mb-0">
             <details className="group relative w-full">
               <summary className="mb-2 flex list-none border-b border-dark pb-2 pr-5 text-t24 text-dark smOnly:text-menuTitleMob">
                 <AskIcon className="mr-2 mt-1 h-5 w-5" />
@@ -47,9 +48,9 @@ export default function Page() {
               </summary>
               <p className="max-w-[653px] text-menuTitleMob text-grey smOnly:max-w-[262px] smOnly:text-t14 mdOnly:text-menuItemsMob">
                 {text}
-                <Link className="text-blue" href="/">
+           {link && <Link className="text-blue" href="/">
                   {link}
-                </Link>
+                </Link>}
               </p>
             </details>
           </li>

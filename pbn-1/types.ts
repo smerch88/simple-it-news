@@ -91,3 +91,10 @@ export interface Category {
   id: number;
   title: string;
 }
+
+export interface FAQItem {
+  title: string;
+  text: string;
+  link?: string; // Make 'link' optional
+  id: string;
+}
