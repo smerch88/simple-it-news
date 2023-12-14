@@ -61,7 +61,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function getNews() {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + '/api/ApprovedNews/',
+    process.env.NEXT_PUBLIC_API_BASE_URL +
+      '/api/ApprovedNews/?ordering=-pub_date',
     {
       next: { revalidate: 60 },
     },

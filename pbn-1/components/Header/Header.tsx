@@ -44,7 +44,7 @@ export const Header = () => {
                 </li>
                 <li>
                   <Link
-                    href="/about-us/contancts"
+                    href="/about-us/contacts"
                     className="menuTitleMob px-3 py-1"
                   >
                     Контакти
