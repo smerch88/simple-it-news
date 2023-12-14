@@ -1,31 +1,32 @@
 import Link from 'next/link';
-import AskIcon from '@/public/notsorted/question-mark.svg';
-import DownIcon from '@/public/notsorted/arrow-down.svg';
+
+import { BreadCrumbs } from '@/components/BreadCrumbs';
 import data from '@/data/faq.json';
+import DownIcon from '@/public/notsorted/arrow-down.svg';
+import AskIcon from '@/public/notsorted/question-mark.svg';
 import { FAQItem } from '@/types';
+
+const breadCrumbsList = [
+  {
+    link: '/',
+    text: 'Головна / ',
+  },
+
+  {
+    link: '/about-us',
+    text: 'Про нас',
+  },
+  {
+    link: '/faq',
+    text: 'FAQ',
+  },
+];
+
 export default function Page() {
   return (
     <div className="container">
       <nav>
-        <ul className="mb-2 flex flex-row md:mb-4">
-          <li>
-            <Link href="/" rel="canonical">
-              Головна
-            </Link>
-          </li>{' '}
-          <li className="before:content-['/'] hover:opacity-75">
-            {' '}
-            <Link href={'/posts/'} rel="canonical">
-              Про нас
-            </Link>
-          </li>
-          <li className="before:content-['/'] hover:opacity-75">
-            {' '}
-            <Link href={'/posts/'} rel="canonical">
-              FAQ
-            </Link>{' '}
-          </li>
-        </ul>
+        <BreadCrumbs list={breadCrumbsList} />
       </nav>
       <h1 className="text-t32 font-normal ">FAQ</h1>
       <div className="mt-6 text-base font-semibold">
@@ -38,8 +39,11 @@ export default function Page() {
         </p>
       </div>
       <ul className="mt-8">
-        {data?.map(({ title, text, link, id }:FAQItem) => (
-          <li key={id} className="no-select rounded-tl-8 rounded-tr-8 mb-2 flex cursor-pointer gap-2 last:mb-0">
+        {data?.map(({ title, text, link, id }: FAQItem) => (
+          <li
+            key={id}
+            className="no-select rounded-tl-8 rounded-tr-8 mb-2 flex cursor-pointer gap-2 last:mb-0"
+          >
             <details className="group relative w-full">
               <summary className="mb-2 flex list-none border-b border-dark pb-2 pr-5 text-t24 text-dark smOnly:text-menuTitleMob">
                 <AskIcon className="mr-2 mt-1 h-5 w-5" />
@@ -48,9 +52,11 @@ export default function Page() {
               </summary>
               <p className="max-w-[653px] text-menuTitleMob text-grey smOnly:max-w-[262px] smOnly:text-t14 mdOnly:text-menuItemsMob">
                 {text}
-           {link && <Link className="text-blue" href="/">
-                  {link}
-                </Link>}
+                {link && (
+                  <Link className="text-blue" href="/">
+                    {link}
+                  </Link>
+                )}
               </p>
             </details>
           </li>
