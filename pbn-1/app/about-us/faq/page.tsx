@@ -24,7 +24,7 @@ const breadCrumbsList = [
 
 export default function Page() {
   return (
-    <div className="container">
+    <div className="container smOnly:pb-[51px]  mdOnly:pb-[60px] pb-[126px] ">
       <nav>
         <BreadCrumbs list={breadCrumbsList} />
       </nav>
