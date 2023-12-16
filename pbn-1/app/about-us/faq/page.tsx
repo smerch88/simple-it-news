@@ -24,17 +24,16 @@ const breadCrumbsList = [
 
 export default function Page() {
   return (
-    <div className="container">
+    <div className="container smOnly:pb-[51px]  mdOnly:pb-[60px] pb-[126px] ">
       <nav>
         <BreadCrumbs list={breadCrumbsList} />
       </nav>
-      <h1 className="text-t32 font-normal ">FAQ</h1>
-      <div className="mt-6 text-base font-semibold">
+      <h1 className="smOnly:text-menuTitleTab text-t32 ">FAQ</h1>
+      <div className="mt-6 smOnly:text-buttonMobile text-menuTitleMob ">
         <p className="last:mt-3 ">Маєш питання? Знайди його тут.</p>
         <p className="last:mt-3 ">
-          Не знайшов? Напиши нам на
-          <Link className="text-blue" href="whatsApp">
-            WhatsApp
+          Не знайшов? Напиши нам на  <Link className="text-blue" href="whatsApp">
+             WhatsApp
           </Link>
         </p>
       </div>
