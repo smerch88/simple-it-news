@@ -44,7 +44,7 @@ export default function Page() {
           >
             <details className="group relative w-full">
               <summary className="mb-2 flex list-none border-b border-dark pb-2 pr-5 text-t24 text-dark smOnly:text-menuTitleMob">
-                <AskIcon className="mr-2 mt-1 h-5 w-5" />
+                <AskIcon className="mr-2 mt-1 h-5 w-5 flex-shrink-0 md:mt-2" />
                 {title}
                 <DownIcon className="arrwoIcon group:rotate-180 absolute right-0 top-2 h-5 w-5 rotate-0 transform bg-white transition-transform duration-300 group-open:rotate-180 group-focus:rotate-180 smOnly:top-1 smOnly:h-5 smOnly:w-5" />
               </summary>
