@@ -16,17 +16,25 @@ export async function AlsoRead() {
 
   return (
     <ul>
-      {news.map(({ id, title, custom_url }: any) => (
-        <li className="mb-5 border-b-2" key={id}>
-          {' '}
-          <Link href={`/news/${custom_url}`} rel="canonical">
-            {' '}
-            <p className="mb-3 text-t16 md:mb-2 md:text-t18 xl:text-t20">
-              {title}
-            </p>{' '}
-          </Link>{' '}
-        </li>
-      ))}
+      {news.map(
+        ({
+          id,
+          title,
+          custom_url,
+        }: {
+          id: string;
+          title: string;
+          custom_url: string;
+        }) => (
+          <li className="mb-5 border-b-2" key={id}>
+            <Link href={`/news/${custom_url}`} rel="canonical">
+              <p className="mb-3 text-t16 md:mb-2 md:text-t18 xl:text-t20">
+                {title}
+              </p>
+            </Link>
+          </li>
+        ),
+      )}
     </ul>
   );
 }

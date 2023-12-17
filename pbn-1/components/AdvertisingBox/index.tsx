@@ -1,1 +1,1 @@
-export * from './AdvestingBox';
+export * from './AdvertisingBox';

@@ -2,11 +2,12 @@ import { gql } from '@apollo/client';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { AdvestingBox } from '@/components/AdvertisingBox';
+import { AdvertisingBox } from '@/components/AdvertisingBox';
 import { AlsoRead } from '@/components/AlsoRead';
 import { BreadCrumbs } from '@/components/BreadCrumbs';
 import PopularCardSecond from '@/components/CardPost/PopularCardPosts/PopularCardSecond';
 import Star from '@/public/notsorted/star.svg';
+import { Articles } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
 export const metadata: Metadata = {
@@ -140,7 +141,7 @@ export default async function Authors() {
                     id: string;
                     authorname: string;
                     route: string;
-                    articles: any;
+                    articles: Articles[];
                   }) => (
                     <tr key={id} className="bg-white">
                       <td className="border-b-[0.5px] border-lightgrey px-4 pt-6 text-t18 text-blue underline">
@@ -163,7 +164,7 @@ export default async function Authors() {
           <PopularCardSecond />
         </div>
         <div className="xl:w-[388px]">
-          <AdvestingBox />
+          <AdvertisingBox />
           <h3 className="md:mt-13 mb-4 mt-11 rounded bg-black px-3 py-2 font-playfair text-t18 text-white md:text-t32 xl:mt-[100px]">
             Також читайте :
           </h3>
