@@ -56,7 +56,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     rating,
     description,
     content,
-  } = post[0];
+  } = await post[0];
 
   return (
     <>

@@ -8,6 +8,7 @@ import { Lato, Playfair_Display } from 'next/font/google';
 import CookieConsent from '@/components/Cookie/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
+import { ScrollBtn } from '@/components/ScrollBtn';
 
 const lato = Lato({
   weight: ['400'],
@@ -69,8 +70,9 @@ export default function RootLayout({
       </head>
       <body className="relative flex h-screen flex-col">
         <Header />
-        <main className="flex-grow py-4 text-dark">
+        <main className="relative flex-grow py-4 text-dark">
           {children}
+          <ScrollBtn />
           <Analytics />
           <SpeedInsights />
         </main>

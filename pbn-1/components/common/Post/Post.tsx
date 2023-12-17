@@ -118,11 +118,11 @@ export const Post: FC<PostProps> = ({
         <time className="mb-6 inline-block text-menuItemsMob13 italic text-grey md:text-menuItemsTab14 xl:text-menuItemsMob">
           {formattedDate}
         </time>
-        <div className="relative mb-2 h-40 w-full">
+        <div className="relative mb-2 h-40 w-full md:h-[480px]">
           <Image
             src={image_url}
             fill
-            className="object-contain object-left"
+            className="object-scale-down object-left-top xl:object-cover"
             alt={title + 'Image'}
           />
         </div>
