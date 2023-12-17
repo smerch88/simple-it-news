@@ -40,6 +40,10 @@ const config: Config = {
         playfair: ['var(--font-playfairDisplay)'],
       },
 
+      boxShadow: {
+        ss: '1px 1px 5px 0px rgba(0, 0, 0, 0.25)',
+      },
+
       fontSize: {
         buttonMobile: [
           '16px',
