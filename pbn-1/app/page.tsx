@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 import { CardPost } from '@/components/CardPost/CardPost';
 import { CardPostRest } from '@/components/CardPost/CardPostRest';
-import { PopularCardPosts } from '@/components/CardPost/PopularCardPosts/PopularCardPosts';
+import { RightSection } from '@/components/RightSection/RightSection';
 import { CmsArticleType, RESTAPIPost } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
@@ -130,10 +130,7 @@ export default async function Home() {
           </div> */}
 
           <div className="order-2 hidden flex-col xl:col-start-2 xl:col-end-2 xl:flex">
-            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl">
-              Популярні новини
-            </h2>
-            <PopularCardPosts articles={data.allNewsposts} />
+            <RightSection />
           </div>
         </div>
       </div>

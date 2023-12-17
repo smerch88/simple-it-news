@@ -26,6 +26,17 @@ async function getNews(id: string) {
   return res.json();
 }
 
+const breadCrumbsList = [
+  {
+    link: '/',
+    text: 'Головна',
+  },
+  {
+    link: '/news',
+    text: 'Новини',
+  },
+];
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const post = await getNews(id);

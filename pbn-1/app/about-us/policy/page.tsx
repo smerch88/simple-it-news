@@ -32,12 +32,12 @@ export const metadata: Metadata = {
 const breadCrumbsList = [
   {
     link: '/',
-    text: 'Головна /',
+    text: 'Головна',
   },
 
   {
     link: '/about-us',
-    text: 'Про нас /',
+    text: 'Про нас',
   },
 
   {

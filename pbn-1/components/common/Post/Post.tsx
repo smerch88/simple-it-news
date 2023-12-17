@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
-
+import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Management } from '@/components/news/Management';
 
 interface PostProps {
@@ -40,33 +40,76 @@ export const Post: FC<PostProps> = ({
     hour: 'numeric',
     minute: 'numeric',
   };
+  const breadCrumbsJsonLD = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: '1',
+        item: {
+          '@id': `${process.env.HOST}]}`,
+          name: 'Головна',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: '2',
+        item: {
+          '@id': `${process.env.HOST}/news]}`,
+          name: 'Новини',
+        },
+      },
+      {
+        '@type': 'ListItem',
+        position: '3',
+        item: {
+          '@id': `${process.env.HOST}/news/${id[0]}`,
+          name: 'Новини',
+        },
+      },
+    ],
+  };
+
+  const breadCrumbsList = [
+    {
+      link: '/',
+      text: 'Головна',
+    },
+    {
+      link: '/news',
+      text: 'Новини',
+    },
+    {
+      link: '/news/' + id[0],
+      text: title,
+    },
+  ];
+  const postJsonLD = {
+    '@context': 'https://schema.org/',
+    '@type': 'Post',
+    title: title,
+    name: author,
+    description: description,
+    url: `${process.env.HOST}/news/${id[0]}`,
+    image: image_url,
+    content: content,
+  };
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
   return (
     <div className="container">
-      <ul className="mb-6 flex flex-row text-menuItemsMob10 text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
-        <li className="duration-300 hover:text-blue_hover">
-          <Link href="/" rel="canonical">
-            Головна
-          </Link>
-        </li>
-        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
-          <Link href="/news" rel="canonical">
-            Новини
-            {/* {categories[0].name} */}
-          </Link>
-        </li>
-        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
-          <Link
-            href={'/news/' + id}
-            target="blank"
-            rel="noreferrer nofollow"
-            className="underline underline-offset-2"
-          >
-            {title}
-          </Link>
-        </li>
-      </ul>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
+        key="breadcrumbs-jsonld"
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(postJsonLD) }}
+        key="author-jsonld"
+      />
+      <BreadCrumbs list={breadCrumbsList} />
       <article>
         <h1 className="mb-1 font-playfair text-t24 font-semibold md:text-t32 xl:text-t40">
           {title}

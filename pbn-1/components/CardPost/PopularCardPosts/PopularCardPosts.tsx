@@ -1,86 +1,52 @@
 import Link from 'next/link';
 import { FC } from 'react';
-
+import { gql } from '@apollo/client';
+import { getClient } from '@/utils/apollo-client';
 import { CmsArticleType } from '@/types';
 
 import { CmsPostProps } from './PopularCardPosts.props';
 
-export const PopularCardPosts: FC<CmsPostProps> = ({ articles }) => {
+const query = gql`
+  {
+    allNewsposts {
+      id
+      route
+      title
+    }
+  }
+`;
+
+export async function PopularCardPosts() {
+  const { data } = await getClient().query({
+    query,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 60 },
+      },
+    },
+  });
+
+  const articles = data.allNewsposts;
+
   return (
-    <>
-      {/* {isSm && (
-        <Swiper
-          slidesPerView={1.3}
-          spaceBetween={16}
-          pagination={{
-            clickable: true,
-          }}
-          className="h-full w-full"
-        >
-          {articles?.map((article: CmsArticleType) => (
-            <SwiperSlide
-              key={article.id}
-              className="overflow-hidden rounded border border-lightgrey px-2 py-5"
-            >
-              <div className="relative mb-2 h-40 w-full">
-                <Image
-                  src={article.articlepicture.url}
-                  fill
-                  className="rounded object-cover"
-                  alt={article.articlepicture.alt}
-                />
-              </div>
-              <div className="mb-1 text-lg font-normal tracking-wide text-red">
-                Новини
-              </div>
-              <Link href={`/posts/${article.route}`} rel="canonical">
-                <h3 className="mb-2 text-lg font-normal">{article.title}</h3>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )} */}
-
-      {/* {isMd && (
-        <Swiper
-          slidesPerView={2.3}
-          spaceBetween={16}
-          pagination={{
-            clickable: true,
-          }}
-          className="h-full w-full"
-        >
-          {articles?.map((article: CmsArticleType) => (
-            <SwiperSlide
-              key={article.id}
-              className="overflow-hidden rounded border border-lightgrey px-2 py-5"
-            >
-              <div className="mb-1 text-lg font-normal tracking-wide text-red">
-                Новини
-              </div>
-              <Link href={`/posts/${article.route}`} rel="canonical">
-                <h3 className="mb-2 text-lg font-normal">{article.title}</h3>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )} */}
-
-      <ul className="mb-2 flex flex-wrap gap-6">
+    <div className="overflow-x-auto">
+      <ul className="mb-2 flex w-full gap-3 xl:block">
         {articles?.slice(0, 4).map((article: CmsArticleType) => (
           <li
             key={article.id}
-            className="rounded border border-lightgrey px-4 py-5"
+            className="w-3/4 flex-shrink-0 rounded border border-lightgrey px-2 py-2 md:w-2/4 md:px-2 md:py-5 xl:mb-6 xl:w-full xl:px-4 xl:py-5"
           >
-            <div className="mb-1 text-lg font-normal tracking-wide text-red">
+            <h3 className="mb-1 text-t14 font-normal tracking-wide text-red md:text-t16 xl:text-t18">
               Новини
-            </div>
+            </h3>
             <Link href={`/posts/${article.route}`} rel="canonical">
-              <h3 className="mb-2 text-2xl font-normal">{article.title}</h3>
+              <h4 className="font-playfair text-t18 md:text-t24 ">
+                {article.title}
+              </h4>
             </Link>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
-};
+}
