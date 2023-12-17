@@ -1,12 +1,20 @@
 import Link from 'next/link';
+import { getServerSession } from 'next-auth';
 
 import { menuItems } from '@/data/routes';
 import { menuItemsCat } from '@/data/routes';
+import { authConfig } from '@/lib/auth';
 import Logo from '@/public/header/logo.svg';
 
+import {
+  GoogleLogOutButton,
+  GoogleSignInButton,
+} from '../AuthButtons/AuthButtons';
 import { Menu } from './Menu';
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await getServerSession(authConfig);
+
   return (
     <header
       id="header"
@@ -49,6 +57,13 @@ export const Header = () => {
                   >
                     Контакти
                   </Link>
+                </li>
+                <li>
+                  {session?.user?.name ? (
+                    <GoogleLogOutButton name={session.user.name} />
+                  ) : (
+                    <GoogleSignInButton />
+                  )}
                 </li>
               </ul>
             </nav>
