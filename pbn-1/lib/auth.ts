@@ -48,7 +48,6 @@ export const authConfig: NextAuthOptions = {
   // callbacks: {
   //   async session(data) {
   //     // Send properties to the client, like an access_token and user id from a provider.
-  
   //     console.log('_________________________')
   //     console.log('data',data)
   //     console.log('_________________________')
