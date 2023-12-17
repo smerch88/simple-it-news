@@ -66,7 +66,8 @@ const breadCrumbsJsonLD = {
 
 async function getNews() {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + '/api/ApprovedNews/?categorie=news',
+    process.env.NEXT_PUBLIC_API_BASE_URL +
+      '/api/ApprovedNews/?category=news&ordering=-pub_date',
     {
       next: { revalidate: 60 },
     },
