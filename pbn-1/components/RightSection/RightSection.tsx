@@ -1,5 +1,5 @@
 import { PopularCardPosts } from '../CardPost/PopularCardPosts';
-import { AlsoRead } from '../AlsoRead';
+// import { AlsoRead } from '../AlsoRead';
 export const RightSection = () => {
   return (
     <div className="xl:w-[388px]">

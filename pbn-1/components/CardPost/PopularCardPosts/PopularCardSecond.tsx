@@ -1,10 +1,8 @@
-import Link from 'next/link';
-import { FC } from 'react';
 import { gql } from '@apollo/client';
-import { getClient } from '@/utils/apollo-client';
-import { CmsArticleType } from '@/types';
+import Link from 'next/link';
 
-import { CmsPostProps } from './PopularCardPosts.props';
+import { CmsArticleType } from '@/types';
+import { getClient } from '@/utils/apollo-client';
 
 const query = gql`
   {

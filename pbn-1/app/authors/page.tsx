@@ -1,12 +1,13 @@
 import { gql } from '@apollo/client';
-import { getClient } from '@/utils/apollo-client';
-import Link from 'next/link';
 import { Metadata } from 'next';
-import { BreadCrumbs } from '@/components/BreadCrumbs';
-import Star from '@/public/notsorted/star.svg';
+import Link from 'next/link';
+
 import { AdvestingBox } from '@/components/AdvertisingBox';
-import PopularCardSecond from '@/components/CardPost/PopularCardPosts/PopularCardSecond';
 import { AlsoRead } from '@/components/AlsoRead';
+import { BreadCrumbs } from '@/components/BreadCrumbs';
+import PopularCardSecond from '@/components/CardPost/PopularCardPosts/PopularCardSecond';
+import Star from '@/public/notsorted/star.svg';
+import { getClient } from '@/utils/apollo-client';
 
 export const metadata: Metadata = {
   title: 'Автори',

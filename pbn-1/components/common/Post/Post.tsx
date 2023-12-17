@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, ReactNode } from 'react';
+
 import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Management } from '@/components/news/Management';
 

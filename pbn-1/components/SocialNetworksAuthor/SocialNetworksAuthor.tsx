@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { FC } from 'react';
+
 import Facebook from '@/public/socials/facebook.svg';
-import Twitter from '@/public/socials/twitter.svg';
 import Linkedin from '@/public/socials/linkedin.svg';
 import Telegram from '@/public/socials/telegram.svg';
+import Twitter from '@/public/socials/twitter.svg';
 type SocialIconsProps = {
   socials: [string, string][];
 };

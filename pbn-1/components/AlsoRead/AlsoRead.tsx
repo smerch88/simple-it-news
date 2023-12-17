@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 
 async function getNews() {
   const res = await fetch(

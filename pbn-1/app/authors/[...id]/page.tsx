@@ -1,18 +1,15 @@
-import { Stars } from '@/components/news/Stars';
-import { SocialNetworksAuthor } from '@/components/SocialNetworksAuthor';
-import { BreadCrumbs } from '@/components/BreadCrumbs';
-
+import { gql } from '@apollo/client';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Metadata } from 'next';
 
-import { gql } from '@apollo/client';
-
+import { BreadCrumbs } from '@/components/BreadCrumbs';
+import { Stars } from '@/components/news/Stars';
+import { RightSection } from '@/components/RightSection/RightSection';
+import { SocialNetworksAuthor } from '@/components/SocialNetworksAuthor';
 import Star from '@/public/notsorted/star.svg';
-
 import { Author } from '@/types';
 import { getClient } from '@/utils/apollo-client';
-import { RightSection } from '@/components/RightSection/RightSection';
 
 interface PageData {
   allAuthors: Author[];
