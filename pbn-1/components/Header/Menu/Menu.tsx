@@ -60,7 +60,13 @@ export const Menu = () => {
                           key={item.title}
                           className="border-b border-solid border-dark/50 pb-2 pt-5"
                         >
-                          <Link href={item.route}>{item.title}</Link>
+                          <Link
+                            href={item.route}
+                            // TODO: rewrite to buttons
+                            onClick={() => setMenuClosed()}
+                          >
+                            {item.title}
+                          </Link>
                         </li>
                       ))}
                   </ul>
@@ -72,12 +78,18 @@ export const Menu = () => {
                         <li
                           key={item.title}
                           className="border-b border-solid border-dark/50 pb-2 pt-5"
+                          // TODO: rewrite to buttons
+                          onClick={() => setMenuClosed()}
                         >
                           <Link href={item.route}>{item.title}</Link>
                         </li>
                       ))}
                   </ul>
-                  <Link href="/about-us/contacts" className="text-menuTitleMob">
+                  <Link
+                    href="/about-us/contacts"
+                    className="text-menuTitleMob" // TODO: rewrite to buttons
+                    onClick={() => setMenuClosed()}
+                  >
                     Контакти
                   </Link>
                 </nav>
