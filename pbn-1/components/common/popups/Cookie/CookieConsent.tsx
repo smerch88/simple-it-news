@@ -2,12 +2,12 @@
 
 import { hasCookie, setCookie } from 'cookies-next';
 import Link from 'next/link';
-import React from 'react';
+import { useEffect, useState } from 'react';
 
 const CookieConsent = () => {
-  const [showConsent, setShowConsent] = React.useState(true);
+  const [showConsent, setShowConsent] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setShowConsent(hasCookie('localConsent'));
   }, []);
 
