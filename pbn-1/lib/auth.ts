@@ -12,27 +12,16 @@ export const authConfig: NextAuthOptions = {
   ],
   secret: process.env.SECRET as string,
   // callbacks: {
-  //   async session(data) {
-  //     // Send properties to the client, like an access_token and user id from a provider.
-  //     console.log('_________________________')
-  //     console.log('data',data)
-  //     console.log('_________________________')
-
-  //     return data;
-  //   },
-  // },
-  // callbacks: {
-  //   async session({ session, token, user }) {
-  //     // Send properties to the client, like an access_token and user id from a provider.
-  //     session.accessToken = token.accessToken;
-  //     session.user.id = token.id;
-  //     console.log('_________________________')
-  //     console.log('session',session)
-  //     console.log('token',token)
-  //     console.log('user',user)
-  //     console.log('_________________________')
-
-  //     return session;
+  //   async session({ session, user, token }) {
+  //     console.log(session,'sessionsessionsession')
+  //     const newUser = {
+  //       first_name: session?.user?.name?.split(' ')[0] || 'none',
+  //       surname: session?.user?.name?.split(' ')[1] || 'none',
+  //       profile_image: session?.user?.image || 'none',
+  //       email: session?.user?.email || 'none',
+  //     };
+  //     authLoggedUser(newUser);
+  //     // return { session, user, token };
   //   },
   // },
 };
