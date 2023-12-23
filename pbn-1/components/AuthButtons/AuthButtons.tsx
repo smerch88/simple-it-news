@@ -9,19 +9,22 @@ import { LogOut } from '../common/popups/LogOut';
 
 export function GoogleSignInButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => {
+  const handleOpen = () => {
     setIsOpen(true);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   return (
     <>
       <button
-        onClick={handleClick}
+        onClick={handleOpen}
         className="rounded border border-solid border-dark bg-white px-6 py-3 text-buttonDesk text-dark"
       >
         Підписатись
       </button>
-      {isOpen && <LogIn />}
+      {isOpen && <LogIn handleClose={handleClose}/>}
     </>
   );
 }

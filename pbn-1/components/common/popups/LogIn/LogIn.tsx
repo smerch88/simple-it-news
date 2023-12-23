@@ -1,25 +1,32 @@
 'use client';
-
 import { signIn } from 'next-auth/react';
 
-export const LogIn = () => {
+import Cross from '@/public/notsorted/cross.svg';
+import Google from '@/public/socials/google.svg';
+
+export const LogIn = ({ handleClose }: { handleClose: () => void }) => {
   const handleClick = () => {
     signIn('google');
   };
   return (
     <div className="visible fixed inset-0 z-50 flex items-center justify-center bg-black/20">
-      <div className="flex flex-col items-center justify-between gap-y-6 bg-white px-4 py-10 md:w-[494px] md:rounded md:px-10 xl:w-[1204px] xl:flex-row xl:items-start xl:justify-start xl:gap-x-[196px] xl:gap-y-0 xl:py-6">
-        <p className="font-playfair text-menuTitleTab md:text-t32  xl:text-t40">
-          Cookie
+      <div className="flex flex-col items-center justify-between gap-y-6 bg-white px-10 py-10 text-center md:w-[494px] md:rounded md:px-10">
+        <p className="tex-t20 font-playfair text-dark md:text-t32">
+          Підписатися
         </p>
-        <div className="text-center text-t14 md:text-t16 xl:w-[727px] xl:text-left xl:text-t18">
-          <button
-            className="btn_black w-full xl:w-[184px]"
-            onClick={handleClick}
-          >
-            Увійти через Google
-          </button>
-        </div>
+        <p className="text-t14 text-dark md:text-t16">
+          Будьте у курсі останніх новину у сфері ІТ разом з Simple IT News.
+        </p>
+        <button
+          className="flex w-full flex-row items-center justify-center gap-3 rounded border border-solid border-dark bg-white px-5 py-2 text-t24 md:text-t18"
+          onClick={handleClick}
+        >
+          <Google className="h-8 w-8" />
+          <span className="text-dark">Увійти через Google</span>
+        </button>
+        <button onClick={handleClose} className="text-dark/50">
+          <Cross className="h-10 w-10" />
+        </button>
       </div>
     </div>
   );
