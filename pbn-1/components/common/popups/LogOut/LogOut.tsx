@@ -1,25 +1,32 @@
 'use client';
-
 import { signOut } from 'next-auth/react';
 
-export const LogOut = () => {
+export const LogOut = ({
+  handleClose,
+  name,
+}: {
+  handleClose: () => void;
+  name: string;
+}) => {
   const handleClick = () => {
     signOut();
   };
   return (
-    <div className="visible fixed inset-0 z-50 flex items-center justify-center bg-black/20">
-      <div className="flex flex-col items-center justify-between gap-y-6 bg-white px-4 py-10 md:w-[494px] md:rounded md:px-10 xl:w-[1204px] xl:flex-row xl:items-start xl:justify-start xl:gap-x-[196px] xl:gap-y-0 xl:py-6">
-        <p className="font-playfair text-menuTitleTab md:text-t32  xl:text-t40">
-          Cookie
+    <div className="visible fixed inset-0 z-50 flex bg-black/20">
+      <div className="absolute right-36 top-24 flex flex-col items-center justify-between gap-y-6 bg-white px-10 py-10 text-center md:w-[494px] md:rounded md:px-10">
+        <p className="tex-t20 font-playfair text-dark md:text-t32">
+          {name || 'User'}
+          {','}
         </p>
-        <div className="text-center text-t14 md:text-t16 xl:w-[727px] xl:text-left xl:text-t18">
-          <button
-            className="btn_black w-full xl:w-[184px]"
-            onClick={handleClick}
-          >
-            Так
-          </button>
-        </div>
+        <p className="text-t14 text-dark md:text-t16">
+          Ви дійсно хочете вийти?
+        </p>
+        <button onClick={handleClose} className="btn_black w-full">
+          Ні
+        </button>
+        <button className="btn_white w-full" onClick={handleClick}>
+          Так
+        </button>
       </div>
     </div>
   );
