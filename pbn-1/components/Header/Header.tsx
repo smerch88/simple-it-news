@@ -7,10 +7,10 @@ import { menuItemsCat } from '@/data/routes';
 // import { authConfig } from '@/lib/auth';
 import Logo from '@/public/header/logo.svg';
 
-import {
-  GoogleLogOutButton,
-  GoogleSignInButton,
-} from '../AuthButtons/AuthButtons';
+// import {
+//   GoogleLogOutButton,
+//   GoogleSignInButton,
+// } from '../AuthButtons/AuthButtons';
 import { Menu } from './Menu';
 
 export const Header = async () => {
@@ -64,13 +64,13 @@ export const Header = async () => {
                     Контакти
                   </Link>
                 </li>
-                <li className="ml-10">
+                {/* <li className="ml-10">
                   {session?.user?.name ? (
                     <GoogleLogOutButton name={session.user.name} />
                   ) : (
                     <GoogleSignInButton />
                   )}
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
