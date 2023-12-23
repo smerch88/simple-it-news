@@ -5,7 +5,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import { Lato, Playfair_Display } from 'next/font/google';
 
-import CookieConsent from '@/components/Cookie/CookieConsent';
+import CookieConsent from '@/components/common/popups/Cookie/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { ScrollBtn } from '@/components/ScrollBtn';
