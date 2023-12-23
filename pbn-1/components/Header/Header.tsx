@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { getServerSession } from 'next-auth';
 
+// import { getServerSession } from 'next-auth';
 import { menuItems } from '@/data/routes';
 import { menuItemsCat } from '@/data/routes';
 // import { authLoggedUser } from '@/lib/api';
-import { authConfig } from '@/lib/auth';
+// import { authConfig } from '@/lib/auth';
 import Logo from '@/public/header/logo.svg';
 
 import {
@@ -14,7 +14,7 @@ import {
 import { Menu } from './Menu';
 
 export const Header = async () => {
-  const session = await getServerSession(authConfig);
+  // const session = await getServerSession(authConfig);
   // await authLoggedUser({
   //   first_name: session?.user?.name?.split(' ')[0] || 'none',
   //   surname: session?.user?.name?.split(' ')[1] || 'none',
