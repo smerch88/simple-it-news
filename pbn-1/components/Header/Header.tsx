@@ -1,12 +1,26 @@
 import Link from 'next/link';
 
+// import { getServerSession } from 'next-auth';
 import { menuItems } from '@/data/routes';
 import { menuItemsCat } from '@/data/routes';
+// import { authLoggedUser } from '@/lib/api';
+// import { authConfig } from '@/lib/auth';
 import Logo from '@/public/header/logo.svg';
 
+import {
+  GoogleLogOutButton,
+  GoogleSignInButton,
+} from '../AuthButtons/AuthButtons';
 import { Menu } from './Menu';
 
-export const Header = () => {
+export const Header = async () => {
+  // const session = await getServerSession(authConfig);
+  // await authLoggedUser({
+  //   first_name: session?.user?.name?.split(' ')[0] || 'none',
+  //   surname: session?.user?.name?.split(' ')[1] || 'none',
+  //   profile_image: session?.user?.image || 'none',
+  //   email: session?.user?.email || 'none',
+  // });
   return (
     <header
       id="header"
@@ -49,6 +63,13 @@ export const Header = () => {
                   >
                     Контакти
                   </Link>
+                </li>
+                <li className="ml-10">
+                  {session?.user?.name ? (
+                    <GoogleLogOutButton name={session.user.name} />
+                  ) : (
+                    <GoogleSignInButton />
+                  )}
                 </li>
               </ul>
             </nav>
