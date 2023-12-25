@@ -1,43 +1,10 @@
 'use client';
 import { signIn } from 'next-auth/react';
 
-// import { useEffect } from 'react';
-// import { authLoggedUser } from '@/lib/api';
 import Cross from '@/public/notsorted/cross.svg';
 import Google from '@/public/socials/google.svg';
 
 export const LogIn = ({ handleClose }: { handleClose: () => void }) => {
-  // const newUser = {
-  //   first_name: 'Arsenii',
-  //   surname: 'Maksymenko',
-  //   profile_image:
-  //     'https://lh3.googleusercontent.com/a/ACg8ocId5i4nWeXBrrAS6ObCyKyIwIzHhDinHfFsILAEw0uUDy4=s96-c',
-  //   email: 'maxarmyk@gmail.com',
-  // };
-  // first_name: session?.user?.name?.split(' ')[0] || 'none',
-  // surname: session?.user?.name?.split(' ')[1] || 'none',
-  // profile_image: session?.user?.image || 'none',
-  // email: session?.user?.email || 'none',
-  // const data = authLoggedUser(newUser);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await fetch('api/example', 
-  //       {
-  //         method: 'POST',
-  //         body: JSON.stringify({hello: 'world'}),
-  //       }
-  //       );
-  //       console.log('data', data);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //       // Handle error if needed
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   const handleClick = () => {
     signIn('google');
   };
