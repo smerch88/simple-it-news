@@ -37,7 +37,7 @@ const config: Config = {
       },
       fontFamily: {
         lato: ['var(--font-lato)'],
-        playfair: ['var(--font-playfairDisplay)'],
+        playfair: 'Georgia',
       },
 
       fontSize: {
