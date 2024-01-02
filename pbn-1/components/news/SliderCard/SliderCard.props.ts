@@ -1,9 +1,7 @@
 export interface SliderProps {
-  slider: {
-    id: number;
-    category: string;
-    imgSrc?: string;
-    title: string;
-    link: string;
-  };
+  id: number;
+  category: string;
+  image_url?: string;
+  title: string;
+  link: string;
 }
