@@ -1,24 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, ReactNode } from 'react';
+import { getServerSession } from 'next-auth';
+import { FC } from 'react';
 
+import Carousel from '@/components/news/Carousel/Carousel';
+import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
+import { Stars } from '@/components/news/Stars';
+import { authConfig } from '@/lib/auth';
 
-interface PostProps {
-  pub_date: string;
-  id: string;
-  title: string;
-  image_url: string;
-  author: string;
-  author_url: string;
-  time_to_read: number;
-  rating: number;
-  description: string;
-  content?: string;
-  children?: ReactNode;
-}
+import { PostProps } from './Post.props';
 
-export const Post: FC<PostProps> = ({
+export const Post: FC<PostProps> = async ({
   pub_date,
   id,
   title,
@@ -30,6 +23,9 @@ export const Post: FC<PostProps> = ({
   description,
   content,
   children,
+  custom_url,
+  categories,
+  custom_category,
 }) => {
   const publishedDate = new Date(pub_date);
 
@@ -42,6 +38,9 @@ export const Post: FC<PostProps> = ({
   };
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+
+  const session = await getServerSession(authConfig);
+
   return (
     <div className="container">
       <ul className="mb-6 flex flex-row text-menuItemsMob10 text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
@@ -52,13 +51,12 @@ export const Post: FC<PostProps> = ({
         </li>
         <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
           <Link href="/news" rel="canonical">
-            Новини
-            {/* {categories[0].name} */}
+            {custom_category}
           </Link>
         </li>
         <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
           <Link
-            href={'/news/' + id}
+            href={'/news/' + custom_url}
             target="blank"
             rel="noreferrer nofollow"
             className="underline underline-offset-2"
@@ -92,39 +90,49 @@ export const Post: FC<PostProps> = ({
           </Link>
         ) : null}
         <Management time={time_to_read} rating={rating} />
-        <p className="mb-2 text-t14 md:mb-8 md:text-t16 xl:text-t18">
+        <p className="mb-2 whitespace-pre-wrap text-t14 md:mb-8 md:text-t16 xl:text-t18">
           {description}
         </p>
         {content ? (
-          <p className="mb-12 border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
+          <p className="mb-12 whitespace-pre-wrap border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
             {content}
           </p>
         ) : children ? (
           children
         ) : null}
       </article>
-      {/* TODO:uncomment after login feature*/}
-      {/* <div className="mb-12">
-            <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
-              Будь ласка оцініть новину
-            </p>
-            <Stars />
-          </div> */}
-      {/* <Comments /> */}
+
+      {session && (
+        <div className="mb-12">
+          <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
+            Будь ласка оцініть новину
+          </p>
+          <Stars />
+        </div>
+      )}
+      <Comments session={session} postId={id} />
       {/* TODO:uncomment after feature ready */}
-      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
-            <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
-              Інші публікації цього автора
-            </h2>
-            <Carousel mode="author" author_id={author?.id} />
-          </div> */}
-      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
-            <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
-              Більше з категорії новини
-              {categories[0].name}
-            </h2>
-            <Carousel mode="categories" categories={categories[0]} />
-          </div> */}
+      <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
+          Інші публікації цього автора
+        </h2>
+        <Carousel
+          mode="author"
+          author={author}
+          custom_category={custom_category}
+        />
+      </div>
+      <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
+          Більше з категорії {custom_category.toLowerCase()}
+          {/* {categories[0].name} */}
+        </h2>
+        <Carousel
+          mode="categories"
+          categories={categories ? categories[0]?.title : 'news'}
+          custom_category={custom_category}
+        />
+      </div>
     </div>
   );
 };

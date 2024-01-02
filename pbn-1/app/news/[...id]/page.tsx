@@ -35,15 +35,21 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   const {
-    pub_date,
     id: postId,
+    pub_date,
+    link,
     title,
     image_url,
+    update_date,
     author,
     time_to_read,
     rating,
     description,
     content,
+    country,
+    categories,
+    custom_url,
+    tags,
   } = await post[0];
 
   return (
@@ -52,14 +58,21 @@ export default async function Page({ params }: { params: { id: string } }) {
         pub_date={pub_date}
         id={postId}
         title={title}
+        link={link}
+        update_date={update_date}
         image_url={image_url}
         author={author?.name}
+        custom_url={custom_url}
         // TODO:add real author url
         author_url={author?.route}
         time_to_read={time_to_read}
         rating={rating}
         description={description}
         content={content}
+        country={country}
+        tags={tags}
+        categories={categories}
+        custom_category="Новини"
       />
     </>
   );
