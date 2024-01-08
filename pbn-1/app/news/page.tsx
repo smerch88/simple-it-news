@@ -43,7 +43,8 @@ const breadCrumbsList = [
 
 async function getNews() {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + '/api/ApprovedNews/?categorie=news',
+    process.env.NEXT_PUBLIC_API_BASE_URL +
+      '/api/ApprovedNews/?ordering=-pub_date&categorie=news',
     {
       next: { revalidate: 60 },
     },
