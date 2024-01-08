@@ -1,5 +1,6 @@
 export interface CommentsProps {
   id: number;
+  created: string;
   body: string;
   author: {
     id: number;

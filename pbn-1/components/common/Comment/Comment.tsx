@@ -11,6 +11,16 @@ export const Comment = ({
   comment: CommentsProps;
   session: Session | null;
 }) => {
+  const publishedDate = new Date(comment.created);
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  };
+
+  const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+
   return (
     <li key={comment.id} className={`item flex flex-col py-2`}>
       <div className="flex w-full items-center gap-x-4">
@@ -27,17 +37,18 @@ export const Comment = ({
         </div>
         <div className="flex w-full items-center justify-between">
           <p className="text-t20">{comment.author.first_name}</p>
-          <p className="text-menuItemsMob10 text-lightgrey ">
-            {/* {comment?.date} */}
-            {Date.now()}
-          </p>
+          <p className="text-menuItemsMob10 text-lightgrey ">{formattedDate}</p>
         </div>
       </div>
 
       <p className="md:t16 pl-[60px] text-t10 xl:text-t18">{comment.body}</p>
 
       {comment.author.email === session?.user?.email && (
-        <CommentsRemoveButton />
+        <CommentsRemoveButton
+          news_id={comment.news_id}
+          author_email={session.user.email}
+          comment_id={comment.id}
+        />
       )}
     </li>
   );
