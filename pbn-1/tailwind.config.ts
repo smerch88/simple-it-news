@@ -179,7 +179,7 @@ const config: Config = {
         ],
       },
       animation: {
-        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+        'infinite-scroll': 'infinite-scroll 80s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {
