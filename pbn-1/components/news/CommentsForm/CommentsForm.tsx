@@ -27,18 +27,14 @@ export const CommentsForm = ({
     }
     {
       if (session && textareaValue.length > 0) {
-        fetch(
-          process.env.NEXT_PUBLIC_API_BASE_URL +
-            `/api/Comments/?news_id=${postId}&author_email=${session?.user?.email}`,
-          {
-            method: 'POST',
-            body: JSON.stringify({ comment_body: textareaValue }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        );
-
+        fetch('/api/post-comment', {
+          method: 'POST',
+          body: JSON.stringify({
+            comment_body: textareaValue,
+            session: session,
+            postId: postId,
+          }),
+        });
         setTextareaValue('');
       }
     }
