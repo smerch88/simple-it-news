@@ -34,18 +34,18 @@ export const Header = async () => {
             </Link>
             <Menu />
             <nav className="invisible h-0 w-0 overflow-hidden xl:visible xl:ml-auto xl:h-auto xl:w-auto xl:overflow-visible">
-              <ul className="align-center flex flex-row items-center gap-1 text-white">
+              <ul className="align-center flex flex-row items-center gap-5 text-white">
                 <li className="group relative bg-dark">
                   <Link
                     href="/about-us"
-                    className="menuTitleMob relative z-40 inline-block px-3 py-1 ring-white group-hover:ring-2"
+                    className="menuTitleMob relative z-40 inline-block rounded px-3 py-1 ring-white group-hover:ring-2"
                   >
                     Про нас
                   </Link>
                   <ul className="invisible absolute top-full z-30 flex flex-col gap-3 rounded-b bg-dark pb-6 pr-3 pt-2 duration-300 group-hover:visible">
                     {menuItemsCat &&
                       menuItemsCat.map(item => (
-                        <li key={item.title}>
+                        <li key={item.title} className="first:pt-4">
                           <Link
                             href={item.route}
                             className="menuTitleMob inline-block w-full whitespace-nowrap border-b border-solid border-white px-2 py-1"
@@ -59,12 +59,12 @@ export const Header = async () => {
                 <li>
                   <Link
                     href="/about-us/contacts"
-                    className="menuTitleMob px-3 py-1"
+                    className="menuTitleMob rounded px-3 py-1 ring-white hover:ring-2"
                   >
                     Контакти
                   </Link>
                 </li>
-                <li className="ml-10">
+                <li className="ml-20">
                   {session?.user?.name ? (
                     <GoogleLogOutButton name={session.user.name} />
                   ) : (
