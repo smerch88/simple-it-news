@@ -4,14 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-// import BookMark from '@/public/card/bookmark.svg';
-import Clock from '@/public/card/clock.svg';
-import Star from '@/public/card/star.svg';
+import { StarTime } from '@/components/common/StartTime';
 
 import { CmsPostProps } from './CardPost.props';
 
 export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
-  const Tag = type === 'main' ? 'h3' : 'h2';
+  const HeadingTag = type === 'main' ? 'h3' : 'h2';
 
   const publishedDate = new Date(article._publishedAt);
 
@@ -25,10 +23,6 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
 
-  // const handleBookMark = (id: string) => {
-  //   console.log('id', id);
-  // };
-
   return (
     <li
       className={cn(
@@ -37,56 +31,44 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
           : '',
       )}
     >
-      <article className="overflow-hidden border-b border-dark ">
+      <article className="relative overflow-hidden border-b border-dark">
         {article.articlepicture.url && (
-          <div className="relative mb-4 h-[176px] w-full md:h-[296px] xl:h-[242px]">
+          <div className="relative h-[176px] w-full md:h-[296px] xl:h-[242px]">
             <Image
               src={article.articlepicture.url}
               fill
               className="rounded object-cover"
-              alt={article.articlepicture.alt}
+              alt={'Abstract illustration of ' + article.articlepicture.alt}
+              sizes="100vw"
             />
           </div>
         )}
-        <p className="font-playfair text-base text-blueDark">Пости</p>
-        <div className="flex w-full flex-row items-center justify-between">
-          <div className="flex gap-3">
-            <div className="flex gap-1 py-3">
-              <Clock className="h-4 w-4" />
-              <span className="text-xs font-normal text-grey">
-                {/* TODO: make normal time */}
-                <time>
-                  {Math.ceil(article.shortdescription.length / 45)}
-                </time>{' '}
-                хв.
-              </span>
-            </div>
-            <div className="flex gap-1 py-3">
-              <Star className="h-4 w-4" />
-              <span className="text-xs font-normal text-grey">5/5</span>
-            </div>
-          </div>
-          {/* <div className="flex">
-            <button type="button" onClick={() => handleBookMark(article.id)}>
-              <BookMark className="h-10 w-10" />
-            </button>
-          </div> */}
-        </div>
-        <Link href={`/posts/${article.route}`} rel="canonical">
-          <Tag className="mb-3 text-2xl font-bold text-dark">
+        <b className="mb-2 text-menuItemsTab14 text-blue md:text-t16 xl:text-t18">
+          Пости
+        </b>
+
+        <StarTime
+          time={Math.ceil(article.shortdescription.length / 45)}
+          rating={5}
+          className="py-4"
+        />
+        <Link
+          href={`/posts/${article.route}`}
+          rel="canonical"
+          className="group after:absolute after:inset-0"
+        >
+          <HeadingTag className="mb-2 font-playfair text-menuTitleMob text-dark group-hover:text-blue_hover md:mb-3 md:text-t24 xl:text-t24">
             {article.title}
-          </Tag>
+          </HeadingTag>
         </Link>
-        <p className="mb-4 line-clamp-3 text-grey">
+        <p className="xl:text-18 mb-2 line-clamp-3 text-t14 text-grey md:mb-3 md:text-t16">
           {article.shortdescription}
         </p>
-
         <div className="mb-2 flex flex-col text-gray-400/80">
           <Link
             href={'/authors/' + article.author.route}
-            rel="noopener noreferrer nofollow"
-            target="blank"
-            className="mb-5 text-base font-normal text-blue underline decoration-solid"
+            rel="canonical"
+            className="mb-2 text-t14 text-blue underline underline-offset-2 hover:text-blue_hover md:text-t16 xl:text-t18"
           >
             {article.author.authorname}
           </Link>
