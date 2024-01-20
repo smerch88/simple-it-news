@@ -64,7 +64,7 @@ export const Header = async () => {
                     Контакти
                   </Link>
                 </li>
-                <li className="ml-20">
+                <li className="ml-[300px]">
                   {session?.user?.name ? (
                     <GoogleLogOutButton name={session.user.name} />
                   ) : (
