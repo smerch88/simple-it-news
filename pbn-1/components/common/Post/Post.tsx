@@ -100,17 +100,17 @@ export const Post: FC<PostProps> = async ({
         ) : children ? (
           children
         ) : null}
+        {session && (
+          <div className="mb-12">
+            <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
+              Будь ласка оцініть новину
+            </p>
+            <Stars />
+          </div>
+        )}
+        <Comments session={session} postId={id} />
       </article>
 
-      {session && (
-        <div className="mb-12">
-          <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
-            Будь ласка оцініть новину
-          </p>
-          <Stars />
-        </div>
-      )}
-      <Comments session={session} postId={id} />
       {/* TODO:uncomment after feature ready */}
       <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
         <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">

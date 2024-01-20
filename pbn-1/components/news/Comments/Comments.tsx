@@ -31,19 +31,19 @@ export const Comments = async ({
 
   return (
     <div>
-      <h2 className="mb-6 font-playfair text-menuTitleMob font-semibold md:text-menuTitleTab">
+      <p className="mb-6 font-playfair text-menuTitleMob font-semibold md:text-menuTitleTab">
         Коментарі
-      </h2>
+      </p>
       <CommentsForm session={session} postId={postId} />
 
       {comments && comments.length ? (
-        <ul className="flex flex-col ">
+        <div className="flex flex-col ">
           {comments.map((comment: CommentsProps) => {
             return (
               <Comment comment={comment} key={comment.id} session={session} />
             );
           })}
-        </ul>
+        </div>
       ) : (
         <p>Комментарів ще немає</p>
       )}

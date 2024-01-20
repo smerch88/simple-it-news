@@ -22,23 +22,23 @@ export const Comment = ({
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
 
   return (
-    <li key={comment.id} className={`item flex flex-col py-2`}>
+    <article key={comment.id} className="item flex flex-col py-2">
       <div className="flex w-full items-center gap-x-4">
         <div className="w-12">
-          <div className={`avatar h-12 w-12 rounded-full`}>
+          <div className="avatar h-12 w-12 rounded-full">
             <Image
               width={48}
               height={48}
               src={comment.author.profile_image}
-              alt="аватарка юзера"
+              alt={`${comment.author.first_name}'s profile image`}
               className="h-12 w-12 rounded-full "
             />
           </div>
         </div>
-        <div className="flex w-full items-center justify-between">
+        <footer className="flex w-full items-center justify-between">
           <p className="text-t20">{comment.author.first_name}</p>
           <p className="text-menuItemsMob10 text-lightgrey ">{formattedDate}</p>
-        </div>
+        </footer>
       </div>
 
       <p className="md:t16 pl-[60px] text-t10 xl:text-t18">{comment.body}</p>
@@ -50,6 +50,6 @@ export const Comment = ({
           comment_id={comment.id}
         />
       )}
-    </li>
+    </article>
   );
 };
