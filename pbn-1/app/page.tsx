@@ -86,15 +86,9 @@ export default async function Home() {
   return (
     <>
       <div className="container relative">
-        <div className="mb-10 flex flex-col gap-2">
-          <h1 className="text-[40px]/[60px] font-semibold">
-            Всі новини у сфері IT
-          </h1>
-          {/* TODO: add real data */}
-          {/* <p className="text-base font-normal italic">
-            Останне оновлення 11.11.2023 19:28
-          </p> */}
-        </div>
+        <h1 className="mb-6 font-playfair text-t24 md:mb-7 md:text-t32 xl:text-t40">
+          Всі новини у сфері IT
+        </h1>
         <div className="xl:grid-row-12 flex flex-col gap-6 xl:grid xl:grid-flow-row-dense xl:grid-cols-[796px_minmax(365px,_auto)] xl:gap-5">
           <div className="order-1 flex w-full flex-col xl:col-start-1 xl:col-end-1 xl:row-start-1 xl:row-end-4">
             <h2 className="mb-8 flex w-full rounded bg-red px-3 py-2 text-2xl text-white">
