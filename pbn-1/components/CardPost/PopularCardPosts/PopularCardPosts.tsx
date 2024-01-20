@@ -70,13 +70,11 @@ export const PopularCardPosts: FC<CmsPostProps> = ({ articles }) => {
         {articles?.slice(0, 4).map((article: CmsArticleType) => (
           <li
             key={article.id}
-            className="rounded border border-lightgrey px-4 py-5"
+            className="rounded px-4 py-5 duration-300 hover:ring-1 hover:ring-lightgrey"
           >
-            <div className="mb-1 text-lg font-normal tracking-wide text-red">
-              Новини
-            </div>
+            <div className="mb-1 text-t18 text-blue">Пости</div>
             <Link href={`/posts/${article.route}`} rel="canonical">
-              <h3 className="mb-2 text-2xl font-normal">{article.title}</h3>
+              <h3 className="mb-2 text-t24">{article.title}</h3>
             </Link>
           </li>
         ))}

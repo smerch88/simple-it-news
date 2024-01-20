@@ -96,7 +96,11 @@ export default async function Home() {
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
               {news.slice(0, 3).map((article: RESTAPIPost) => (
-                <CardPostRest key={article.id} article={article} />
+                <CardPostRest
+                  key={article.id}
+                  article={article}
+                  leadsTo="news"
+                />
               ))}
             </ul>
           </div>
@@ -115,7 +119,11 @@ export default async function Home() {
           <div className="order-4 flex w-full flex-col xl:col-start-1 xl:col-end-1">
             <ul className="mb-2 flex flex-wrap gap-8">
               {news.slice(3).map((article: RESTAPIPost) => (
-                <CardPostRest key={article.id} article={article} />
+                <CardPostRest
+                  key={article.id}
+                  article={article}
+                  leadsTo="news"
+                />
               ))}
             </ul>
           </div>
@@ -124,12 +132,12 @@ export default async function Home() {
             <Image src={'/img/Grade.jpg'} width={388} height={581} alt="" />
           </div> */}
 
-          <div className="order-2 hidden flex-col xl:col-start-2 xl:col-end-2 xl:flex">
-            <h2 className="mb-6 rounded bg-black px-3 py-2 text-white sm:text-sm md:text-3xl">
-              Популярні новини
+          <section className="order-2 hidden flex-col xl:col-start-2 xl:col-end-2 xl:flex">
+            <h2 className="mb-8 rounded bg-black px-3 py-2 font-playfair text-t18 text-white sm:text-sm md:text-t32 xl:text-t40">
+              Популярне :
             </h2>
             <PopularCardPosts articles={data.allNewsposts} />
-          </div>
+          </section>
         </div>
       </div>
     </>

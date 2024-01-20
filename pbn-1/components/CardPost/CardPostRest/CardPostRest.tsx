@@ -7,7 +7,11 @@ import { StarTime } from '@/components/common/StartTime';
 
 import { CmsPostProps } from './CardPostRest.props';
 
-export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
+export const CardPostRest: FC<CmsPostProps> = ({
+  article,
+  type = 'main',
+  leadsTo = 'news',
+}) => {
   const publishedDate = new Date(article.pub_date);
 
   const options: Intl.DateTimeFormatOptions = {
@@ -20,7 +24,7 @@ export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
 
-  const Tag = type === 'main' ? 'h3' : 'h2';
+  const HeadingTag = type === 'main' ? 'h3' : 'h2';
 
   return (
     <li
@@ -30,28 +34,38 @@ export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
           : '',
       )}
     >
-      <article className="overflow-hidden border-b border-dark ">
+      <article className="relative overflow-hidden border-b border-dark">
         {article.image_url && (
-          <div className="relative mb-4 h-[176px] w-full md:h-[296px] xl:h-[242px]">
+          <div className="relative h-[176px] w-full md:h-[296px] xl:h-[242px]">
             <Image
               src={article.image_url}
               fill
               // Find how to manage sizes of image
               className="rounded object-contain object-left xl:object-cover"
               // TODO:change to alt from back
-              alt={article.title}
+              alt={'Abstract illustration of ' + article.title}
+              sizes="100vw"
             />
           </div>
         )}
-        <span className="text-menuItemsTab14 text-red">Новини</span>
-        <StarTime time={article.time_to_read} rating={article.rating} />
-        {/* TODO: add real route */}
-        <Link href={`/news/${article.custom_url}`} rel="canonical">
-          <Tag className="md:menuTitleTab mb-2 font-playfair text-menuTitleMob text-dark md:mb-3 xl:text-t24 xl:font-normal">
+        <b className="mb-2 text-menuItemsTab14 text-red md:text-t16 xl:text-t18">
+          {leadsTo === 'news' ? 'Новини' : 'Пости'}
+        </b>
+        <StarTime
+          time={article.time_to_read}
+          rating={article.rating}
+          className="py-4"
+        />
+        <Link
+          href={`/${leadsTo}/${article.custom_url}`}
+          rel="canonical"
+          className="group after:absolute after:inset-0"
+        >
+          <HeadingTag className="mb-2 font-playfair text-menuTitleMob text-dark group-hover:text-blue_hover md:mb-3 md:text-t24 xl:text-t24">
             {article.title}
-          </Tag>
+          </HeadingTag>
         </Link>
-        <p className="md:t-16 xl:t-18 mb-2 line-clamp-3 text-t14 text-grey md:mb-3">
+        <p className="xl:text-18 mb-2 line-clamp-3 text-t14 text-grey md:mb-3 md:text-t16">
           {article.description}
         </p>
 
