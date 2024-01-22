@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     update_date,
     author,
     time_to_read,
-    rating,
+    rating_avg,
     description,
     content,
     country,
@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         custom_url={custom_url}
         author_url={author?.route}
         time_to_read={time_to_read}
-        rating={rating}
+        rating={rating_avg}
         description={description}
         content={content}
         country={country}
