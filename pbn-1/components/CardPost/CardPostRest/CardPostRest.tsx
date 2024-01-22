@@ -53,7 +53,7 @@ export const CardPostRest: FC<CmsPostProps> = ({
         </b>
         <StarTime
           time={article.time_to_read}
-          rating={article.rating}
+          rating={article.rating_avg}
           className="py-4"
         />
         <Link

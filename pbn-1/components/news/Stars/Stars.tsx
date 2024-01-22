@@ -1,14 +1,34 @@
 'use client';
 
+import { Session } from 'next-auth';
 import { useState } from 'react';
 
 import StarImg from '@/public/notsorted/star.svg';
 
-export const Stars = () => {
+export const Stars = ({
+  custom_url,
+  session,
+}: {
+  custom_url?: string;
+  session: Session;
+}) => {
   const [rating, setRating] = useState(0);
+  const [showMessage, setShowMessage] = useState(false);
 
-  const handleStarClick = (clickedRating: number) => {
+  const handleStarClick = async (clickedRating: number) => {
     setRating(clickedRating);
+    const res = await fetch('/api/post-rating', {
+      method: 'POST',
+      body: JSON.stringify({
+        clickedRating,
+        custom_url,
+        session,
+      }),
+    });
+
+    if (res.status !== 200 && res.status !== 201) {
+      setShowMessage(true);
+    }
   };
 
   const renderStars = () => {
@@ -29,5 +49,10 @@ export const Stars = () => {
     return stars;
   };
 
-  return <ul className="flex">{renderStars()}</ul>;
+  return (
+    <>
+      <ul className="flex">{renderStars()}</ul>
+      {showMessage && <p>Рейтинг вже було додано</p>}
+    </>
+  );
 };

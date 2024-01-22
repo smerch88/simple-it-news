@@ -68,7 +68,7 @@ export interface RESTAPIPost {
   country: string;
   content: string;
   tags: Category[];
-  rating: number;
+  rating_avg: number;
   categories: Category[];
   time_to_read: number;
   custom_url: string;

@@ -4,4 +4,5 @@ export interface SliderProps {
   image_url?: string;
   title: string;
   link: string;
+  custom_url: string;
 }

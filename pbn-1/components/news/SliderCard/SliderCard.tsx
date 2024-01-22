@@ -16,7 +16,7 @@ export const SliderCard = ({
 }) => {
   return (
     <li className="carousel-item h-[280px] w-[260px] rounded border-[0.5px] border-lightgrey px-2 py-3 md:h-[310px] md:w-[365px] xl:h-[390px] xl:w-[388px]">
-      <Link href={slider.link} className="">
+      <Link href={'/news/' + slider.custom_url} className="">
         <div className="mb-2 h-[150px] object-cover xl:h-[200px]">
           <Image
             src={slider.image_url ? slider.image_url : defaultImg}

@@ -26,6 +26,7 @@ export const Post: FC<PostProps> = async ({
   custom_url,
   categories,
   custom_category,
+  link,
 }) => {
   const publishedDate = new Date(pub_date);
 
@@ -90,13 +91,23 @@ export const Post: FC<PostProps> = async ({
           </Link>
         ) : null}
         <Management time={time_to_read} rating={rating} />
-        <p className="mb-2 whitespace-pre-wrap text-t14 md:mb-8 md:text-t16 xl:text-t18">
+        <p className="mb-2 text-t14 md:mb-8 md:text-t16 xl:text-t18">
           {description}
         </p>
         {content ? (
-          <p className="mb-12 whitespace-pre-wrap border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
-            {content}
-          </p>
+          <>
+            <p className="mb-4 whitespace-pre-wrap border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
+              {content}
+            </p>
+            {link && (
+              <Link
+                href={link}
+                className="mb-12 inline-block text-t14 text-grey xl:mb-[52px] xl:text-t16"
+              >
+                Першоджерело
+              </Link>
+            )}
+          </>
         ) : children ? (
           children
         ) : null}
@@ -105,7 +116,7 @@ export const Post: FC<PostProps> = async ({
             <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
               Будь ласка оцініть новину
             </p>
-            <Stars />
+            <Stars custom_url={custom_url} session={session} />
           </div>
         )}
         <Comments session={session} postId={id} />
