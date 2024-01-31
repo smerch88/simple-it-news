@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
@@ -9,7 +10,6 @@ import CookieConsent from '@/components/common/popups/Cookie/CookieConsent';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { ScrollBtn } from '@/components/ScrollBtn';
-import { GoogleAnalytics } from '@next/third-parties/google';
 
 const lato = Lato({
   weight: ['400'],
