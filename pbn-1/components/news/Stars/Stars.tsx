@@ -19,6 +19,7 @@ export const Stars = ({
     setRating(clickedRating);
     const res = await fetch('/api/post-rating', {
       method: 'POST',
+      next: { revalidate: 60 },
       body: JSON.stringify({
         clickedRating,
         custom_url,

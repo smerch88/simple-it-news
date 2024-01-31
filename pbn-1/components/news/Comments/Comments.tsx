@@ -10,7 +10,7 @@ async function getComments(postId: string) {
     process.env.NEXT_PUBLIC_API_BASE_URL + `/api/Comments/${postId}/`,
     {
       method: 'GET',
-      next: { revalidate: 0 },
+      next: { revalidate: 120 },
     },
   );
 
