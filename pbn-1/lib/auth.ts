@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { redirect, useRouter } from 'next/navigation';
 import { getServerSession, NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
@@ -17,6 +18,7 @@ export const authConfig: NextAuthOptions = {
       if (user?.isAdmin) token.isAdmin = user.isAdmin;
       return token;
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async session({ session, token, user }: any) {
       // user id is stored in ._id when using credentials provider
       if (token?._id) session.user._id = token._id;
