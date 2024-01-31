@@ -83,7 +83,7 @@ export const Header = async () => {
               <li key={item.title}>
                 <Link
                   href={item.route}
-                  className="rounded px-4 py-2 text-t20 hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.25)] duration-300"
+                  className="rounded px-4 py-2 text-t20 duration-300 hover:shadow-[1px_1px_5px_0px_rgba(0,_0,_0,_0.25)]"
                 >
                   {item.title}
                 </Link>
