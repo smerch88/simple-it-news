@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 
-import NoImg from '@/public/noimg.png';
-
 import { PostProps } from './Post.props';
 
 export const Post: FC<PostProps> = ({ article }) => {
@@ -48,7 +46,7 @@ export const Post: FC<PostProps> = ({ article }) => {
         {article?.urlToImage && article.urlToImage.startsWith('https://') && (
           <div className="relative mb-2 h-40 w-full">
             <Image
-              src={article.urlToImage || NoImg}
+              src={article.urlToImage}
               fill
               className="object-contain"
               alt={article.title + 'Image'}

@@ -4,7 +4,6 @@ import { FC, ReactNode } from 'react';
 
 import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Management } from '@/components/news/Management';
-import NoImg from '@/public/noimg.png';
 
 interface PostProps {
   pub_date: string;
@@ -121,7 +120,7 @@ export const Post: FC<PostProps> = ({
         </time>
         <div className="relative mb-2 h-40 w-full md:h-[480px]">
           <Image
-            src={image_url || NoImg}
+            src={image_url}
             fill
             className="object-scale-down object-left-top xl:object-cover"
             alt={title + 'Image'}

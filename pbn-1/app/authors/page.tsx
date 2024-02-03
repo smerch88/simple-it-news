@@ -141,7 +141,7 @@ export default async function Authors() {
                     id: string;
                     authorname: string;
                     route: string;
-                    articles: Author[];
+                    articles:  Author[];
                   }) => (
                     <tr key={id} className="bg-white">
                       <td className="border-b-[0.5px] border-lightgrey px-4 pt-6 text-t18 text-blue underline">

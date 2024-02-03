@@ -22,7 +22,7 @@ export const LogIn = ({ handleClose }: { handleClose: () => void }) => {
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
-  //       const data = await fetch('api/example',
+  //       const data = await fetch('api/example', 
   //       {
   //         method: 'POST',
   //         body: JSON.stringify({hello: 'world'}),
