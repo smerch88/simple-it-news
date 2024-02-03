@@ -7,6 +7,7 @@ import { BreadCrumbs } from '@/components/BreadCrumbs';
 import { Stars } from '@/components/news/Stars';
 import { RightSection } from '@/components/RightSection/RightSection';
 import { SocialNetworksAuthor } from '@/components/SocialNetworksAuthor';
+import NoImg from '@/public/noimg.png';
 import Star from '@/public/notsorted/star.svg';
 import { Author } from '@/types';
 import { getClient } from '@/utils/apollo-client';
@@ -161,7 +162,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           <div className="mb-11 flex">
             <div className="relative mb-2 mr-2 h-[52px] w-[52px] md:mb-8 xl:h-[60px] xl:w-[60px]">
               <Image
-                src={author.authorimage.url}
+                src={author.authorimage.url || NoImg}
                 fill
                 className="rounded-full object-contain"
                 alt={author.authorimage.alt || 'author'}

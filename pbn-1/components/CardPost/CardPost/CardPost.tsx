@@ -7,6 +7,7 @@ import { FC } from 'react';
 // import BookMark from '@/public/card/bookmark.svg';
 import Clock from '@/public/card/clock.svg';
 import Star from '@/public/card/star.svg';
+import NoImg from '@/public/noimg.png';
 
 import { CmsPostProps } from './CardPost.props';
 
@@ -41,7 +42,7 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
         {article.articlepicture.url && (
           <div className="relative mb-4 h-[176px] w-full md:h-[296px] xl:h-[242px]">
             <Image
-              src={article.articlepicture.url}
+              src={article.articlepicture.url || NoImg}
               fill
               className="rounded object-cover"
               alt={article.articlepicture.alt}

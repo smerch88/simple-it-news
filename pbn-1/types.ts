@@ -88,7 +88,6 @@ export interface Author {
   articles: { route: string; title: string; _createdAt: string }[];
 }
 
-
 export interface Category {
   id: number;
   title: string;

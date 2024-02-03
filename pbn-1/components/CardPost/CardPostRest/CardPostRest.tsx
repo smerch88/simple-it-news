@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { StarTime } from '@/components/common/StartTime';
+import NoImg from '@/public/noimg.png';
 
 import { CmsPostProps } from './CardPostRest.props';
 
@@ -34,7 +35,7 @@ export const CardPostRest: FC<CmsPostProps> = ({ article, type = 'main' }) => {
         {article.image_url && (
           <div className="relative mb-4 h-[176px] w-full md:h-[296px] xl:h-[242px]">
             <Image
-              src={article.image_url}
+              src={article.image_url || NoImg}
               fill
               // Find how to manage sizes of image
               className="rounded object-contain object-left xl:object-cover"
