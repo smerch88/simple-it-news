@@ -42,7 +42,7 @@ export interface Author {
   authorname: string;
   route: string;
   socials: { [platform: string]: string };
-  articles: { route: string; title: string }[];
+  articles: { route: string; title: string; _createdAt: string }[];
   authorimage: {
     width: number;
     url: string;
@@ -84,7 +84,7 @@ export interface Author {
   twitter: string | null;
   telegram: string | null;
   // TODO: fix this type
-  articles: { route: string; title: string }[];
+  articles: { route: string; title: string; _createdAt: string }[];
 }
 
 export interface Category {

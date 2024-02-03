@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import { StarTime } from '@/components/common/StartTime';
+import NotFound from '@/public/img/img.png';
 
 import { CmsPostProps } from './CardPost.props';
 
@@ -35,7 +36,7 @@ export const CardPost: FC<CmsPostProps> = ({ article, type = 'main' }) => {
         {article.articlepicture.url && (
           <div className="relative h-[176px] w-full md:h-[296px] xl:h-[242px]">
             <Image
-              src={article.articlepicture.url}
+              src={article.articlepicture.url || NotFound}
               fill
               className="rounded object-cover"
               alt={'Abstract illustration of ' + article.articlepicture.alt}
