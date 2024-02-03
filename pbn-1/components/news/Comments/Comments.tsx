@@ -1,52 +1,78 @@
-import { Session } from 'next-auth';
-
-import { Comment } from '@/components/common/Comment';
-
 import { CommentsForm } from '../CommentsForm';
-import { CommentsProps } from './Comments.props';
+import { CommentsRemoveButton } from '../CommentsRemoveButton';
 
-async function getComments(postId: string) {
-  const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/Comments/${postId}/`,
+export const Comments = () => {
+  /* get Comments Api */
+
+  const comments = [
     {
-      method: 'GET',
-      next: { revalidate: 120 },
+      id: 1,
+      name: 'KRIS',
+      text: 'Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.',
+      date: '13.11.2023',
     },
-  );
+    {
+      id: 2,
+      name: 'Арсен',
+      text: 'Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.',
+      date: '14.11.2023',
+    },
 
-  if (res.status !== 200) {
-    return null;
-  }
-  return res.json();
-}
-
-export const Comments = async ({
-  session,
-  postId,
-}: {
-  session: Session | null;
-  postId: string;
-}) => {
-  const comments = await getComments(postId);
+    { id: 3, name: 'Stas', text: 'Важливо', date: '13.11.2023' },
+    {
+      id: 4,
+      name: 'KRIS',
+      text: 'Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.',
+      date: '13.11.2023',
+    },
+    {
+      id: 5,
+      name: 'Арсен',
+      text: 'Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.Важливо ретельно вивчити умови і обов`язки, щоб уникнути неприємних сюрпризів.',
+      date: '14.11.2023',
+    },
+    { id: 6, name: 'Stanislav', text: 'Важливо', date: '15.11.2023' },
+  ];
 
   return (
     <div>
-      <p className="mb-6 font-playfair text-menuTitleMob font-semibold md:text-menuTitleTab">
+      <h2 className="mb-6 font-playfair text-menuTitleMob font-semibold md:text-menuTitleTab">
         Коментарі
-      </p>
-      <CommentsForm session={session} postId={postId} />
+      </h2>
+      <CommentsForm />
 
-      {comments && comments.length ? (
-        <div className="flex flex-col ">
-          {comments.map((comment: CommentsProps) => {
-            return (
-              <Comment comment={comment} key={comment.id} session={session} />
-            );
-          })}
-        </div>
-      ) : (
-        <p>Комментарів ще немає</p>
-      )}
+      {/* Other comments */}
+      <ul className="flex flex-col ">
+        {comments.map(comment => {
+          return (
+            <li key={comment.id} className={`item flex flex-col py-2`}>
+              <div className="flex w-full items-center gap-x-4">
+                <div className="w-12">
+                  <div className={`avatar h-12 w-12 rounded-full`}>
+                    {/* <img
+                  src="#"
+                  alt="аватарка юзера"
+                  className="h-12 w-12 rounded-full "
+                /> */}
+                  </div>
+                </div>
+                <div className="flex w-full items-center justify-between">
+                  <p className="text-t20">{comment.name}</p>
+                  <p className="md:t16 text-menuItemsMob10 text-lightgrey xl:text-t18">
+                    {comment.date}
+                  </p>
+                </div>
+              </div>
+
+              <p className="md:t16 pl-[60px] text-t10 xl:text-t18">
+                {comment.text}
+              </p>
+              {/* check comment owner */}
+              <CommentsRemoveButton />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

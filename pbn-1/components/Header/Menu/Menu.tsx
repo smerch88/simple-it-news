@@ -33,7 +33,7 @@ export const Menu = () => {
       </button>
       {isOpen ? (
         <div className="fixed inset-0 z-10 overflow-scroll bg-white">
-          <header id="headermob" className="mb-32">
+          <div id="headermob" className="mb-32">
             {/* TODO:stick to top */}
             <div className="bg-dark py-3">
               <div className="container">
@@ -62,6 +62,7 @@ export const Menu = () => {
                         >
                           <Link
                             href={item.route}
+                            // TODO: rewrite to buttons
                             onClick={() => setMenuClosed()}
                           >
                             {item.title}
@@ -77,19 +78,16 @@ export const Menu = () => {
                         <li
                           key={item.title}
                           className="border-b border-solid border-dark/50 pb-2 pt-5"
+                          // TODO: rewrite to buttons
+                          onClick={() => setMenuClosed()}
                         >
-                          <Link
-                            href={item.route}
-                            onClick={() => setMenuClosed()}
-                          >
-                            {item.title}
-                          </Link>
+                          <Link href={item.route}>{item.title}</Link>
                         </li>
                       ))}
                   </ul>
                   <Link
                     href="/about-us/contacts"
-                    className="text-menuTitleMob"
+                    className="text-menuTitleMob" // TODO: rewrite to buttons
                     onClick={() => setMenuClosed()}
                   >
                     Контакти
@@ -97,8 +95,8 @@ export const Menu = () => {
                 </nav>
               </div>
             </div>
-          </header>
-          <footer
+          </div>
+          <div
             id="footermob"
             className="fixed inset-x-0 bottom-0 mt-auto bg-dark py-3"
           >
@@ -136,12 +134,12 @@ export const Menu = () => {
               </ul>
               <div className="flex flex-col text-center text-quot text-white">
                 <Link href="/">Simple IT News</Link>
-                <small>
+                <span>
                   Copyright © {new Date().getFullYear()} Simple IT News
-                </small>
+                </span>
               </div>
             </div>
-          </footer>
+          </div>
         </div>
       ) : null}
     </>

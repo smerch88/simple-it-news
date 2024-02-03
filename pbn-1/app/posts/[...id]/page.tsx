@@ -155,7 +155,6 @@ export default async function Page({ params }: { params: { id: string } }) {
         time_to_read={15}
         rating={5}
         description={shortdescription}
-        custom_category="Пости"
       >
         <StructuredText data={article.articletext} />
       </Post>

@@ -26,6 +26,18 @@ async function getNews(id: string) {
   return res.json();
 }
 
+// TODO:check why do we have this code here
+// const breadCrumbsList = [
+//   {
+//     link: '/',
+//     text: 'Головна',
+//   },
+//   {
+//     link: '/news',
+//     text: 'Новини',
+//   },
+// ];
+
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = params;
   const post = await getNews(id);
@@ -35,93 +47,31 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   const {
-    id: postId,
     pub_date,
-    link,
+    id: postId,
     title,
     image_url,
-    update_date,
     author,
     time_to_read,
-    rating_avg,
+    rating,
     description,
     content,
-    country,
-    categories,
-    custom_url,
-    tags,
   } = await post[0];
-
-  const breadCrumbsJsonLD = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: {
-      '@type': 'ListItem',
-      position: '1',
-      item: {
-        '@id': `${process.env.HOST}/news/${id[0]}`,
-        name: title,
-      },
-    },
-  };
-
-  const articleJsonLD = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${process.env.HOST}/news/${id[0]}`,
-    },
-    headline: title,
-    description: description,
-    image: image_url,
-    author: {
-      '@type': 'Person',
-      name: author?.name,
-      url: `${process.env.HOST}/authors/${author.route}`,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: process.env.HOST,
-      logo: {
-        '@type': 'ImageObject',
-        url: `/favicon/android-chrome-512x512.png`,
-      },
-    },
-    datePublished: `${pub_date}`,
-    dateModified: `${update_date}`,
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
-        key="breadcrumbs-jsonld"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLD) }}
-        key="article-jsonld"
-      />
       <Post
         pub_date={pub_date}
         id={postId}
         title={title}
-        link={link}
-        update_date={update_date}
         image_url={image_url}
         author={author?.name}
-        custom_url={custom_url}
+        // TODO:add real author url
         author_url={author?.route}
         time_to_read={time_to_read}
-        rating={rating_avg}
+        rating={rating}
         description={description}
         content={content}
-        country={country}
-        tags={tags}
-        categories={categories}
-        custom_category="Новини"
       />
     </>
   );
