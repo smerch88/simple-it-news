@@ -37,11 +37,7 @@ const config: Config = {
       },
       fontFamily: {
         lato: ['var(--font-lato)'],
-        playfair: ['var(--font-playfairDisplay)'],
-      },
-
-      boxShadow: {
-        ss: '1px 1px 5px 0px rgba(0, 0, 0, 0.25)',
+        playfair: 'Georgia',
       },
 
       fontSize: {
@@ -183,7 +179,7 @@ const config: Config = {
         ],
       },
       animation: {
-        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+        'infinite-scroll': 'infinite-scroll 80s linear infinite',
       },
       keyframes: {
         'infinite-scroll': {

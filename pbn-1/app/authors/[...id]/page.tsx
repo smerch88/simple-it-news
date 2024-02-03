@@ -4,10 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { BreadCrumbs } from '@/components/BreadCrumbs';
-import { Stars } from '@/components/news/Stars';
-import { RightSection } from '@/components/RightSection/RightSection';
-import { SocialNetworksAuthor } from '@/components/SocialNetworksAuthor';
-import Star from '@/public/notsorted/star.svg';
 import { Author } from '@/types';
 import { getClient } from '@/utils/apollo-client';
 
@@ -65,7 +61,6 @@ const GET_AUTHOR = gql`
       articles {
         route
         title
-        _createdAt
       }
       authorimage {
         width
@@ -89,32 +84,14 @@ export default async function Page({ params }: { params: { id: string } }) {
   const breadCrumbsJsonLD = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: '1',
-        item: {
-          '@id': `${process.env.HOST}]}`,
-          name: 'Головна',
-        },
+    itemListElement: {
+      '@type': 'ListItem',
+      position: '1',
+      item: {
+        '@id': `${process.env.HOST}/authors/${id[0]}`,
+        name: `${author.authorname}`,
       },
-      {
-        '@type': 'ListItem',
-        position: '2',
-        item: {
-          '@id': `${process.env.HOST}/authors`,
-          name: 'Автор',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: '3',
-        item: {
-          '@id': `${process.env.HOST}/authors/${id[0]}`,
-          name: `${author.authorname}`,
-        },
-      },
-    ],
+    },
   };
 
   const authorJsonLD = {
@@ -129,22 +106,17 @@ export default async function Page({ params }: { params: { id: string } }) {
   const breadCrumbsList = [
     {
       link: '/',
-      text: 'Головна',
-    },
-
-    {
-      link: '/authors/',
-      text: 'Автор',
+      text: 'Головна /',
     },
 
     {
       link: '/authors/' + id[0],
-      text: author.authorname,
+      text: ' Автор',
     },
   ];
 
   return (
-    <section className="container">
+    <div className="container">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
@@ -156,85 +128,38 @@ export default async function Page({ params }: { params: { id: string } }) {
         key="author-jsonld"
       />
       <BreadCrumbs list={breadCrumbsList} />
-      <div className="xl:flex">
-        <div className="xl:mr-5 xl:w-[796px]">
-          <div className="mb-11 flex">
-            <div className="relative mb-2 mr-2 h-[52px] w-[52px] md:mb-8 xl:h-[60px] xl:w-[60px]">
-              <Image
-                src={author.authorimage.url}
-                fill
-                className="rounded-full object-contain"
-                alt={author.authorimage.alt || 'author'}
-              />
-            </div>
-            <h1 className="mb-2 font-playfair text-t24 font-bold md:text-t32 xl:text-t40">
-              {author.authorname}
-            </h1>
-          </div>
-          <p className="mb-6 text-t14 [text-wrap:balance] md:mb-8 md:text-t16 xl:text-t18">
-            {author.authordescription}
-          </p>
-          <div className="flex flex-row items-center gap-1">
-            <Star className="h-3 w-3  fill-black" />
-            5/5
-          </div>
-          <h3 className="mb-4 text-t10 text-grey md:text-quot xl:text-t14">
-            Рейтинг автора на думку читачів
-          </h3>
-          <div className="mb-6">
-            <h3 className="mb-2 text-menuItemsMob13 md:text-t14 xl:text-t16">
-              Будь ласка оцініть автора і ви
-            </h3>
-            <Stars />
-          </div>
-          <h3 className="mb-2 text-t10 text-grey md:text-quot xl:text-t14">
-            Соціальні мережі:
-          </h3>
-
-          <SocialNetworksAuthor socials={Object.entries(author.socials)} />
-
-          <h3 className="mb-2 mt-4 font-playfair text-t18 md:text-t24">
-            Публікації:
-          </h3>
-          <ul className="mb-12">
-            {author.articles.map(article => {
-              const publishedDate = new Date(article._createdAt);
-
-              const options: Intl.DateTimeFormatOptions = {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: 'numeric',
-              };
-
-              const formattedDate = publishedDate.toLocaleDateString(
-                'uk-UA',
-                options,
-              );
-
-              return (
-                <li
-                  key={article.route}
-                  className="mb-3 text-t14 hover:underline md:w-96 xl:w-2/3"
-                >
-                  <p className="mb-1 text-t10 text-grey md:text-quot xl:text-t14">
-                    {formattedDate}
-                  </p>
-                  <Link
-                    className="text-t14 md:text-t16 xl:text-t18"
-                    href={'/posts/' + article.route}
-                  >
-                    {article.title}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+      <section>
+        <h1 className="mb-2 text-xl font-bold">{author.authorname}</h1>
+        <h2 className="mb-2 [text-wrap:balance] md:mb-8">
+          {author.authordescription}
+        </h2>
+        <div className="relative mb-2 h-80 w-full md:mb-8">
+          <Image
+            src={author.authorimage.url}
+            fill
+            className="object-contain"
+            alt={author.authorimage.alt || 'author'}
+          />
         </div>
-
-        <RightSection />
-      </div>
-    </section>
+        <h3 className="mb-2">Статті:</h3>
+        <ul className="mb-2">
+          {author.articles.map(article => (
+            <li key={article.route} className="hover:underline">
+              <Link href={'/posts/' + article.route}>{article.title}</Link>
+            </li>
+          ))}
+        </ul>
+        <h3 className="mb-2">Соціальні мережі:</h3>
+        <ul className="mb-2">
+          {Object.entries(author.socials).map(([platform, link]) => (
+            <li key={platform} className="hover:underline">
+              <Link href={link} target="_blank" rel="noopener noreferrer">
+                {platform}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
   );
 }

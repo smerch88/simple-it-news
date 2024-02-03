@@ -1,25 +1,17 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, ReactNode } from 'react';
+import { getServerSession } from 'next-auth';
+import { FC } from 'react';
 
-import { BreadCrumbs } from '@/components/BreadCrumbs';
+import Carousel from '@/components/news/Carousel/Carousel';
+import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
+import { Stars } from '@/components/news/Stars';
+import { authConfig } from '@/lib/auth';
 
-interface PostProps {
-  pub_date: string;
-  id: string;
-  title: string;
-  image_url: string;
-  author: string;
-  author_url: string;
-  time_to_read: number;
-  rating: number;
-  description: string;
-  content?: string;
-  children?: ReactNode;
-}
+import { PostProps } from './Post.props';
 
-export const Post: FC<PostProps> = ({
+export const Post: FC<PostProps> = async ({
   pub_date,
   id,
   title,
@@ -31,6 +23,10 @@ export const Post: FC<PostProps> = ({
   description,
   content,
   children,
+  custom_url,
+  categories,
+  custom_category,
+  link,
 }) => {
   const publishedDate = new Date(pub_date);
 
@@ -41,76 +37,35 @@ export const Post: FC<PostProps> = ({
     hour: 'numeric',
     minute: 'numeric',
   };
-  const breadCrumbsJsonLD = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: '1',
-        item: {
-          '@id': `${process.env.HOST}]}`,
-          name: 'Головна',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: '2',
-        item: {
-          '@id': `${process.env.HOST}/news]}`,
-          name: 'Новини',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: '3',
-        item: {
-          '@id': `${process.env.HOST}/news/${id[0]}`,
-          name: 'Новини',
-        },
-      },
-    ],
-  };
-
-  const breadCrumbsList = [
-    {
-      link: '/',
-      text: 'Головна',
-    },
-    {
-      link: '/news',
-      text: 'Новини',
-    },
-    {
-      link: '/news/' + id[0],
-      text: title,
-    },
-  ];
-  const postJsonLD = {
-    '@context': 'https://schema.org/',
-    '@type': 'Post',
-    title: title,
-    name: author,
-    description: description,
-    url: `${process.env.HOST}/news/${id[0]}`,
-    image: image_url,
-    content: content,
-  };
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
+
+  const session = await getServerSession(authConfig);
+
   return (
     <div className="container">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
-        key="breadcrumbs-jsonld"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(postJsonLD) }}
-        key="author-jsonld"
-      />
-      <BreadCrumbs list={breadCrumbsList} />
+      <ul className="mb-6 flex flex-row text-menuItemsMob10 text-lightgrey  md:mb-10 md:text-quot xl:text-t14">
+        <li className="duration-300 hover:text-blue_hover">
+          <Link href="/" rel="canonical">
+            Головна
+          </Link>
+        </li>
+        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
+          <Link href="/news" rel="canonical">
+            {custom_category}
+          </Link>
+        </li>
+        <li className="duration-300 before:whitespace-pre before:content-['_/_'] hover:text-blue_hover">
+          <Link
+            href={'/news/' + custom_url}
+            target="blank"
+            rel="noreferrer nofollow"
+            className="underline underline-offset-2"
+          >
+            {title}
+          </Link>
+        </li>
+      </ul>
       <article>
         <h1 className="mb-1 font-playfair text-t24 font-semibold md:text-t32 xl:text-t40">
           {title}
@@ -140,35 +95,55 @@ export const Post: FC<PostProps> = ({
           {description}
         </p>
         {content ? (
-          <p className="mb-12 border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
-            {content}
-          </p>
+          <>
+            <p className="mb-4 whitespace-pre-wrap border-b border-dark pb-4 text-t14 md:text-t16 xl:text-t18">
+              {content}
+            </p>
+            {link && (
+              <Link
+                href={link}
+                className="mb-12 inline-block text-t14 text-grey xl:mb-[52px] xl:text-t16"
+              >
+                Першоджерело
+              </Link>
+            )}
+          </>
         ) : children ? (
           children
         ) : null}
-      </article>
-      {/* TODO:uncomment after login feature*/}
-      {/* <div className="mb-12">
+        {session && (
+          <div className="mb-12">
             <p className="mb-2 text-menuItemsMob13 italic text-dark md:text-menuItemsTab14 xl:text-menuItemsMob">
               Будь ласка оцініть новину
             </p>
-            <Stars />
-          </div> */}
-      {/* <Comments /> */}
+            <Stars custom_url={custom_url} session={session} />
+          </div>
+        )}
+        <Comments session={session} postId={id} />
+      </article>
+
       {/* TODO:uncomment after feature ready */}
-      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
-            <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
-              Інші публікації цього автора
-            </h2>
-            <Carousel mode="author" author_id={author?.id} />
-          </div> */}
-      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
-            <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
-              Більше з категорії новини
-              {categories[0].name}
-            </h2>
-            <Carousel mode="categories" categories={categories[0]} />
-          </div> */}
+      <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
+          Інші публікації цього автора
+        </h2>
+        <Carousel
+          mode="author"
+          author={author}
+          custom_category={custom_category}
+        />
+      </div>
+      <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+        <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
+          Більше з категорії {custom_category.toLowerCase()}
+          {/* {categories[0].name} */}
+        </h2>
+        <Carousel
+          mode="categories"
+          categories={categories ? categories[0]?.title : 'news'}
+          custom_category={custom_category}
+        />
+      </div>
     </div>
   );
 };

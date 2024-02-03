@@ -33,7 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const breadCrumbsList = [
   {
     link: '/',
-    text: 'Головна',
+    text: 'Головна /',
   },
   {
     link: '/news',
@@ -41,33 +41,10 @@ const breadCrumbsList = [
   },
 ];
 
-const breadCrumbsJsonLD = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: '1',
-      item: {
-        '@id': `${process.env.HOST}]}`,
-        name: 'Головна',
-      },
-    },
-    {
-      '@type': 'ListItem',
-      position: '2',
-      item: {
-        '@id': `${process.env.HOST}/news]}`,
-        name: 'Новини',
-      },
-    },
-  ],
-};
-
 async function getNews() {
   const res = await fetch(
     process.env.NEXT_PUBLIC_API_BASE_URL +
-      '/api/ApprovedNews/?category=news&ordering=-pub_date',
+      '/api/ApprovedNews/?ordering=-pub_date&categorie=news',
     {
       next: { revalidate: 60 },
     },
@@ -81,11 +58,6 @@ export default async function News() {
 
   return (
     <div className="container">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadCrumbsJsonLD) }}
-        key="breadcrumbs-jsonld"
-      />
       <BreadCrumbs list={breadCrumbsList} />
       <h1 className="mb-8 font-playfair text-menuTitleTab md:text-t32 xl:mb-10 xl:text-t40">
         Новини

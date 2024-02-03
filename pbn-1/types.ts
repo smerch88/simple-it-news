@@ -41,9 +41,8 @@ export interface Author {
   authordescription: string;
   authorname: string;
   route: string;
-
   socials: { [platform: string]: string };
-  articles: { route: string; title: string; _createdAt: string }[];
+  articles: { route: string; title: string }[];
   authorimage: {
     width: number;
     url: string;
@@ -69,7 +68,7 @@ export interface RESTAPIPost {
   country: string;
   content: string;
   tags: Category[];
-  rating: number;
+  rating_avg: number;
   categories: Category[];
   time_to_read: number;
   custom_url: string;
@@ -85,9 +84,8 @@ export interface Author {
   twitter: string | null;
   telegram: string | null;
   // TODO: fix this type
-  articles: { route: string; title: string; _createdAt: string }[];
+  articles: { route: string; title: string }[];
 }
-
 
 export interface Category {
   id: number;

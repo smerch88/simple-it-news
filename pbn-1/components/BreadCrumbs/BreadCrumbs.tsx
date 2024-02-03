@@ -15,16 +15,14 @@ export const BreadCrumbs: FC<BreadCrumbsProps> = ({ list }) => {
     <nav className="mb-6 md:mb-7 xl:mb-10">
       {list.map(({ link, text }, id) => {
         return (
-          <span key={id}>
-            <Link
-              rel="canonical"
-              className="text-quot text-lightgrey md:text-quot xl:text-t14 "
-              href={link}
-            >
-              {text}
-            </Link>
-            {id < list.length - 1 && <span className="mx-1">/</span>}
-          </span>
+          <Link
+            key={id + text}
+            rel="canonical"
+            className="text-quot text-lightgrey md:text-quot xl:text-t14 "
+            href={link}
+          >
+            {text}
+          </Link>
         );
       })}
     </nav>
