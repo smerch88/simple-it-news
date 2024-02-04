@@ -4,6 +4,7 @@ export async function authLoggedUser(user: {
   surname: string;
   profile_image: string;
   email: string;
+  google_id: string;
 }) {
   console.log('user', user);
 

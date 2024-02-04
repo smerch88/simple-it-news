@@ -20,7 +20,6 @@ export const Comment = ({
   };
 
   const formattedDate = publishedDate.toLocaleDateString('uk-UA', options);
-
   return (
     <article key={comment.id} className="item flex flex-col py-2">
       <div className="flex w-full items-center gap-x-4">

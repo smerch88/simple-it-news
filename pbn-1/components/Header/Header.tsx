@@ -20,6 +20,8 @@ export const Header = async () => {
     surname: session?.user?.name?.split(' ')[1] || 'none',
     profile_image: session?.user?.image || 'none',
     email: session?.user?.email || 'none',
+    //@ts-ignore
+    id: session?.user?._id || 'none',
   });
   return (
     <header
