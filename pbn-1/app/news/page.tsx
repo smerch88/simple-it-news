@@ -64,7 +64,7 @@ export default async function News() {
       </h1>
       <div className="order-1 flex w-full flex-col xl:col-start-1 xl:col-end-1 xl:row-start-1 xl:row-end-4">
         <ul className="mb-2 flex flex-col gap-12">
-          {news.map((article: RESTAPIPost) => (
+          {news.results.map((article: RESTAPIPost) => (
             <CardPostRest key={article.id} article={article} type="category" />
           ))}
         </ul>

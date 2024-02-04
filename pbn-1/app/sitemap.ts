@@ -72,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  const newsUrls = news.map((item: RESTAPIPost) => ({
+  const newsUrls = news.results.map((item: RESTAPIPost) => ({
     url: `${defaultUrl}/news/${item.custom_url}`,
     // TODO: add actual data to all links
     lastModified: new Date(),

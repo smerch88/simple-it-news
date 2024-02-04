@@ -95,7 +95,7 @@ export default async function Home() {
               Новини
             </h2>
             <ul className="mb-2 flex flex-wrap gap-8">
-              {news.slice(0, 3).map((article: RESTAPIPost) => (
+              {news.results.slice(0, 3).map((article: RESTAPIPost) => (
                 <CardPostRest
                   key={article.id}
                   article={article}
@@ -118,7 +118,7 @@ export default async function Home() {
           </div>
           <div className="order-4 flex w-full flex-col xl:col-start-1 xl:col-end-1">
             <ul className="mb-2 flex flex-wrap gap-8">
-              {news.slice(3).map((article: RESTAPIPost) => (
+              {news.results.slice(3).map((article: RESTAPIPost) => (
                 <CardPostRest
                   key={article.id}
                   article={article}
