@@ -123,7 +123,7 @@ export const Post: FC<PostProps> = async ({
       </article>
 
       {/* TODO:uncomment after feature ready */}
-      <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
+      {/* <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
         <h2 className=" mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white">
           Інші публікації цього автора
         </h2>
@@ -136,14 +136,13 @@ export const Post: FC<PostProps> = async ({
       <div className="py-4 text-left font-playfair text-menuTitleMob md:text-menuTitleTab">
         <h2 className="mb-3 block rounded bg-dark px-3 py-2 font-semibold text-white ">
           Більше з категорії {custom_category.toLowerCase()}
-          {/* {categories[0].name} */}
         </h2>
         <Carousel
           mode="categories"
           categories={categories ? categories[0]?.title : 'news'}
           custom_category={custom_category}
         />
-      </div>
+      </div> */}
     </div>
   );
 };

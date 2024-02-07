@@ -58,10 +58,11 @@ export default async function Carousel({
   const filter = await getFilterPass(mode, author, categories);
   const filteredData = await getSliders(filter, mode);
 
+  console.log('filteredData', filteredData.results, 'filteredData');
   return (
     <div className="relative inline-flex w-full flex-nowrap overflow-hidden">
       <ul className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
-        {filteredData.map((slider: SliderProps) => {
+        {filteredData?.map((slider: SliderProps) => {
           return (
             <SliderCard
               slider={slider}
@@ -75,7 +76,7 @@ export default async function Carousel({
         className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8"
         aria-hidden="true"
       >
-        {filteredData.map((slider: SliderProps) => {
+        {filteredData?.map((slider: SliderProps) => {
           return (
             <SliderCard
               slider={slider}

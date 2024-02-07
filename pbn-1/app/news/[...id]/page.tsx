@@ -17,7 +17,7 @@ export async function generateMetadata({
 
 async function getNews(id: string) {
   const res = await fetch(
-    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/ApprovedNews/?url=${id}`,
+    process.env.NEXT_PUBLIC_API_BASE_URL + `/api/ApprovedNews/${id}`,
     {
       method: 'GET',
       next: { revalidate: 43200 },
