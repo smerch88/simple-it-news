@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { getServerSession } from 'next-auth';
 import { FC } from 'react';
 
-import Carousel from '@/components/news/Carousel/Carousel';
 import { Comments } from '@/components/news/Comments';
 import { Management } from '@/components/news/Management';
 import { Stars } from '@/components/news/Stars';
