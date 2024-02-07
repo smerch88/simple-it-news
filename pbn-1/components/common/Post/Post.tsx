@@ -23,7 +23,7 @@ export const Post: FC<PostProps> = async ({
   content,
   children,
   custom_url,
-  categories,
+  // categories,
   custom_category,
   link,
 }) => {
@@ -137,7 +137,7 @@ export const Post: FC<PostProps> = async ({
           Більше з категорії {custom_category.toLowerCase()}
         </h2>
         <Carousel
-          mode="categories"
+          // mode="categories"
           categories={categories ? categories[0]?.title : 'news'}
           custom_category={custom_category}
         />
