@@ -16,7 +16,11 @@ export const Footer = () => (
         </Link>
         <ul className="mb-2 flex flex-row justify-center gap-4 text-white">
           <li>
-            <Link href="#" target="blank" rel="noreferrer nofollow">
+            <Link
+              href="https://t.me/simpleitnewschannel"
+              target="blank"
+              rel="noreferrer nofollow"
+            >
               <Telegram className="h-8 w-8" />
             </Link>
           </li>
